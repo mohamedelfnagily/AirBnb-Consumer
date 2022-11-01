@@ -1,1 +1,54 @@
-<p>register works!</p>
+<form (ngSubmit)="submitRegister(registerForm)" [formGroup]="registerForm">
+    <h2 class="border-bottom mb-2">Register Now: </h2>
+    <div *ngIf="Error" class="alert alert-danger">
+        <h3>{{Error}}</h3>
+    </div>
+    <label for="firstName">FirstName:</label>
+    <input type="text" formControlName="firstName" class="form-control" name="" id="firstName">
+    <div *ngIf="registerForm.get('firstName')?.errors&&registerForm.get('firstName')?.touched" class="alert alert-danger my-2">
+        <p *ngIf="registerForm.get('firstName')?.errors?.['required']" class="mb-0">firstName is Required</p>
+        <p *ngIf="registerForm.get('firstName')?.errors?.['minlength']" class="mb-0">firstName Minimum length is 3</p>
+        <p *ngIf="registerForm.get('firstName')?.errors?.['maxlength']" class="mb-0">firstName Maximum length is 50</p>
+    </div>
+    <label for="lastName">LastName:</label>
+    <input type="text" formControlName="lastName" class="form-control" name="" id="lastName">
+    <div *ngIf="registerForm.get('lastName')?.errors&&registerForm.get('lastName')?.touched" class="alert alert-danger my-2">
+        <p *ngIf="registerForm.get('lastName')?.errors?.['required']" class="mb-0">lastName is Required</p>
+        <p *ngIf="registerForm.get('lastName')?.errors?.['minlength']" class="mb-0">lastName Minimum length is 3</p>
+        <p *ngIf="registerForm.get('lastName')?.errors?.['maxlength']"class="mb-0">lastName Maximum length is 50</p>
+    </div>
+    <label for="userName">UserName:</label>
+    <input type="text" formControlName="userName" class="form-control" name="" id="userName">
+    <div *ngIf="registerForm.get('userName')?.errors&&registerForm.get('userName')?.touched" class="alert alert-danger my-2">
+        <p *ngIf="registerForm.get('userName')?.errors?.['required']" class="mb-0">userName is Required</p>
+        <p *ngIf="registerForm.get('userName')?.errors?.['minlength']"class="mb-0">userName Minimum length is 10</p>
+        <p *ngIf="registerForm.get('userName')?.errors?.['maxlength']"class="mb-0">userName Maximum length is 50</p>
+    </div>
+    <label for="email">Email:</label>
+    <input type="email" formControlName="email" class="form-control" name="" id="email">
+    <div *ngIf="registerForm.get('email')?.errors&&registerForm.get('email')?.touched" class="alert alert-danger my-2">
+        <p *ngIf="registerForm.get('email')?.errors?.['required']"class="mb-0">email is Required</p>
+        <p *ngIf="registerForm.get('email')?.errors?.['email']"class="mb-0">InValid email format</p>
+    </div>
+    <label for="mobileNumber">MobileNumber:</label>
+    <input type="text" formControlName="mobileNumber" class="form-control" name="" id="mobileNumber">
+    <div *ngIf="registerForm.get('mobileNumber')?.errors&&registerForm.get('mobileNumber')?.touched"class="alert alert-danger my-2">
+        <p *ngIf="registerForm.get('mobileNumber')?.errors?.['required']"class="mb-0">mobileNumber is Required</p>
+        <p *ngIf="registerForm.get('mobileNumber')?.errors?.['pattern']"class="mb-0">Invalid mobile number format</p>
+    </div>
+    <label for="password">Password:</label>
+    <input type="password" formControlName="password" class="form-control" name="" id="password">
+    <div *ngIf="registerForm.get('password')?.errors&&registerForm.get('password')?.touched"class="alert alert-danger my-2">
+        <p *ngIf="registerForm.get('password')?.errors?.['required']"class="mb-0">password is Required</p>
+        <p *ngIf="registerForm.get('password')?.errors?.['pattern']"class="mb-0">password is Must start with capital letter and have special character</p>
+    </div>
+    <label for="birthDate">BirthDate:</label>
+    <input type="date" formControlName="birthDate" class="form-control" name="" id="birthDate">
+    <div *ngIf="registerForm.get('birthDate')?.errors&&registerForm.get('birthDate')?.touched"class="alert alert-danger my-2">
+        <p *ngIf="registerForm.get('birthDate')?.errors?.['required']"class="mb-0">birthDate is Required</p>
+        <p *ngIf="registerForm.get('birthDate')?.errors?.['pattern']"class="mb-0">Date Cannot be in the future</p>
+    </div>
+    <label for="profilePicture">ProfilePicture:</label>
+    <input type="file" formControlName="profilePicture" class="form-control" name="" id="profilePicture">
+    <button [disabled]="registerForm.invalid" type="submit" class="btn btn-info mt-3">Register</button>
+</form>
