@@ -34,12 +34,12 @@ export class AuthenticationService {
   //Regestring new user
   Register(userData:RegisterDto):Observable<any>
   {
-    return this._HttpClient.post('https://localhost:7265/api/Auth/Register',userData);
+    return this._HttpClient.post('https://localhost:7218/api/Authentication/Register',userData);
   }
   //Login user
   Login(userData:LoginDto):Observable<any>
   {
-    return this._HttpClient.post('https://localhost:7265/api/Auth/Login',userData);
+    return this._HttpClient.post('https://localhost:7218/api/Authentication/Login',userData);
   }
   //Logging out user
   LogOut():void{

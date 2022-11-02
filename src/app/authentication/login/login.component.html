@@ -8,7 +8,7 @@
     <input type="text" formControlName="Email" class="form-control" name="" id="userName">
     <div *ngIf="loginForm.get('Email')?.errors&&loginForm.get('userName')?.touched" class="alert alert-danger my-2">
         <p *ngIf="loginForm.get('Email')?.errors?.['required']" class="mb-0">Email is Required</p>
-        <p *ngIf="loginForm.get('Email')?.errors?.['minlength']"class="mb-0">Invalid Email Format</p>
+        <p *ngIf="loginForm.get('Email')?.errors?.['email']"class="mb-0">Invalid Email Format</p>
     </div>
     <label for="password">Password:</label>
     <input type="password" formControlName="password" class="form-control" name="" id="password">

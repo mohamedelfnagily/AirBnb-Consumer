@@ -1,0 +1,47 @@
+.carousel-indicators button{
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+}
+.carousel-item img{
+    height: 300px;
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.carousel-inner{
+    border-radius: 10px;
+
+}
+.carousel-control-next{
+    background-color: rgba(0, 0, 0, 0.8);
+    height: 40px;
+    width: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    margin-right: 5px;
+}
+.carousel-control-prev{
+    background-color: rgba(0, 0, 0, 0.8);
+    height: 40px;
+    width: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    margin-left: 5px;
+}
+.favBtn{
+    position: absolute;
+    top: 3%;
+    right: 8%;
+    color: white;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.favBtn:hover{
+    color: red;
+}
+.row .col-md-3{
+    cursor: pointer;
+}

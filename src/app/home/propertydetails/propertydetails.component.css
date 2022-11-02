@@ -1,0 +1,21 @@
+.mainImg{
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+.subImgOne{
+    border-top-right-radius: 15px;
+}
+.subImgeTwo{
+    border-bottom-right-radius: 15px;
+}
+.allImgsBtn{
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+
+}
+.smallImgContainer img{
+    height: 75px;
+    width: 75px;
+    border-radius: 50%;
+}

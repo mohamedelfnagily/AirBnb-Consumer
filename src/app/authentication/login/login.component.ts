@@ -32,15 +32,8 @@ export class LoginComponent implements OnInit {
         { 
           localStorage.setItem("userToken",response.token);
           this._AuthenticationService.setUserData();
-          let userRole = localStorage.getItem('userRole');
-          if(userRole=="Customer")
-          {
-            this._Router.navigate(['/Home']);
-          }
-          else{
-            this._Router.navigate(['/Adminpage']);
-
-          }
+          // let userRole = localStorage.getItem('userRole');
+          this._Router.navigate(['/Home']);
         }
       },
       (error)=>{
