@@ -39,7 +39,7 @@ export class AuthenticationService {
   //Login user
   Login(userData:LoginDto):Observable<any>
   {
-    return this._HttpClient.post('https://localhost:7218/api/Authentication/Login',userData);
+    return this._HttpClient.post('https://localhost:7218/api/CreateUser',userData);
   }
   //Logging out user
   LogOut():void{
