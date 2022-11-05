@@ -10,7 +10,7 @@ import {HttpClientModule} from '@angular/common/http'
 import { CoreModule } from './core/core.module';
 import { HomeModule } from './home/home.module';
 import {CalendarModule} from 'primeng/calendar';
-
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,8 @@ import {CalendarModule} from 'primeng/calendar';
     ReactiveFormsModule,
     CoreModule,
     AccordionModule,
-    CalendarModule
+    CalendarModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
