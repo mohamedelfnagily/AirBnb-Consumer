@@ -5,6 +5,8 @@ import { EmployeeManagingUsersComponent } from './employee-managing-users/employ
 import { EmployeeViewPropertiesComponent } from './employee-view-properties/employee-view-properties.component';
 import { EmployeeDashboardComponent } from './employee-dashboard/employee-dashboard.component';
 import { EmployeeSidebarComponent } from './employee-sidebar/employee-sidebar.component';
+import {ButtonModule} from 'primeng/button';
+import {TableModule} from 'primeng/table';
 
 import {SidebarModule} from 'primeng/sidebar';
 
@@ -19,7 +21,9 @@ import {SidebarModule} from 'primeng/sidebar';
   imports: [
     CommonModule,
     EmployeeRoutingModule,
-    SidebarModule
+    SidebarModule,
+    ButtonModule,
+    TableModule
   ],
   exports:[EmployeeDashboardComponent,EmployeeManagingUsersComponent,EmployeeSidebarComponent,EmployeeViewPropertiesComponent,SidebarModule]
 })
