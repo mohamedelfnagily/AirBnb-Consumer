@@ -1,1 +1,12 @@
-<p>ceo-side-bar works!</p>
+<p-sidebar [(visible)]="display">
+    <div class="sidebar-heading border-bottom bg-light"><h1>DashBoard</h1></div>
+    <div class="list-group list-group-flush">
+        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Profile</a>
+        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Properties</a>
+        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/Ceo/ManageUser">Users</a>
+        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/Ceo/ManageEmployee">Employees</a>
+    </div>
+</p-sidebar>
+
+<button type="text" (click)="display = true" class="pi pi-arrow-right
+btn btn-info" label="Show" ></button>

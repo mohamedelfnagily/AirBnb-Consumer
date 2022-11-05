@@ -6,6 +6,9 @@ import { CeoManagingEmployeesComponent } from './ceo-managing-employees/ceo-mana
 import { CeoViewPropertiesComponent } from './ceo-view-properties/ceo-view-properties.component';
 import { CeoDashboardComponent } from './ceo-dashboard/ceo-dashboard.component';
 import { CeoSideBarComponent } from './ceo-side-bar/ceo-side-bar.component';
+import { SidebarModule } from 'primeng/sidebar';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ManageEmplyeesService } from '../Services/manage-emplyees.service';
 
 
 
@@ -15,12 +18,14 @@ import { CeoSideBarComponent } from './ceo-side-bar/ceo-side-bar.component';
     CeoManagingEmployeesComponent,
     CeoViewPropertiesComponent,
     CeoDashboardComponent,
-    CeoSideBarComponent
+    CeoSideBarComponent,
+    
+  
   ],
   imports: [
     CommonModule,
-    CeoRoutingModule
+    CeoRoutingModule,SidebarModule
   ],
-  exports:[CeoDashboardComponent,CeoManagingEmployeesComponent,CeoManagingUsersComponent,CeoViewPropertiesComponent,CeoSideBarComponent]
+  exports:[CeoDashboardComponent,CeoManagingEmployeesComponent,CeoManagingUsersComponent,CeoViewPropertiesComponent,CeoSideBarComponent,SidebarModule]
 })
 export class CeoModule { }

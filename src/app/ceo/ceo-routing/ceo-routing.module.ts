@@ -12,7 +12,7 @@ let route:Routes=[
   {path:"",component:CeoDashboardComponent,canActivate:[CeoAuthGuard]},
   {path:"ManageUser",component:CeoManagingUsersComponent,canActivate:[CeoAuthGuard]},
   {path:"ManageEmployee",component:CeoManagingEmployeesComponent,canActivate:[CeoAuthGuard]},
-  {path:"ManageProperties",component:CeoViewPropertiesComponent,canActivate:[CeoAuthGuard]}
+  {path:"ManageProperties",component:CeoViewPropertiesComponent,canActivate:[CeoAuthGuard]},
 ];
 
 @NgModule({
