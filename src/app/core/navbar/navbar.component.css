@@ -6,3 +6,14 @@
 button li a:hover{
     color: white !important;
 }
+.profileBtnContainer{
+    display: flex;
+    align-items: center;
+    border: 2px solid transparent;
+    padding: 5px;
+    transition: 0.5s;
+
+}
+.profileBtnContainer:hover{
+    border: 2px solid #ccc;
+}
