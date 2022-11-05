@@ -1,4 +1,5 @@
 import { AfterContentChecked, Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from 'src/app/Interfaces/user';
 import { AuthenticationService } from 'src/app/Services/authentication.service';
 import { UserService } from 'src/app/Services/user.service';
@@ -9,13 +10,14 @@ import { UserService } from 'src/app/Services/user.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit ,OnDestroy{
+export class NavbarComponent implements OnInit{
   isLoggedIn:boolean=false;
   userImage:string='';
   userId:string='';
+  userProfileUrl:string='';
   userfullName:string='';
   user:User|null=null;
-  constructor(private _AuthenticationService:AuthenticationService,private _UserService:UserService) { }
+  constructor(private _AuthenticationService:AuthenticationService,private _UserService:UserService,private _Router:Router) { }
 
   ngOnInit(): void {
     this._AuthenticationService.userData.subscribe(()=>{
@@ -40,15 +42,20 @@ export class NavbarComponent implements OnInit ,OnDestroy{
       }
     });
   }
-  
-  ngOnDestroy(): void {
-    let userid = JSON.stringify(localStorage.getItem("userId"));
 
-    // this.userId = <string>localStorage.getItem('userId');
-    console.log(userid);
-    console.log('destroy')
-  }
   CallLogOut():void{
     this._AuthenticationService.LogOut();
+  }
+  NavigateToUserProfile():void
+  {
+    let userid = <string>localStorage.getItem("userId");
+    this.userProfileUrl='/User/Profile/'+userid;
+    this._Router.navigateByUrl(this.userProfileUrl);
+  }
+  NavigateToHosterProfile():void
+  {
+    let userid = <string>localStorage.getItem("userId");
+    let userUrl='/User/Host/'+userid;
+    this._Router.navigateByUrl(userUrl);
   }
 }

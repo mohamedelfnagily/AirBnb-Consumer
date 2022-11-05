@@ -9,24 +9,11 @@ import {MenuItem, PrimeIcons} from 'primeng/api';
 })
 export class EmployeeSidebarComponent implements OnInit {
   display:boolean=false;
-  private items: MenuItem[]=[];
 
   constructor() { }
 
   ngOnInit(): void {
-    this.items = [{
-      label: 'File',
-      items: [
-          {label: 'New', icon: PrimeIcons.PLUS},
-          {label: 'Open', icon: PrimeIcons.DOWNLOAD}
-      ]
-  },
-  {
-      label: 'Edit',
-      items: [
-          {label: 'Undo', icon: PrimeIcons.REFRESH},
-      ]
-  }];
+
   }
 
 }

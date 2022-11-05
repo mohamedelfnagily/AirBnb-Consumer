@@ -6,3 +6,28 @@
 button li a:hover{
     color: white !important;
 }
+.profileBtnContainer{
+    display: flex;
+    align-items: center;
+    border: 2px solid transparent;
+    padding: 5px;
+    transition: 0.5s;
+
+}
+.profileBtnContainer:hover{
+    border: 2px solid #ccc;
+}
+.myNav{
+    z-index: 200;
+}
+.hostBtn{
+    border: 2px solid transparent;
+    transition: 0.5s;
+    padding: 5px;
+
+}
+.hostBtn:hover{
+    border: 2px solid #ccc;
+    background-color: #ccc;
+
+}
