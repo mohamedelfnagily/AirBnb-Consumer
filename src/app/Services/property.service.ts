@@ -16,5 +16,13 @@ export class PropertyService {
     getProperty(propertyId:string):Observable<any>{
       return this._HttpClient.get(`https://localhost:7218/api/Property/GetPropertyById/${propertyId}`);
     }
+    //Getting all properties of specific user
+    getUserProperties(userId:string):Observable<any>{
+      return this._HttpClient.get(`https://localhost:7218/api/Property/GetUserProperties/${userId}`)
+    }
+    //Delete selected property by user
+    deleteProperty(propId:string):Observable<any>{
+      return this._HttpClient.delete(`https://localhost:7218/api/Property/DeleteProperty/${propId}`);
+    }
     
 }

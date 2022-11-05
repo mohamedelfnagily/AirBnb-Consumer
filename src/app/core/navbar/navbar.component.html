@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-light py-4">
+<nav class="navbar navbar-expand-lg bg-light py-4 myNav">
     <div class="container">
       <a class="navbar-brand" href="#">Navbar</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,7 +25,10 @@
             <a (click)="CallLogOut()" class="nav-link" href="#">SignOut</a>
           </li> -->
         </ul>
-        <ul *ngIf="isLoggedIn" class="ms-auto navbar-nav">
+        <ul *ngIf="isLoggedIn" class="ms-auto navbar-nav d-flex align-items-center">
+          <li *ngIf="isLoggedIn" class="nav-item me-3 hostBtn rounded-pill " >
+            <a class="nav-link" style="cursor: pointer;" (click)="NavigateToHosterProfile()">Switch to Hosting</a>
+          </li>
           <li class="nav-item">
             <div class="profileBtnContainer rounded-pill shadow">
               <img *ngIf="userImage;else temp" class="imgContainer" [src]="userImage" alt="">
@@ -44,10 +47,10 @@
                   <li><hr class="dropdown-divider"></li>
                   <li><a class="dropdown-item" href="#">Manage Listings</a></li>
                   <li><a class="dropdown-item" href="#">Host an Experience</a></li>
-                  <li><a class="dropdown-item" (click)="NavigateToUserProfile()">Account</a></li>
+                  <li><a style="cursor: pointer;" class="dropdown-item" (click)="NavigateToUserProfile()">Account</a></li>
                   <li><hr class="dropdown-divider"></li>
                   <li><a class="dropdown-item" href="#">Help</a></li>
-                  <li><a class="dropdown-item" (click)="CallLogOut()">LogOut</a></li>
+                  <li><a style="cursor: pointer;" class="dropdown-item" (click)="CallLogOut()">LogOut</a></li>
 
                 </ul>
               </li>
@@ -57,3 +60,4 @@
       </div>
     </div>
 </nav>
+

@@ -52,4 +52,10 @@ export class NavbarComponent implements OnInit{
     this.userProfileUrl='/User/Profile/'+userid;
     this._Router.navigateByUrl(this.userProfileUrl);
   }
+  NavigateToHosterProfile():void
+  {
+    let userid = <string>localStorage.getItem("userId");
+    let userUrl='/User/Host/'+userid;
+    this._Router.navigateByUrl(userUrl);
+  }
 }

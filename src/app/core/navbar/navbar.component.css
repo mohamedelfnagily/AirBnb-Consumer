@@ -17,3 +17,17 @@ button li a:hover{
 .profileBtnContainer:hover{
     border: 2px solid #ccc;
 }
+.myNav{
+    z-index: 200;
+}
+.hostBtn{
+    border: 2px solid transparent;
+    transition: 0.5s;
+    padding: 5px;
+
+}
+.hostBtn:hover{
+    border: 2px solid #ccc;
+    background-color: #ccc;
+
+}
