@@ -27,14 +27,31 @@ export class AuthenticationService {
     let encodedToken =JSON.stringify(localStorage.getItem("userToken"));
     let decodedToken:any = jwtDecode(encodedToken);
     this.userData.next(decodedToken);
-    localStorage.setItem('userRole',decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']);
+    if(decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'])
+    {
+      localStorage.setItem('userRole',decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']);
+    }
+    else{
+      localStorage.setItem('userRole','User');
+
+    }
     localStorage.setItem('userId',decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier']);
     this.userRole.next(localStorage.getItem('userRole'));
   }
   //Regestring new user
-  Register(userData:RegisterDto):Observable<any>
+  Register(userNewData:RegisterDto,file:File):Observable<any>
   {
-    return this._HttpClient.post('https://localhost:7218/api/CreateUser',userData);
+    const formData = new FormData();
+    // optional you can pass a file name as third parameter
+    formData.append('FirstName', userNewData.FirstName);
+    formData.append('LastName', userNewData.LastName);
+    formData.append('UserName', userNewData.UserName);
+    formData.append('BirthDate', userNewData.BirthDate);
+    formData.append('Password', userNewData.Password);
+    formData.append('Email', userNewData.Email);
+    formData.append('PhoneNumber', userNewData.PhoneNumber);
+    formData.append('ProfilePicture', file);
+    return this._HttpClient.post('https://localhost:7218/api/User/CreateUser',formData);
   }
   //Login user
   Login(userData:LoginDto):Observable<any>
@@ -47,6 +64,7 @@ export class AuthenticationService {
     localStorage.removeItem("userToken");
     this._Router.navigate(['/Login']);
     localStorage.removeItem('userRole');
+    localStorage.removeItem('userId');
     this.userRole.next(null);
   }
 }

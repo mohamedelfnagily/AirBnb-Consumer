@@ -45,3 +45,41 @@
 .row .col-md-3{
     cursor: pointer;
 }
+
+.categoryContainer{
+
+    background-color: white;
+}
+.categoryContainer ul{
+    list-style: none;
+    font-weight: bolder;
+    font-size: 12px;
+    padding: 0%;
+    margin: 0%;
+}
+.categoryContainer li{
+    padding: 0px;
+    margin: 0px;
+    margin-right: 40px;
+    cursor: pointer;
+    transition: 0.5s;
+    
+    border-bottom: 3px solid transparent;
+    
+}
+.categoryContainer li:hover{
+    border-bottom: 3px solid #ccc;
+}
+
+.LogoContainer{
+    width: 35px;
+    height: 35px;
+}
+/* ######################## */
+/* Show map button section */
+.showMapBtn{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    
+}

@@ -4,6 +4,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { UnAuthorizedComponent } from './un-authorized/un-authorized.component';
 
 
 
@@ -11,12 +12,13 @@ import { NotFoundComponent } from './not-found/not-found.component';
   declarations: [
     NavbarComponent,
     FooterComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    UnAuthorizedComponent
   ],
   imports: [
     CommonModule,
     RouterModule
   ],
-  exports:[NavbarComponent,FooterComponent,NotFoundComponent]
+  exports:[NavbarComponent,FooterComponent,NotFoundComponent,UnAuthorizedComponent]
 })
 export class CoreModule { }

@@ -3,16 +3,23 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './authentication/login/login.component';
 import { RegisterComponent } from './authentication/register/register.component';
 import { NotFoundComponent } from './core/not-found/not-found.component';
-import { AuthenticationGuard } from './Guards/authentication.guard';
-import { AllPropertiesComponent } from './home/all-properties/all-properties.component';
-import { PropertydetailsComponent } from './home/propertydetails/propertydetails.component';
+import { UnAuthorizedComponent } from './core/un-authorized/un-authorized.component';
+import { AuthModuleGuard } from './Guards/auth-module.guard';
+
 
 const routes: Routes = [
   {path:'',redirectTo:'Home',pathMatch:'full'},
-  {path:'Home',canActivate:[AuthenticationGuard],component:AllPropertiesComponent},
-  {path:'PropertyDetails',canActivate:[AuthenticationGuard],component:PropertydetailsComponent},
+  //Lazy loaded users module
+  {path:'User',loadChildren:()=>import('./user/user.module').then(u=>u.UserModule),canLoad:[AuthModuleGuard]},
+  //Lazy loaded employee module
+  {path:'Admin',loadChildren:()=>import('./employee/employee.module').then(e=>e.EmployeeModule),canLoad:[AuthModuleGuard]},
+  //Lazy loaded ceo module
+  {path:'Ceo',loadChildren:()=>import('./ceo/ceo.module').then(c=>c.CeoModule),canLoad:[AuthModuleGuard]},
+  //Lazy loaded home module
+  {path:"Home",loadChildren:()=>import('./home/home.module').then(h=>h.HomeModule),canLoad:[AuthModuleGuard]},
   {path:'Register',component:RegisterComponent},
   {path:'Login',component:LoginComponent},
+  {path:'UnAuthorized',component:UnAuthorizedComponent},
   {path:"**",component:NotFoundComponent}
 ];
 

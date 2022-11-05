@@ -11,6 +11,7 @@ import { CoreModule } from './core/core.module';
 import { HomeModule } from './home/home.module';
 import {CalendarModule} from 'primeng/calendar';
 
+
 @NgModule({
   declarations: [
     AppComponent
@@ -22,7 +23,6 @@ import {CalendarModule} from 'primeng/calendar';
     HttpClientModule,
     ReactiveFormsModule,
     CoreModule,
-    HomeModule,
     AccordionModule,
     CalendarModule
   ],

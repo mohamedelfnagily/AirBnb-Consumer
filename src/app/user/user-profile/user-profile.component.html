@@ -1,0 +1,104 @@
+<div class="container rounded bg-white  mb-5">
+    <div class="row">
+        <div class="col-md-3 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" height="150px" [src]="userImage"><span class="font-weight-bold">{{user?.firstName}} {{user?.lastName}}</span><span class="text-black-50">{{user?.email}}</span><span> </span></div>
+        </div>
+        <div class="col-md-5 border-right">
+            <div class="p-3 py-5">
+                <div class="row mt-3">
+
+
+                    <form (ngSubmit)="submitEditForm(updateUserDataForm)" method="post" enctype="multipart/form-data" [formGroup]="updateUserDataForm" id="myForm">
+                        <h2 *ngIf="editProfile" class="border-bottom pb-2">Edit your profile Now: </h2>
+                        <h2 *ngIf="!editProfile" class="border-bottom pb-2">Profile Settings: </h2>
+                        <div *ngIf="Error" class="alert alert-danger">
+                            <h3>{{Error}}</h3>
+                        </div>
+                        <div>
+                            <div *ngIf="!editProfile" class="w-75  border border-2 mb-2 py-2">
+                                <h5 class="ms-2">First Name: {{user?.firstName}}</h5>
+                            </div>
+                            <div *ngIf="editProfile">
+                                <label for="FirstName">FirstName:</label>
+                                <input  type="text" formControlName="FirstName" class="form-control" [value]="user?.firstName" [placeholder]="user?.firstName" name="" id="FirstName">
+                                <div *ngIf="updateUserDataForm.get('FirstName')?.errors&&updateUserDataForm.get('FirstName')?.touched" class="alert alert-danger my-2">
+                                    <p *ngIf="updateUserDataForm.get('FirstName')?.errors?.['minlength']" class="mb-0">firstName Minimum length is 3</p>
+                                    <p *ngIf="updateUserDataForm.get('FirstName')?.errors?.['maxlength']" class="mb-0">firstName Maximum length is 50</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div *ngIf="!editProfile" class="w-75  border border-2 mb-2 py-2">
+                                <h5 class="ms-2">Last Name: {{user?.lastName}}</h5>
+                            </div>
+                            <div *ngIf="editProfile">
+                                <label for="LastName">LastName:</label>
+                                <input type="text" formControlName="LastName" class="form-control" [value]="user?.lastName" [placeholder]="user?.lastName" name="" id="LastName">
+                                <div *ngIf="updateUserDataForm.get('LastName')?.errors&&updateUserDataForm.get('LastName')?.touched" class="alert alert-danger my-2">
+                                    <p *ngIf="updateUserDataForm.get('LastName')?.errors?.['minlength']" class="mb-0">lastName Minimum length is 3</p>
+                                    <p *ngIf="updateUserDataForm.get('LastName')?.errors?.['maxlength']"class="mb-0">lastName Maximum length is 50</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div *ngIf="!editProfile" class="w-75  border border-2 mb-2 py-2">
+                                <h5 class="ms-2">User Name: {{user?.userName}} </h5>
+                            </div>
+                            <div *ngIf="editProfile">
+                                <label for="UserName">UserName:</label>
+                                <input type="text" formControlName="UserName" class="form-control" name="" id="UserName" [value]="user?.userName" [placeholder]="user?.userName">
+                                <div *ngIf="updateUserDataForm.get('UserName')?.errors&&updateUserDataForm.get('UserName')?.touched" class="alert alert-danger my-2">
+                                    <p *ngIf="updateUserDataForm.get('UserName')?.errors?.['minlength']"class="mb-0">userName Minimum length is 10</p>
+                                    <p *ngIf="updateUserDataForm.get('UserName')?.errors?.['maxlength']"class="mb-0">userName Maximum length is 50</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div *ngIf="!editProfile" class="w-75  border border-2 mb-2 py-2">
+                                <h5 class="ms-2">Email: {{user?.email}} </h5>
+                            </div>
+                            <div *ngIf="editProfile">
+                                <label for="Email">Email:</label>
+                                <input type="Email" formControlName="Email" class="form-control" [value]="user?.email" [placeholder]="user?.email" name="" id="Email">
+                                <div *ngIf="updateUserDataForm.get('Email')?.errors&&updateUserDataForm.get('Email')?.touched" class="alert alert-danger my-2">
+                                    <p *ngIf="updateUserDataForm.get('Email')?.errors?.['Email']"class="mb-0">InValid email format</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div *ngIf="!editProfile" class="w-75  border border-2 mb-2 py-2">
+                                <h5 class="ms-2">Mobile Number: {{user?.phoneNumber}}</h5>
+                            </div>
+                            <div *ngIf="editProfile">
+                                <label for="PhoneNumber">phoneNumber:</label>
+                                <input type="text" formControlName="PhoneNumber" class="form-control" [value]="user?.phoneNumber" [placeholder]="user?.phoneNumber" name="" id="PhoneNumber">
+                                <div *ngIf="updateUserDataForm.get('PhoneNumber')?.errors&&updateUserDataForm.get('PhoneNumber')?.touched"class="alert alert-danger my-2">
+                                    <p *ngIf="updateUserDataForm.get('PhoneNumber')?.errors?.['pattern']"class="mb-0">Invalid mobile number format</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div *ngIf="!editProfile" class="w-75  border border-2 mb-2 py-2">
+                                <h5 class="ms-2">Birth Date: {{user?.birthDate}}</h5>
+                            </div>
+                            <div *ngIf="editProfile">
+                                <label for="BirthDate">BirthDate:</label>
+                                <input type="date" formControlName="BirthDate" class="form-control" [value]="user?.birthDate" [placeholder]="user?.birthDate" name="" id="BirthDate">
+                                <div *ngIf="updateUserDataForm.get('BirthDate')?.errors&&updateUserDataForm.get('BirthDate')?.touched"class="alert alert-danger my-2">
+                                    <p *ngIf="updateUserDataForm.get('BirthDate')?.errors?.['required']"class="mb-0">birthDate is Required</p>
+                                    <p *ngIf="updateUserDataForm.get('BirthDate')?.errors?.['pattern']"class="mb-0">Date Cannot be in the future</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="editProfile">
+                            <label for="ProfilePicture">ProfilePicture:</label>
+                            <input type="file" formControlName="ProfilePicture" (change)="uploadFile($event)"  class="form-control" name="" id="ProfilePicture">
+                            <button   type="submit" class="btn btn-info mt-3">Save</button>
+                        </div>
+                    </form>
+                </div>
+                <div (click)="EditProfileVisability()" class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Edit Profile</button></div>
+            </div>
+        </div>
+    </div>
+</div>

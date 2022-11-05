@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-light">
+<nav class="navbar navbar-expand-lg bg-light container">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Navbar</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,7 +16,7 @@
             <a class="nav-link" href="#">Pricing</a>
           </li>
           <li *ngIf="!isLoggedIn" class="nav-item" >
-            <a class="nav-link" routerLink="/Login">SignIn</a>
+            <a class="nav-link" [routerLink]="['/Login']">SignIn</a>
           </li>
           <li *ngIf="!isLoggedIn" class="nav-item" >
             <a class="nav-link" routerLink="/Register">Register</a>
@@ -25,6 +25,24 @@
             <a (click)="CallLogOut()" class="nav-link" href="#">SignOut</a>
           </li>
         </ul>
+        <ul *ngIf="isLoggedIn" class="ms-auto navbar-nav">
+          <li class="nav-item">
+            <button class="btn btn-outline-dark d-flex align-items-center rounded-pill">
+              <img class="imgContainer" [src]="userImage" alt="">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  {{userfullName}}
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+            </button>
+          </li>
+        </ul>
       </div>
     </div>
-  </nav>
+</nav>

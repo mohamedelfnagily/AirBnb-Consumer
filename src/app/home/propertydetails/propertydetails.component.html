@@ -1,4 +1,4 @@
-<div class="headerSection">
+<div class="headerSection container mt-3">
     <h1 class="mb-2">Cave Villa With Infinity Pool in Adrasan</h1>
     <div class="d-flex align-items-center justify-content-between">
         <div class="d-flex align-items-center ">
@@ -70,18 +70,36 @@
                 <div>
                     <h4>Entire villa hosted by Halis</h4>
                     <h6>5 guests2 bedrooms2 beds2 baths</h6>    
-                    <p-calendar [(ngModel)]="value" [inline]="true"></p-calendar>
-
                 </div>
                 <div class="smallImgContainer ">
-                    <img src="../../../assets/Images/143723a2-07f4-4cb7-9754-d82d61930cf7.jpg" alt="">
+                    <img style="cursor:pointer ;" [src]="userImg" [routerLink]="['/User','Profile',userId]" alt="">
                 </div>
             </div>
-            <div class="d-flex">
-                <div>
+            <div class=" mt-3 border-bottom pb-2">
+                <div class="d-flex mb-2">
+                    <i class="fa-solid fa-water-ladder fa-2x me-2"></i>
+                    <div>
+                        <h6 class="m-0 p-0">Dive right in</h6>
+                        <p class="p-0 text-secondary">This is one of the few places in the area with a pool.</p>
+                    </div>
                 </div>
-            </div>
+                <div class="d-flex mb-2">
+                    <i class="fa-regular fa-star fa-2x me-2"></i>
+                    <div>
+                        <h6 class="m-0 p-0">Experienced host</h6>
+                        <p class="p-0 text-secondary">Bookiply has 901 reviews for other places.</p>
+                    </div>
+                </div>
+                <div class="d-flex mb-2">
+                    <i class="fa-solid fa-ban fa-2x me-2"></i>
+                    <div>
+                        <h6 class="m-0 p-0">Free cancellation for 48 hours.</h6>
+                    </div>
+                </div>
+            </div>           
         </div>
-        <div class="col-md-5"></div>
+        <div class="col-md-5 border border-secondary rounded-4">
+            
+        </div>
     </div>
 </div>

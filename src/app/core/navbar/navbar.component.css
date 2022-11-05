@@ -1,0 +1,8 @@
+.imgContainer{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+button li a:hover{
+    color: white !important;
+}

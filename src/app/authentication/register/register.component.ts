@@ -22,7 +22,10 @@ export class RegisterComponent implements OnInit {
     birthDate:new FormControl(null,[Validators.required]),
     profilePicture:new FormControl(null)
   });
-
+  file:any=null;
+  uploadFile(x:any){
+     this.file = <HTMLInputElement>x.target.files[0];
+  }
   ngOnInit(): void {
   }
   submitRegister(formInfo:FormGroup)
@@ -35,9 +38,10 @@ export class RegisterComponent implements OnInit {
       Password:formInfo.value.password,
       BirthDate:formInfo.value.birthDate,
       ProfilePicture:formInfo.value.profilePicture,
-      PhoneNumber:formInfo.value.profilePicture
+      PhoneNumber:formInfo.value.mobileNumber
     };
-    this._AuthenticationService.Register(registerData).subscribe(
+    console.log(registerData);
+    this._AuthenticationService.Register(registerData,this.file).subscribe(
       (response)=>{
         if(response.token)
         {

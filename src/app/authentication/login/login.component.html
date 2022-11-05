@@ -1,20 +1,24 @@
-<form (ngSubmit)="submitLogin(loginForm)" [formGroup]="loginForm">
-    <h2 class="border-bottom mb-2">Login Now: </h2>
-    <div *ngIf="Error" class="alert alert-danger">
-        <h3>{{Error}}</h3>
+<div class="w-50 mx-auto formContainer">
+    <div class="w-100">
+        <form (ngSubmit)="submitLogin(loginForm)" [formGroup]="loginForm">
+            <h2 class="border-bottom mb-2">Login Now: </h2>
+            <div *ngIf="Error" class="alert alert-danger">
+                <h3>{{Error}}</h3>
+            </div>
+        
+            <label for="Email">Email:</label>
+            <input type="text" formControlName="Email" class="form-control" name="" id="userName">
+            <div *ngIf="loginForm.get('Email')?.errors&&loginForm.get('Email')?.touched" class="alert alert-danger my-2">
+                <p *ngIf="loginForm.get('Email')?.errors?.['required']" class="mb-0">Email is Required</p>
+                <p *ngIf="loginForm.get('Email')?.errors?.['email']"class="mb-0">Invalid Email Format</p>
+            </div>
+            <label for="password">Password:</label>
+            <input type="password" formControlName="password" class="form-control" name="" id="password">
+            <div *ngIf="loginForm.get('password')?.errors&&loginForm.get('password')?.touched"class="alert alert-danger my-2">
+                <p *ngIf="loginForm.get('password')?.errors?.['required']"class="mb-0">password is Required</p>
+                <p *ngIf="loginForm.get('password')?.errors?.['pattern']"class="mb-0">password is Must start with capital letter and have special character</p>
+            </div>
+            <button [disabled]="loginForm.invalid" type="submit" class="btn btn-info mt-3">Login</button>
+        </form>
     </div>
-
-    <label for="Email">Email:</label>
-    <input type="text" formControlName="Email" class="form-control" name="" id="userName">
-    <div *ngIf="loginForm.get('Email')?.errors&&loginForm.get('userName')?.touched" class="alert alert-danger my-2">
-        <p *ngIf="loginForm.get('Email')?.errors?.['required']" class="mb-0">Email is Required</p>
-        <p *ngIf="loginForm.get('Email')?.errors?.['email']"class="mb-0">Invalid Email Format</p>
-    </div>
-    <label for="password">Password:</label>
-    <input type="password" formControlName="password" class="form-control" name="" id="password">
-    <div *ngIf="loginForm.get('password')?.errors&&loginForm.get('password')?.touched"class="alert alert-danger my-2">
-        <p *ngIf="loginForm.get('password')?.errors?.['required']"class="mb-0">password is Required</p>
-        <p *ngIf="loginForm.get('password')?.errors?.['pattern']"class="mb-0">password is Must start with capital letter and have special character</p>
-    </div>
-    <button [disabled]="loginForm.invalid" type="submit" class="btn btn-info mt-3">Login</button>
-</form>
+</div>

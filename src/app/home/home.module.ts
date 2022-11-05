@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AllPropertiesComponent } from './all-properties/all-properties.component';
 import { PropertydetailsComponent } from './propertydetails/propertydetails.component';
-import { RouterModule } from '@angular/router';
 import {CalendarModule} from 'primeng/calendar';
 import { FormsModule } from '@angular/forms';
+import { HomeRoutingModule } from './home-routing/home-routing.module';
 
 @NgModule({
   declarations: [
@@ -13,9 +13,9 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
-    RouterModule,
     CalendarModule,
-    FormsModule
+    FormsModule,
+    HomeRoutingModule
   ],
   exports:[AllPropertiesComponent,PropertydetailsComponent]
 })
