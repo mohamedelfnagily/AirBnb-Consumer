@@ -6,6 +6,7 @@ import { EmployeeViewPropertiesComponent } from './employee-view-properties/empl
 import { EmployeeDashboardComponent } from './employee-dashboard/employee-dashboard.component';
 import { EmployeeSidebarComponent } from './employee-sidebar/employee-sidebar.component';
 
+import {SidebarModule} from 'primeng/sidebar';
 
 
 @NgModule({
@@ -17,8 +18,9 @@ import { EmployeeSidebarComponent } from './employee-sidebar/employee-sidebar.co
   ],
   imports: [
     CommonModule,
-    EmployeeRoutingModule
+    EmployeeRoutingModule,
+    SidebarModule
   ],
-  exports:[EmployeeDashboardComponent,EmployeeManagingUsersComponent,EmployeeSidebarComponent,EmployeeViewPropertiesComponent]
+  exports:[EmployeeDashboardComponent,EmployeeManagingUsersComponent,EmployeeSidebarComponent,EmployeeViewPropertiesComponent,SidebarModule]
 })
 export class EmployeeModule { }
