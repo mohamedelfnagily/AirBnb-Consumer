@@ -11,7 +11,6 @@ import { CoreModule } from './core/core.module';
 import { HomeModule } from './home/home.module';
 import {CalendarModule} from 'primeng/calendar';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { TrimtextPipe } from './Pipes/trimtext.pipe';
 
 @NgModule({
   declarations: [

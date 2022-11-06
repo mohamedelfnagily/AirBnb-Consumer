@@ -12,10 +12,21 @@ export class UserSwitchHostingComponent implements OnInit {
   userProps:Property[]=[];
   constructor(private _ActivatedRoute:ActivatedRoute,private _PropertyService:PropertyService) { }
   userId:string = this._ActivatedRoute.snapshot.params['id'];
+  propImages:string[]=[];
   ngOnInit(): void {
     this._PropertyService.getUserProperties(this._ActivatedRoute.snapshot.params['id']).subscribe(
       (response)=>{
         this.userProps=response;
+        for(var i=0;i<this.userProps.length;i++)
+        {
+          if(this.userProps[i].pictures.length>0)
+          {
+            this.propImages.push('data:image/png;base64,'+this.userProps[i].pictures[0]['picture']);
+          }
+          else{
+            this.propImages.push('../../../assets/Images/NotFoundImage.jpg')
+          }
+        }
       },
       (error)=>{
         console.log(error);
@@ -29,7 +40,17 @@ export class UserSwitchHostingComponent implements OnInit {
   }
   DeleteProperty():void{
     this._PropertyService.deleteProperty(this.proeprtyToDeleteId.toString()).subscribe(
-      (response)=>{console.log(response)},
+      (response)=>{
+        this._PropertyService.getUserProperties(this._ActivatedRoute.snapshot.params['id']).subscribe(
+          (response)=>{
+            this.userProps=response;
+            console.log(this.userProps);
+          },
+          (error)=>{
+            console.log(error);
+          }
+        );
+      },
       (error)=>{console.log(error)}
     );
   }

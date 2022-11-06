@@ -18,4 +18,5 @@ export interface Property {
     seaView :boolean;
     errors:string;
     hosterId:string;
+    pictures:any[];
 }

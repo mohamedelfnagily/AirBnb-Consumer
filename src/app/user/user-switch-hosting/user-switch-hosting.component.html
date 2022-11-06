@@ -1,14 +1,14 @@
 <div class="propepsContainer container mt-3">
     <div class="row">
-        <div *ngFor="let property of userProps" class="col-md-4 my-3">
-            <div class="card">
-                <img src="../../../assets/Images/47b9a4f2-2b7d-473c-9c4d-762629d6ef98.jpg" class="card-img-top img-fluid" alt="...">
+        <div *ngFor="let property of userProps; let i=index" class="col-md-4 my-3">
+            <div class="card h-100">
+                <img height="250" width="350" [src]="propImages[i]" class="card-img-top img-fluid" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">{{property.location}}</h5>
                   <p class="card-text mb-0">{{property.description|trimtext:100}}</p>
                   <div class="mb-3"><small class="card-title text-secondary ">{{property.price|currency}}</small></div>
-                  <a href="#" class="btn btn-primary me-2">What user see</a>
-                  <a href="#" class="btn btn-warning me-2">Edit</a>
+                  <a  class="btn btn-primary me-2" [routerLink]="['/Home','PropertyDetails',property.id]">What user see</a>
+                  <a [routerLink]="['/User','PropertyEdit',property.id]" class="btn btn-warning me-2">Edit</a>
                   <a href="#" (click)="PropertyToDelete(property.id)" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-danger me-2">Delete</a>
                 </div>
               </div>
@@ -29,7 +29,7 @@
                             <span class="placeholder col-8"></span>
                           </p>
                           <a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-6"></a>
-                          <a class="btn btn-primary col-5 ms-3"> Add New Property</a>
+                          <a class="btn btn-primary col-5 ms-3" [routerLink]="['/User','AddProperty']"> Add New Property</a>
                         </div>
                       </div>
                 </div>
@@ -48,7 +48,6 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          
             <h6>Are you sure you want to delete this property?</h6>
         </div>
         <div class="modal-footer">

@@ -16,6 +16,7 @@ export class PropertydetailsComponent implements OnInit {
   value:string="";
   inline:boolean=true;
   myProperty:any;
+  myPropertyImages:any[]=[];
   userId:string='';
   userImg:string='';
   ngOnInit(): void {
@@ -25,7 +26,18 @@ export class PropertydetailsComponent implements OnInit {
       this.myProperty=response;
       this.userImg ="data:image/png;base64,"+ this.myProperty.hoster.profilePicture;
       this.userId = response.hoster.id;
+      for(var i=0;i<5;i++)
+      {
+        if(this.myProperty.pictures[i])
+        {
+          this.myPropertyImages.push('data:image/png;base64,'+this.myProperty.pictures[i]['picture']);
+        }
+        else{
+          this.myPropertyImages.push('../../../assets/Images/NotFoundImage.jpg')
+        }
+      }
       console.log(response);
+      console.log(this.myPropertyImages);
     },
     (error)=>{console.log(error)}
    );
