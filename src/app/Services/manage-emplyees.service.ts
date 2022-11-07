@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { EmployeeRegisterDto } from '../authentication/Interfaces/employee-register-dto';
+import { EmployeeUpdateDto } from '../authentication/Interfaces/employee-update-dto';
 import { EmployeeModule } from '../employee/employee.module';
 @Injectable({
   providedIn: 'root'
@@ -23,9 +24,23 @@ deleteEmployeeById(empid:string):Observable<any>{
   return this._HttpClient.delete(`https://localhost:7218/api/Employee/DeleteEmployee/${empid}`);
 }
 //update employee
-UpdateEmployee(emp:EmployeeRegisterDto):Observable<any>{
-  return this._HttpClient.put<EmployeeRegisterDto>('https://localhost:7218/api/Employee/',emp);
-}
+UpdateEmployee(empNewData:EmployeeUpdateDto):Observable<any>
+  {
+    const formData = new FormData();
+    formData.append('Id', empNewData.id);
+    formData.append('FirstName', empNewData.firstName);
+    formData.append('LastName', empNewData.lastName);
+    formData.append('UserName', empNewData.userName);
+    formData.append('LastName', empNewData.phoneNumber);
+    formData.append('BirthDate', empNewData.birthDate);
+    formData.append('UserName', empNewData.salary);
+    formData.append('Email', empNewData.email);
+    formData.append('SSN', empNewData.ssn);
+    formData.append('BirthDate', empNewData.role);
+
+    return this._HttpClient.put('https://localhost:7218/api/Employee/',empNewData);
+    }
+
 //Regestring new Employee
 Register(userNewData:EmployeeRegisterDto):Observable<any>
 {

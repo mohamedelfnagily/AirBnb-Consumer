@@ -20,7 +20,7 @@ export class CeoManagingEmployeesComponent implements OnInit {
     birthDate:new FormControl(null,[Validators.required]),
     password:new FormControl(null,[Validators.required,Validators.pattern(/^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}/)]),
     salary:new FormControl(0,[Validators.required]),
-    sSN:new FormControl(null,[Validators.required,Validators.minLength(14),Validators.maxLength(14)]),
+    ssn:new FormControl(null,[Validators.required,Validators.minLength(14),Validators.maxLength(14)]),
     role:new FormControl(null,[Validators.required]),
 
   })

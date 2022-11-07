@@ -55,10 +55,10 @@
           <div *ngIf="EmployeeAddForm.get('salary')?.errors&&EmployeeAddForm.get('salary')?.touched"class="alert alert-danger my-2">
               <p *ngIf="EmployeeAddForm.get('salary')?.errors?.['required']"class="mb-0">Salary is Required</p>
           </div>
-          <label for="sSN">SSN:</label>
-          <input type="text" formControlName="sSN" class="form-control" name="" id="sSN">
-          <div *ngIf="EmployeeAddForm.get('sSN')?.errors&&EmployeeAddForm.get('sSN')?.touched"class="alert alert-danger my-2">
-              <p *ngIf="EmployeeAddForm.get('sSN')?.errors?.['required']"class="mb-0">SSN is Required</p>
+          <label for="ssn">SSN:</label>
+          <input type="text" formControlName="ssn" class="form-control" name="" id="ssn">
+          <div *ngIf="EmployeeAddForm.get('ssn')?.errors&&EmployeeAddForm.get('ssn')?.touched"class="alert alert-danger my-2">
+              <p *ngIf="EmployeeAddForm.get('ssn')?.errors?.['required']"class="mb-0">SSN is Required</p>
           </div>
 
           <label for="role">Role:</label>
