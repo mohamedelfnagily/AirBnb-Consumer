@@ -6,7 +6,7 @@ import { UserPropertiesComponent } from './user-properties/user-properties.compo
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserSwitchHostingComponent } from './user-switch-hosting/user-switch-hosting.component';
 import { TrimtextPipe } from 'src/app/Pipes/trimtext.pipe';
-
+import { UserEditPropertyComponent } from './user-edit-property/user-edit-property.component';
 
 
 @NgModule({
@@ -14,7 +14,8 @@ import { TrimtextPipe } from 'src/app/Pipes/trimtext.pipe';
     UserProfileComponent,
     UserPropertiesComponent,
     UserSwitchHostingComponent,
-    TrimtextPipe
+    TrimtextPipe,
+    UserEditPropertyComponent
   ],
   imports: [
     CommonModule,

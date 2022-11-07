@@ -1,1 +1,89 @@
-<p>user-properties works!</p>
+<div class="w-50 mx-auto formContainer">
+    <div class="w-100">
+        <form (ngSubmit)="submitPropertyToBeAdded(propertyAddForm)" [formGroup]="propertyAddForm" enctype="multipart/form-data">
+            <h2 class="border-bottom mb-2">Add new Property: </h2>
+            <div *ngIf="Error" class="alert alert-danger">
+                <h3>{{Error}}</h3>
+            </div>
+        
+            <label for="Description">Description:</label>
+            <input type="text" formControlName="Description" class="form-control mb-2" name="" id="Description">
+            <input type="text" formControlName="Location" class="form-control mb-2" name="" id="Location">
+            <div class="input-group mb-2">
+                <span class="input-group-text">$</span>
+                <span class="input-group-text">0.00</span>
+                <input type="text" class="form-control" formControlName="Price" aria-label="Dollar amount (with dot and two decimal places)">
+              </div>
+            <select class="form-select mb-2" aria-label="Default select example" formControlName="PropertyType">
+                <option value="House" selected>House</option>
+                <option value="Appartment">Appartment</option>
+                <option value="Guest House">Guest House</option>
+                <option value="Hotel">Hotel</option>
+              </select>
+              <input type="number" formControlName="MaxNumberOfUsers" class="form-control mb-2" name="" id="MaxNumberOfUsers">
+              <input type="number" formControlName="NumberOfRooms" class="form-control mb-2" name="" id="NumberOfRooms">
+              <input type="number" formControlName="NumberOfRooms" class="form-control mb-2" name="" id="NumberOfRooms">
+              
+            <label for="Description">WIFI:</label>
+            <select class="form-select mb-2" aria-label="Default select example" formControlName="Wifi">
+                <option value="True" selected>True</option>
+                <option value="False">False</option>
+            </select>
+            <label for="Description">WIFI:</label>
+            <select class="form-select mb-2" aria-label="Default select example" formControlName="Wifi">
+                <option value="True" selected>True</option>
+                <option value="False">False</option>
+            </select>
+            <label for="Description">Parking:</label>
+            <select class="form-select mb-2" aria-label="Default select example" formControlName="Parking">
+                <option value="True" selected>True</option>
+                <option value="False">False</option>
+            </select>
+            <label for="Description">Tv:</label>
+            <select class="form-select mb-2" aria-label="Default select example" formControlName="Tv">
+                <option value="True" selected>True</option>
+                <option value="False">False</option>
+            </select>
+            <label for="Description">Washer:</label>
+            <select class="form-select mb-2" aria-label="Default select example" formControlName="Washer">
+                <option value="True" selected>True</option>
+                <option value="False">False</option>
+            </select>
+            <label for="Description">Elevator:</label>
+            <select class="form-select mb-2" aria-label="Default select example" formControlName="Elevator">
+                <option value="True" selected>True</option>
+                <option value="False">False</option>
+            </select>
+            <label for="Description">Generator:</label>
+            <select class="form-select mb-2" aria-label="Default select example" formControlName="Generator">
+                <option value="True" selected>True</option>
+                <option value="False">False</option>
+            </select>
+            <label for="Description">PrivateRoom:</label>
+            <select class="form-select mb-2" aria-label="Default select example" formControlName="PrivateRoom">
+                <option value="True" selected>True</option>
+                <option value="False">False</option>
+            </select>
+            <label for="Description">SmokeAlarm:</label>
+            <select class="form-select mb-2" aria-label="Default select example" formControlName="SmokeAlarm">
+                <option value="True" selected>True</option>
+                <option value="False">False</option>
+            </select>
+            <label for="Description">SeaView:</label>
+            <select class="form-select mb-2" aria-label="Default select example" formControlName="SeaView">
+                <option value="True" selected>True</option>
+                <option value="False">False</option>
+            </select>
+            <label for="Description">Category:</label>
+            <select class="form-select mb-2" aria-label="Default select example" formControlName="CategoryId">
+                <option *ngFor="let cat of AllCategories" [value]="cat.id" selected>{{cat.name}}</option>
+            </select>
+            <div class="mb-3">
+                <label for="formFileSm" class="form-label">Small file input example</label>
+                <input (change)="uploadFile($event)" class="form-control form-control-sm" multiple id="formFileSm" type="file">
+              </div>
+              
+            <button [disabled]="propertyAddForm.invalid" type="submit" class="btn btn-info mt-3">Login</button>
+        </form>
+    </div>
+</div>
