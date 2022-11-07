@@ -1,13 +1,14 @@
 export interface EmployeeRegisterDto {
-    UserName:string;
-    Email:string;
-    SSN:string;
-    PhoneNumber:string;
-    FirstName:string;
-    LastName:string;
-    BirthDate:string;
-    Salary:string;
-    Password:string;
-    Role:string;
+    id:string;
+    userName:string;
+    email:string;
+    ssn:string;
+    phoneNumber:string;
+    firstName:string;
+    lastName:string;
+    birthDate:string;
+    salary:string;
+    password:string;
+    role:string;
 
 }

@@ -8,7 +8,8 @@ import { CeoDashboardComponent } from './ceo-dashboard/ceo-dashboard.component';
 import { CeoSideBarComponent } from './ceo-side-bar/ceo-side-bar.component';
 import { SidebarModule } from 'primeng/sidebar';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ManageEmplyeesService } from '../Services/manage-emplyees.service';
+import { CeoManageEmployeeDetailsComponent } from './ceo-manage-employee-details/ceo-manage-employee-details.component';
+import { CeoEditEmployeeComponent } from './ceo-edit-employee/ceo-edit-employee.component';
 
 
 
@@ -19,12 +20,15 @@ import { ManageEmplyeesService } from '../Services/manage-emplyees.service';
     CeoViewPropertiesComponent,
     CeoDashboardComponent,
     CeoSideBarComponent,
+    CeoManageEmployeeDetailsComponent,
+    CeoEditEmployeeComponent,
+  
     
   
   ],
   imports: [
     CommonModule,
-    CeoRoutingModule,SidebarModule
+    CeoRoutingModule,SidebarModule,ReactiveFormsModule
   ],
   exports:[CeoDashboardComponent,CeoManagingEmployeesComponent,CeoManagingUsersComponent,CeoViewPropertiesComponent,CeoSideBarComponent,SidebarModule]
 })
