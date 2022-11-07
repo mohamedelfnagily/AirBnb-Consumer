@@ -1,13 +1,21 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PropertyService {
-
-  constructor(private _HttpClient:HttpClient) { }
+  userFavourites:any = new BehaviorSubject(null);
+  constructor(private _HttpClient:HttpClient) { 
+    let x:any = localStorage.getItem("userFavourites");
+    let arr = new Array();
+    for(var i=0;i<JSON.parse(x).length;i++)
+    {
+      arr.push(JSON.parse(x)[i]);
+    }
+    this.userFavourites.next(arr.length);
+  }
     //Get all properties
     getAllProperties():Observable<any>{
       return this._HttpClient.get('https://localhost:7218/api/Property/GetAllProperties');
@@ -54,5 +62,67 @@ export class PropertyService {
       // formData.append('Pictures', file);
       return this._HttpClient.post('https://localhost:7218/api/Property/AddProperty',formData);
     }
-    
+    //This method is responsible for setting user favourite properties in the local storage
+    setUserFavourites(favProperty:any){
+      if(this.removeFavouriteProperty(favProperty))
+      {
+        let userFavProps:any|null =localStorage.getItem("userFavourites");
+        if(userFavProps==null)
+        {
+          let favs:any[] = new Array();
+          favs.push(favProperty);
+          localStorage.setItem('userFavourites',JSON.stringify(favs))
+        }
+        else{
+          let x:any = localStorage.getItem("userFavourites");
+          let arr = new Array();
+          for(var i=0;i<JSON.parse(x).length;i++)
+          {
+            arr.push(JSON.parse(x)[i]);
+          }
+          arr.push(favProperty);
+          localStorage.setItem('userFavourites',JSON.stringify(arr));
+        this.userFavourites.next(arr.length)
+        }
+      }
+      else{
+        let x:any = localStorage.getItem("userFavourites");
+        let arr = new Array();
+        for(let i=0;i<JSON.parse(x).length;i++)
+        {
+          arr.push(JSON.parse(x)[i]);
+        }
+        for (let i = 0; i < arr.length; i++) {
+          if(arr[i]==favProperty)
+          {
+            arr.splice(i,1);
+          }
+          
+        }
+        localStorage.setItem('userFavourites',JSON.stringify(arr));
+        this.userFavourites.next(arr.length)
+      }
+
+
+    }
+    removeFavouriteProperty(properId:string):boolean
+    {
+      let x:any = localStorage.getItem("userFavourites");
+      if(x!=null)
+      {
+        let arr = new Array();
+        for(let i=0;i<JSON.parse(x).length;i++)
+        {
+          arr.push(JSON.parse(x)[i]);
+        }
+        for(let i=0;i<arr.length;i++)
+        {
+          if(arr[i]==properId)
+          {
+            return false;
+          }
+        }
+      }
+      return true;
+    }
 }

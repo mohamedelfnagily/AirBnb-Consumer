@@ -69,7 +69,10 @@
             </div>
       </div>
       <div class="favBtn" (click)="AddToFavourites('favIcon'+i,item.id)">
-          <i [id]="'favIcon'+i" class="fa-regular fa-heart fa-2x"></i>
+          <i *ngIf="_PropertyService.removeFavouriteProperty(item.id); else iconTemp" [id]="'favIcon'+i" class="fa-regular fa-heart fa-2x"></i>
+          <ng-template #iconTemp>
+            <i [id]="'favIcon'+i" class="fa-solid fa-heart text-danger fa-2x"></i>
+          </ng-template>
       </div>
   </div>
 </div>

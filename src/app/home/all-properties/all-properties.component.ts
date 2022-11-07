@@ -11,12 +11,13 @@ import { PropertyService } from 'src/app/Services/property.service';
 })
 export class AllPropertiesComponent implements OnInit {
 
-  constructor(private _CategoriesService:CategoriesService,private _PropertyService:PropertyService) { }
+  constructor(private _CategoriesService:CategoriesService,public _PropertyService:PropertyService) { }
   AllCategories:Category[] = [];
   AllProperties:Property[]=[];
   AllPropertiesImages:any[]=[];
   imageCount:number=0;
   imgSrc:string='';
+  userFavourites:any;
   ngOnInit(): void {
     this._CategoriesService.getAllCategories().subscribe(
       (response)=>{
@@ -92,19 +93,7 @@ export class AllPropertiesComponent implements OnInit {
   }
   //This method is responsible for adding property to favourites
   AddToFavourites(elementId:string,propertyId:string):void{
-    document.getElementById(elementId)?.classList.toggle('text-danger');
-    document.getElementById(elementId)?.classList.toggle('fa-regular');
-    document.getElementById(elementId)?.classList.toggle('fa-solid');
-    let favProps = localStorage.getItem('userFavourites');
-    if(favProps)
-    {
-      let userFavourites = localStorage.getItem('userFavourites');
-    }
-    else{
-      let arr = [];
-      arr.push(propertyId);
-      let userFavourites = localStorage.setItem('userFavourites',JSON.stringify(arr));
-    }
-    console.log(favProps);
+
+    this._PropertyService.setUserFavourites(propertyId);
   }
 }
