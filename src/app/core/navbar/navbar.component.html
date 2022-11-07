@@ -27,7 +27,7 @@
         </ul>
         <ul *ngIf="isLoggedIn" class="ms-auto navbar-nav d-flex align-items-center">
           <li *ngIf="isLoggedIn" class="nav-item me-3 hostBtn rounded-pill " >
-            <a class="nav-link d-flex align-items-center justify-content-center position-relative" style="cursor: pointer;" >
+            <a class="nav-link d-flex align-items-center justify-content-center position-relative" [routerLink]="['/User','Favourites']" style="cursor: pointer;" >
               <i class="fa-solid fa-heart text-danger fa-2x position-relative"></i>
               <small class="favsNumber">{{userFavProperties}}</small>
               

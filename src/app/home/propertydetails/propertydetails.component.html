@@ -1,5 +1,5 @@
 <div class="headerSection container mt-3">
-    <h1 class="mb-2">Cave Villa With Infinity Pool in Adrasan</h1>
+    <h1 class="mb-2">{{myProperty.propertyType}} in {{myProperty.location}} Posted By {{myProperty.hoster.firstName + ' ' + myProperty.hoster.lastName}}</h1>
     <div class="d-flex align-items-center justify-content-between">
         <div class="d-flex align-items-center ">
             <div class="me-3">
@@ -11,7 +11,7 @@
                 <i class="fa-solid fa-trophy"></i>
                 superhost
             </div>
-            <div><h6 class=" text-decoration-underline m-0 p-0">Kumluca,antalya,Turkey</h6></div>
+            <div><h6 class=" text-decoration-underline m-0 p-0">{{myProperty.location}},Egypt</h6></div>
         </div>
         <div class=" d-flex">
             <div class="d-flex align-items-center me-3">
@@ -63,13 +63,14 @@
         </div>
     </div>
 </div>
-<div class="container mt-5">
+<div class="container mt-5 border-bottom border-2 pb-3">
     <div class="row">
+        <!-- Property detauls section -->
         <div class="col-md-7">
             <div class="d-flex align-items-center justify-content-between border-bottom pb-3">
                 <div>
-                    <h4>Entire villa hosted by Halis</h4>
-                    <h6>5 guests2 bedrooms2 beds2 baths</h6>    
+                    <h4>Entire {{myProperty.propertyType}} hosted by {{myProperty.hoster.firstName}}</h4>
+                    <h6>{{myProperty.maxNumberOfUsers}} Guests {{myProperty.numberOfRooms}} bedrooms {{myProperty.numberOfRooms}} beds </h6>    
                 </div>
                 <div class="smallImgContainer ">
                     <img style="cursor:pointer ;" [src]="userImg" [routerLink]="['/User','Profile',userId]" alt="">
@@ -96,10 +97,241 @@
                         <h6 class="m-0 p-0">Free cancellation for 48 hours.</h6>
                     </div>
                 </div>
-            </div>           
+            </div>     
+            <div class="mt-4">
+                <h4>What this place offer:</h4>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 my-3 text-secondary" [ngClass]="{'text-decoration-line-through':!myProperty.wifi}">
+                            <div class="d-flex align-items-center">
+                                <i class="fa-solid fa-wifi fa-2x me-4 text-dark"></i>
+                                <h5 class="m-0 p-0 text-dark">WIFI</h5>
+                            </div>
+                        </div>
+                        <div class="col-md-6 my-3">
+                            <div class="d-flex align-items-center text-secondary" [ngClass]="{'text-decoration-line-through':!myProperty.parking}">
+                                <i class="fa-solid fa-square-parking fa-2x me-4 text-dark"></i>
+                                <h5 class="m-0 p-0  text-dark">PARKING</h5>
+                            </div>
+                        </div>
+                        <div class="col-md-6 my-3">
+                            <div class="d-flex align-items-center text-secondary" [ngClass]="{'text-decoration-line-through':!myProperty.tv}">
+                                <i class="fa-solid fa-tv fa-2x me-4 text-dark"></i>
+                                <h5 class="m-0 p-0 text-dark">TV</h5>
+                            </div>
+                        </div>
+                        <div class="col-md-6 my-3">
+                            <div class="d-flex align-items-center text-secondary" [ngClass]="{'text-decoration-line-through':!myProperty.washer}">
+                                <i class="fa-solid fa-soap fa-2x me-4 text-dark"></i>
+                                <h5 class="m-0 p-0 text-dark">WASHER</h5>
+                            </div>
+                        </div>
+                        <div class="col-md-6 my-3">
+                            <div class="d-flex align-items-center text-secondary" [ngClass]="{'text-decoration-line-through':!myProperty.elevator}">
+                                <i class="fa-solid fa-elevator fa-2x me-4 text-dark"></i>
+                                <h5 class="m-0 p-0 text-dark">ELEVATOR</h5>
+                            </div>
+                        </div>
+                        <div class="col-md-6 my-3">
+                            <div class="d-flex align-items-center text-secondary" [ngClass]="{'text-decoration-line-through':!myProperty.generator}">
+                                <i class="fa-solid fa-bolt fa-2x me-4 text-dark"></i>
+                                <h5 class="m-0 p-0 text-dark">GENERATOR</h5>
+                            </div>
+                        </div>
+                        <div class="col-md-6 my-3">
+                            <div class="d-flex align-items-center text-secondary" [ngClass]="{'text-decoration-line-through':!myProperty.privateRoom}">
+                                <i class="fa-solid fa-key fa-2x me-4 text-dark"></i>
+                                <h5 class="m-0 p-0 text-dark">PRIVATE ROOM</h5>
+                            </div>
+                        </div>
+                        <div class="col-md-6 my-3">
+                            <div class="d-flex align-items-center text-secondary" [ngClass]="{'text-decoration-line-through':!myProperty.smokeAlarm}">
+                                <i class="fa-solid fa-fire-extinguisher fa-2x me-4 text-dark"></i>
+                                <h5 class="m-0 p-0 text-dark">SMOKE ALARM</h5>
+                            </div>
+                        </div>
+                        <div class="col-md-6 my-3">
+                            <div class="d-flex align-items-center text-secondary" [ngClass]="{'text-decoration-line-through':!myProperty.seaView}">
+                                <i class="fa-solid fa-person-swimming fa-2x me-4 text-dark"></i>
+                                <h5 class="m-0 p-0 text-dark">SEA VIEW</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>      
         </div>
-        <div class="col-md-5 border border-secondary rounded-4">
-            
+        <!-- Reservation section -->
+        <div class="col-md-5 border border-secondary rounded-4 reservationContainer shadow-lg h-50 ">
+            <div class="container">
+                <div class="d-flex align-items-center justify-content-between mt-3">
+                    <div>
+                        <h6 >{{myProperty.price|currency}} <small class="text-secondary">Night</small></h6>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-star me-1"></i>
+                        4.92
+                        <strong class="text-secondary">0 Reviews</strong>
+                    </div>
+                </div>
+                <div class="w-75 mx-auto my-3">
+                    <div class="d-flex">
+                        <p-calendar (onClose)="setDate()"  class="me-3" [(ngModel)]="startDateValue"></p-calendar>
+                        <p-calendar (onClose)="setDate()" [(ngModel)]="endDateValue"></p-calendar>
+                    </div>
+                </div>
+                <div class="w-50 mx-auto">
+                    <button class="btn btn-danger w-100">Reserve</button>
+                </div>
+                <div class="d-flex justify-content-between my-3">
+                    <h6 class="text-decoration-underline" *ngIf="numberOfDays>0;else temp">{{myProperty.price|currency}} X {{numberOfDays}}</h6>
+                    <ng-template #temp>
+                        <h6 class="text-decoration-underline">{{myProperty.price|currency}} X 0</h6>
+                    </ng-template>
+                    <strong class="text-secondary " *ngIf="numberOfDays>0;else temp2">{{(myProperty.price * numberOfDays)|currency}}</strong>
+                    <ng-template #temp2>
+                        <h6>{{0|currency}}</h6>
+                    </ng-template>
+                </div>
+                <div class="d-flex justify-content-between my-3">
+                    <h6 class="text-decoration-underline">Cleaning Fee</h6>
+                    <strong class="text-secondary " *ngIf="numberOfDays>0;else temp2">{{10|currency}}</strong>
+                </div>
+                <div class="d-flex justify-content-between my-3 border-bottom border-3 pb-2">
+                    <h6 class="text-decoration-underline">Service Fee</h6>
+                    <strong class="text-secondary " *ngIf="numberOfDays>0;else temp2">{{20|currency}}</strong>
+                </div>
+                <div class="d-flex justify-content-between my-3">
+                    <h6 class="text-decoration-underline">Price Before Taxes</h6>
+                    <strong class="text-secondary " *ngIf="numberOfDays>0;else temp2">{{(myProperty.price * numberOfDays + 30)|currency}}</strong>
+                    <ng-template #temp2>
+                        <h6>{{0|currency}}</h6>
+                    </ng-template>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-12 d-flex my-3">
+            <div class="me-3 d-flex align-items-center">
+                <i class="fa-solid fa-star fa-1x me-1"></i>
+                <h5 class="m-0 p-0">4.92</h5>
+            </div>
+            <div class="ms-3">
+                <strong class="text-secondary">0 Reviews</strong>
+            </div>
+        </div>
+        <div class="col-md-6 mb-2">
+            <div class="d-flex align-items-center justify-content-between">
+                <h6 class="me-3">Cleanliness</h6>
+                <div class="progress " style="height: 5px; width:75%;">
+                    <div class="progress-bar bg-dark" role="progressbar" aria-label="Success example" style="width: 90%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-2">
+            <div class="d-flex align-items-center justify-content-between">
+                <h6 class="me-3">Communication</h6>
+                <div class="progress " style="height: 5px; width:75%;">
+                    <div class="progress-bar bg-dark" role="progressbar" aria-label="Success example" style="width: 80%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-2">
+            <div class="d-flex align-items-center justify-content-between">
+                <h6 class="me-3">Check-in</h6>
+                <div class="progress " style="height: 5px; width:75%;">
+                    <div class="progress-bar bg-dark" role="progressbar" aria-label="Success example" style="width: 40%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-2">
+            <div class="d-flex align-items-center justify-content-between">
+                <h6 class="me-3">Location</h6>
+                <div class="progress " style="height: 5px; width:75%;">
+                    <div class="progress-bar bg-dark" role="progressbar" aria-label="Success example" style="width: 90%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-2">
+            <div class="d-flex align-items-center justify-content-between">
+                <h6 class="me-3">Value</h6>
+                <div class="progress " style="height: 5px; width:75%;">
+                    <div class="progress-bar bg-dark" role="progressbar" aria-label="Success example" style="width: 60%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-2">
+            <div class="d-flex align-items-center justify-content-between">
+                <h6 class="me-3">Accuracy</h6>
+                <div class="progress " style="height: 5px; width:75%;">
+                    <div class="progress-bar bg-dark" role="progressbar" aria-label="Success example" style="width: 60%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Reviews section -->
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <div class="d-flex align-items-center">
+                <div class="imgReviewContainer me-3">
+                    <img src="../../../assets/Images/unknownPic.jpg" alt="unknown">
+                </div>
+                <div>
+                    <h6>Ramzy Bassem</h6>
+                    <h6 class="text-secondary">October 2022</h6>
+                </div>
+            </div>
+            <div>
+                <p class=" text-secondary">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Qui adipisci ipsum odit laborum. Officiis nihil impedit exercitationem ullam dolorem ex. Eaque id non explicabo voluptatibus dolore deleniti hic voluptas impedit sunt iste. Possimus a quia tempore vero reprehenderit. Voluptatum, in. Minus, eaque deleniti molestiae consequatur doloremque quam ab a iusto!</p>
+            </div>
+        </div>
+        <div class="col-md-6 mb-3">
+            <div class="d-flex align-items-center">
+                <div class="imgReviewContainer me-3">
+                    <img src="../../../assets/Images/unknownPic.jpg" alt="unknown">
+                </div>
+                <div>
+                    <h6>Nada ElNaggar</h6>
+                    <h6 class="text-secondary">October 2022</h6>
+                </div>
+            </div>
+            <div>
+                <p class=" text-secondary">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Qui adipisci ipsum odit laborum. Officiis nihil impedit exercitationem ullam dolorem ex. Eaque id non explicabo voluptatibus dolore deleniti hic voluptas impedit sunt iste. Possimus a quia tempore vero reprehenderit. Voluptatum, in. Minus, eaque deleniti molestiae consequatur doloremque quam ab a iusto!</p>
+            </div>
+        </div>
+        <div class="col-md-6 mb-3">
+            <div class="d-flex align-items-center">
+                <div class="imgReviewContainer me-3">
+                    <img src="../../../assets/Images/unknownPic.jpg" alt="unknown">
+                </div>
+                <div>
+                    <h6>Mohamed Elfnagily</h6>
+                    <h6 class="text-secondary">October 2022</h6>
+                </div>
+            </div>
+            <div>
+                <p class=" text-secondary">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Qui adipisci ipsum odit laborum. Officiis nihil impedit exercitationem ullam dolorem ex. Eaque id non explicabo voluptatibus dolore deleniti hic voluptas impedit sunt iste. Possimus a quia tempore vero reprehenderit. Voluptatum, in. Minus, eaque deleniti molestiae consequatur doloremque quam ab a iusto!</p>
+            </div>
+        </div>
+        <div class="col-md-6 mb-3">
+            <div class="d-flex align-items-center">
+                <div class="imgReviewContainer me-3">
+                    <img src="../../../assets/Images/unknownPic.jpg" alt="unknown">
+                </div>
+                <div>
+                    <h6>Ahmed Elsayed</h6>
+                    <h6 class="text-secondary">October 2022</h6>
+                </div>
+            </div>
+            <div>
+                <p class=" text-secondary">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Qui adipisci ipsum odit laborum. Officiis nihil impedit exercitationem ullam dolorem ex. Eaque id non explicabo voluptatibus dolore deleniti hic voluptas impedit sunt iste. Possimus a quia tempore vero reprehenderit. Voluptatum, in. Minus, eaque deleniti molestiae consequatur doloremque quam ab a iusto!</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Map section -->
+<app-property-map [cityLatitude]="cityLatitudeParent" [cityLongitude]="cityLongitudeParent"></app-property-map>
