@@ -1,0 +1,31 @@
+.reservationContainer{
+    background-color: white;
+
+}
+.propertyImgContainer img{
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+}
+.backBtn{
+    transition: 0.8s;
+    padding: 25px;
+    cursor: pointer;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+
+}
+.backBtn:hover{
+    background-color: #ccc;
+    border-radius: 50%;
+}
+.payImageContainer img{
+    height: 40px;
+    width: 40px;
+}
+.hosterImgContainer img{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}

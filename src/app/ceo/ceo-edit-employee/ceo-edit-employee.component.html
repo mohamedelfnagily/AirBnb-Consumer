@@ -1,0 +1,158 @@
+<p>ceo-edit-employee works!</p>
+<div class="col-md-5 border-right">
+  <div class="p-3 py-5">
+    <div class="row mt-3">
+
+      <form (ngSubmit)="submitEditForm(updateEmpDataForm)" method="post" [formGroup]="updateEmpDataForm" >
+        <h2 *ngIf="editProfile" class="border-bottom pb-2">Edit Employee profile: </h2>
+        <h2 *ngIf="!editProfile" class="border-bottom pb-2">Profile Info: </h2>
+        <div *ngIf="Error" class="alert alert-danger">
+          <h3>{{Error}}</h3>
+        </div>
+        <div>
+          <div *ngIf="!editProfile" class="w-75  border border-2 mb-2 py-2">
+            <h5 class="ms-2">First Name: {{emp?.firstName}}</h5>
+          </div>
+          <div *ngIf="editProfile">
+            <label for="firstName">FirstName:</label>
+            <input type="text" formControlName="firstName" class="form-control" 
+              [placeholder]="emp?.firstName" name="" >
+            <div *ngIf="updateEmpDataForm.get('firstName')?.errors&&updateEmpDataForm.get('firstName')?.touched"
+              class="alert alert-danger my-2">
+              <p *ngIf="updateEmpDataForm.get('firstName')?.errors?.['minlength']" class="mb-0">firstName Minimum length
+                is 3</p>
+              <p *ngIf="updateEmpDataForm.get('firstName')?.errors?.['maxlength']" class="mb-0">firstName Maximum length
+                is 50</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div *ngIf="!editProfile" class="w-75  border border-2 mb-2 py-2">
+            <h5 class="ms-2">Last Name: {{emp?.lastName}}</h5>
+          </div>
+          <div *ngIf="editProfile">
+            <label for="lastName">LastName:</label>
+            <input type="text" formControlName="lastName" class="form-control" 
+              [placeholder]="emp?.lastName" name="" >
+            <div *ngIf="updateEmpDataForm.get('lastName')?.errors&&updateEmpDataForm.get('lastName')?.touched"
+              class="alert alert-danger my-2">
+              <p *ngIf="updateEmpDataForm.get('lastName')?.errors?.['minlength']" class="mb-0">lastName Minimum length
+                is 3</p>
+              <p *ngIf="updateEmpDataForm.get('lastName')?.errors?.['maxlength']" class="mb-0">lastName Maximum length
+                is 50</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div *ngIf="!editProfile" class="w-75  border border-2 mb-2 py-2">
+            <h5 class="ms-2">User Name: {{emp?.userName}} </h5>
+          </div>
+          <div *ngIf="editProfile">
+            <label for="userName">UserName:</label>
+            <input type="text" formControlName="userName" class="form-control" name="" 
+               [placeholder]="emp?.userName">
+            <div *ngIf="updateEmpDataForm.get('userName')?.errors&&updateEmpDataForm.get('userName')?.touched"
+              class="alert alert-danger my-2">
+              <p *ngIf="updateEmpDataForm.get('userName')?.errors?.['minlength']" class="mb-0">userName Minimum length
+                is 10</p>
+              <p *ngIf="updateEmpDataForm.get('userName')?.errors?.['maxlength']" class="mb-0">userName Maximum length
+                is 50</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div *ngIf="!editProfile" class="w-75  border border-2 mb-2 py-2">
+            <h5 class="ms-2">Email: {{emp?.email}} </h5>
+          </div>
+          <div *ngIf="editProfile">
+            <label for="email">Email:</label>
+            <input type="email" formControlName="email" class="form-control" 
+              [placeholder]="emp?.email" name="">
+            <div *ngIf="updateEmpDataForm.get('email')?.errors&&updateEmpDataForm.get('email')?.touched"
+              class="alert alert-danger my-2">
+              <p *ngIf="updateEmpDataForm.get('email')?.errors?.['email']" class="mb-0">InValid email format</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div *ngIf="!editProfile" class="w-75  border border-2 mb-2 py-2">
+            <h5 class="ms-2">Mobile Number: {{emp?.phoneNumber}}</h5>
+          </div>
+          <div *ngIf="editProfile">
+            <label for="phoneNumber">phoneNumber:</label>
+            <input type="text" formControlName="phoneNumber" class="form-control" 
+              [placeholder]="emp?.phoneNumber" name="" >
+            <div *ngIf="updateEmpDataForm.get('phoneNumber')?.errors&&updateEmpDataForm.get('phoneNumber')?.touched"
+              class="alert alert-danger my-2">
+              <p *ngIf="updateEmpDataForm.get('phoneNumber')?.errors?.['pattern']" class="mb-0">Invalid mobile number
+                format</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+            <div *ngIf="!editProfile" class="w-75  border border-2 mb-2 py-2">
+              <h5 class="ms-2">Salary: {{emp?.salary}}</h5>
+            </div>
+            <div *ngIf="editProfile">
+              <label for="salary">Salary:</label>
+              <input type="text" formControlName="salary" class="form-control" 
+                [placeholder]="emp?.salary" name="" >
+              <div *ngIf="updateEmpDataForm.get('salary')?.errors&&updateEmpDataForm.get('salary')?.touched"
+                class="alert alert-danger my-2">
+                <p *ngIf="updateEmpDataForm.get('salary')?.errors?.['pattern']" class="mb-0">Salary is required</p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div *ngIf="!editProfile" class="w-75  border border-2 mb-2 py-2">
+              <h5 class="ms-2">SSN: {{emp?.ssn}}</h5>
+            </div>
+            <div *ngIf="editProfile">
+              <label for="ssn">SSN :</label>
+              <input type="text" formControlName="ssn" class="form-control" 
+                [placeholder]="emp?.ssn" name="" >
+              <div *ngIf="updateEmpDataForm.get('ssn')?.errors&&updateEmpDataForm.get('ssn')?.touched"
+                class="alert alert-danger my-2">
+                <p *ngIf="updateEmpDataForm.get('ssn')?.errors?.['pattern']" class="mb-0">ssn is required</p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div *ngIf="!editProfile" class="w-75  border border-2 mb-2 py-2">
+              <h5 class="ms-2">Role: {{emp?.role}}</h5>
+            </div>
+        <div *ngIf="editProfile">
+        <label for="role">Role:</label>
+        
+        <div class="form-check">
+          <input  type="radio" formControlName="role"   value="Ceo"  >
+          <label  for="role">
+            CEO
+          </label>
+        </div>
+
+        <div class="form-check">
+          <input  type="radio" formControlName="role"    value="Admin" >
+          <label  for="role">
+            Admin
+          </label>
+        </div>
+
+        <div class="form-check">
+          <input  type="radio" formControlName="role"   value="SuperAdmin" >
+          <label  for="role">
+            SuperAdmin
+          </label>
+        </div></div></div>
+        <button  class="btn btn-primary profile-button"
+        type="submit">Edit Employee</button>
+        <br><br>
+        <button class="btn btn-primary"  (click)="EditProfileVisability()" >show</button>
+
+      </form>
+    </div>
+      </div>
+</div>

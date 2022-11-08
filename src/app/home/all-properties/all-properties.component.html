@@ -12,43 +12,50 @@
 </div>
 <div class="container">
   <div class="row">
-    <div *ngFor="let item of AllProperties" class="col-md-3 position-relative">
-      <div>
-          <div id="carouselExampleIndicators" class="carousel slide" >
-              <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
-              </div>
-              <div class="carousel-inner" [routerLink]="['PropertyDetails',item.id]">
-                <div class="carousel-item active">
-                  <img  src="../../../assets/Images/eb5ed6f7-e977-4316-9cbc-a9bbf64e7075.jpg" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                  <img src="../../../assets/Images/143723a2-07f4-4cb7-9754-d82d61930cf7.jpg" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                  <img src="../../../assets/Images/3ef583d2-16d9-4640-a939-246324320442.jpeg" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                  <img src="../../../assets/Images/47b9a4f2-2b7d-473c-9c4d-762629d6ef98.jpg" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                  <img src="../../../assets/Images/4ddde677-af85-4038-a2a1-93294bffd8f5.jpeg" class="d-block w-100" alt="...">
+    <div *ngFor="let item of AllProperties;let i=index" class="col-md-3 position-relative h-100">
+      <div class="p-2">
+            <div class="row" [routerLink]="['PropertyDetails',item.id]">
+              <div class="col-md-6 p-1">
+                <div>
+                <img class="img-fluid" *ngIf="AllPropertiesImages[i][0]!=undefined;else temp" [src]="'data:image/png;base64,'+item.pictures[0]['picture']" alt="">
+                  <ng-template #temp>
+                    <img class="img-fluid" src="../../../assets/Images/3ef583d2-16d9-4640-a939-246324320442.jpeg" alt="">
+
+                  </ng-template>
                 </div>
               </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-              </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-              </button>
+              <div class="col-md-6 p-1">
+                <div>
+                  <img class="img-fluid" *ngIf="AllPropertiesImages[i][1]!=undefined;else temp" [src]="'data:image/png;base64,'+item.pictures[1]['picture']" alt="">
+                  <ng-template #temp>
+                    <img class="img-fluid" src="../../../assets/Images/3ef583d2-16d9-4640-a939-246324320442.jpeg" alt="">
+
+                  </ng-template>
+
+                </div>
+              </div>
+              <div class="col-md-6 p-1">
+                <div>
+                  <img class="img-fluid" *ngIf="AllPropertiesImages[i][2]!=undefined;else temp" [src]="'data:image/png;base64,'+item.pictures[2]['picture']" alt="">
+                  <ng-template #temp>
+                    <img class="img-fluid" src="../../../assets/Images/3ef583d2-16d9-4640-a939-246324320442.jpeg" alt="">
+
+                  </ng-template>
+
+                </div>
+              </div>
+              <div class="col-md-6 p-1">
+                <div>
+                  <img class="img-fluid" *ngIf="AllPropertiesImages[i][3]!=undefined;else temp" [src]="'data:image/png;base64,'+item.pictures[3]['picture']" alt="">
+                  <ng-template #temp>
+                    <img class="img-fluid" src="../../../assets/Images/3ef583d2-16d9-4640-a939-246324320442.jpeg" alt="">
+
+                  </ng-template>
+
+                </div>
+              </div>
             </div>
-            <div routerLink="/PropertyDetails">
+            <div [routerLink]="['PropertyDetails',item.id]">
               <div class=" d-flex align-items-center justify-content-between my-2">
                   <h5>{{item.location}}</h5>
                   <div>
@@ -56,227 +63,18 @@
                       4.92
                   </div>
                 </div>
-                <h6 class=" text-secondary">{{item.description}}</h6>
+                <h6 class=" text-secondary">{{item.description.substring(0,100)}}...</h6>
                 <h6 class=" text-secondary">Nov 6-12</h6>
-                <p>$92 <span class="text-secondary">night</span></p>
+                <p>{{item.price|currency}}<span class="text-secondary">night</span></p>
             </div>
       </div>
-      <div class="favBtn">
-          <i class="fa-regular fa-heart fa-2x"></i>
+      <div class="favBtn" (click)="AddToFavourites('favIcon'+i,item.id)">
+          <i *ngIf="_PropertyService.removeFavouriteProperty(item.id); else iconTemp" [id]="'favIcon'+i" class="fa-regular fa-heart fa-2x"></i>
+          <ng-template #iconTemp>
+            <i [id]="'favIcon'+i" class="fa-solid fa-heart text-danger fa-2x"></i>
+          </ng-template>
       </div>
   </div>
-    <!-- <div  class="col-md-3 position-relative">
-        <div>
-            <div id="carouselExampleIndicators" class="carousel slide" >
-                <div class="carousel-indicators">
-                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
-                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
-                </div>
-                <div class="carousel-inner" routerLink="/PropertyDetails">
-                  <div class="carousel-item active">
-                    <img  src="../../../assets/Images/eb5ed6f7-e977-4316-9cbc-a9bbf64e7075.jpg" class="d-block w-100" alt="...">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="../../../assets/Images/143723a2-07f4-4cb7-9754-d82d61930cf7.jpg" class="d-block w-100" alt="...">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="../../../assets/Images/3ef583d2-16d9-4640-a939-246324320442.jpeg" class="d-block w-100" alt="...">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="../../../assets/Images/47b9a4f2-2b7d-473c-9c4d-762629d6ef98.jpg" class="d-block w-100" alt="...">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="../../../assets/Images/4ddde677-af85-4038-a2a1-93294bffd8f5.jpeg" class="d-block w-100" alt="...">
-                  </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
-              </div>
-              <div routerLink="/PropertyDetails">
-                <div class=" d-flex align-items-center justify-content-between my-2">
-                    <h5>Kumluca, Turkey</h5>
-                    <div>
-                        <i class="fa-solid fa-star me-1"></i>
-                        4.92
-                    </div>
-                  </div>
-                  <h6 class=" text-secondary">Olympos Beydaglari National Park</h6>
-                  <h6 class=" text-secondary">Nov 6-12</h6>
-                  <p>$92 <span class="text-secondary">night</span></p>
-              </div>
-        </div>
-        <div class="favBtn">
-            <i class="fa-regular fa-heart fa-2x"></i>
-        </div>
-    </div>
-    <div  class="col-md-3 position-relative">
-        <div>
-            <div id="carouselExampleIndicators2" class="carousel slide" >
-                <div class="carousel-indicators">
-                  <button type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                  <button type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                  <button type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                  <button type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide-to="3" aria-label="Slide 4"></button>
-                  <button type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide-to="4" aria-label="Slide 5"></button>
-                </div>
-                <div class="carousel-inner" routerLink="/PropertyDetails">
-                    <div class="carousel-item active">
-                        <img src="../../../assets/Images/47b9a4f2-2b7d-473c-9c4d-762629d6ef98.jpg" class="d-block w-100" alt="...">
-                      </div>
-                  <div class="carousel-item">
-                    <img src="../../../assets/Images/143723a2-07f4-4cb7-9754-d82d61930cf7.jpg" class="d-block w-100" alt="...">
-                  </div>
-                  <div class="carousel-item">
-                    <img  src="../../../assets/Images/eb5ed6f7-e977-4316-9cbc-a9bbf64e7075.jpg" class="d-block w-100" alt="...">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="../../../assets/Images/47b9a4f2-2b7d-473c-9c4d-762629d6ef98.jpg" class="d-block w-100" alt="...">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="../../../assets/Images/4ddde677-af85-4038-a2a1-93294bffd8f5.jpeg" class="d-block w-100" alt="...">
-                  </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
-              </div>
-              <div routerLink="/PropertyDetails">
-                <div class=" d-flex align-items-center justify-content-between my-2">
-                    <h5>Kumluca, Turkey</h5>
-                    <div>
-                        <i class="fa-solid fa-star me-1"></i>
-                        4.92
-                    </div>
-                  </div>
-                  <h6 class=" text-secondary">Olympos Beydaglari National Park</h6>
-                  <h6 class=" text-secondary">Nov 6-12</h6>
-                  <p>$92 <span class="text-secondary">night</span></p>
-              </div>
-        </div>
-        <div class="favBtn">
-            <i class="fa-regular fa-heart fa-2x"></i>
-        </div>
-    </div>
-    <div  class="col-md-3 position-relative">
-        <div>
-            <div id="carouselExampleIndicators3" class="carousel slide" >
-                <div class="carousel-indicators">
-                  <button type="button" data-bs-target="#carouselExampleIndicators3" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                  <button type="button" data-bs-target="#carouselExampleIndicators3" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                  <button type="button" data-bs-target="#carouselExampleIndicators3" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                  <button type="button" data-bs-target="#carouselExampleIndicators3" data-bs-slide-to="3" aria-label="Slide 4"></button>
-                  <button type="button" data-bs-target="#carouselExampleIndicators3" data-bs-slide-to="4" aria-label="Slide 5"></button>
-                </div>
-                <div class="carousel-inner" routerLink="/PropertyDetails">
-                    <div class="carousel-item active">
-                        <img src="../../../assets/Images/3ef583d2-16d9-4640-a939-246324320442.jpeg" class="d-block w-100" alt="...">
-                      </div>
-                  <div class="carousel-item">
-                    <img src="../../../assets/Images/143723a2-07f4-4cb7-9754-d82d61930cf7.jpg" class="d-block w-100" alt="...">
-                  </div>
-                  <div class="carousel-item ">
-                    <img  src="../../../assets/Images/eb5ed6f7-e977-4316-9cbc-a9bbf64e7075.jpg" class="d-block w-100" alt="...">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="../../../assets/Images/47b9a4f2-2b7d-473c-9c4d-762629d6ef98.jpg" class="d-block w-100" alt="...">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="../../../assets/Images/4ddde677-af85-4038-a2a1-93294bffd8f5.jpeg" class="d-block w-100" alt="...">
-                  </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators3" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators3" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
-              </div>
-              <div routerLink="/PropertyDetails">
-                <div class=" d-flex align-items-center justify-content-between my-2">
-                    <h5>Kumluca, Turkey</h5>
-                    <div>
-                        <i class="fa-solid fa-star me-1"></i>
-                        4.92
-                    </div>
-                  </div>
-                  <h6 class=" text-secondary">Olympos Beydaglari National Park</h6>
-                  <h6 class=" text-secondary">Nov 6-12</h6>
-                  <p>$92 <span class="text-secondary">night</span></p>
-              </div>
-        </div>
-        <div class="favBtn">
-            <i class="fa-regular fa-heart fa-2x"></i>
-        </div>
-    </div>
-    <div  class="col-md-3 position-relative">
-        <div>
-            <div id="carouselExampleIndicators4" class="carousel slide" >
-                <div class="carousel-indicators">
-                  <button type="button" data-bs-target="#carouselExampleIndicators4" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                  <button type="button" data-bs-target="#carouselExampleIndicators4" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                  <button type="button" data-bs-target="#carouselExampleIndicators4" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                  <button type="button" data-bs-target="#carouselExampleIndicators4" data-bs-slide-to="3" aria-label="Slide 4"></button>
-                  <button type="button" data-bs-target="#carouselExampleIndicators4" data-bs-slide-to="4" aria-label="Slide 5"></button>
-                </div>
-                <div class="carousel-inner" routerLink="/PropertyDetails">
-                    <div class="carousel-item active">
-                        <img src="../../../assets/Images/4ddde677-af85-4038-a2a1-93294bffd8f5.jpeg" class="d-block w-100" alt="...">
-                      </div>
-                    <div class="carousel-item">
-                        <img src="../../../assets/Images/3ef583d2-16d9-4640-a939-246324320442.jpeg" class="d-block w-100" alt="...">
-                      </div>
-                  <div class="carousel-item">
-                    <img src="../../../assets/Images/143723a2-07f4-4cb7-9754-d82d61930cf7.jpg" class="d-block w-100" alt="...">
-                  </div>
-                  <div class="carousel-item ">
-                    <img  src="../../../assets/Images/eb5ed6f7-e977-4316-9cbc-a9bbf64e7075.jpg" class="d-block w-100" alt="...">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="../../../assets/Images/47b9a4f2-2b7d-473c-9c4d-762629d6ef98.jpg" class="d-block w-100" alt="...">
-                  </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators4" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators4" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
-              </div>
-              <div routerLink="/PropertyDetails">
-                <div class=" d-flex align-items-center justify-content-between my-2">
-                    <h5>Kumluca, Turkey</h5>
-                    <div>
-                        <i class="fa-solid fa-star me-1"></i>
-                        4.92
-                    </div>
-                  </div>
-                  <h6 class=" text-secondary">Olympos Beydaglari National Park</h6>
-                  <h6 class=" text-secondary">Nov 6-12</h6>
-                  <p>$92 <span class="text-secondary">night</span></p>
-              </div>
-        </div>
-        <div class="favBtn">
-            <i class="fa-regular fa-heart fa-2x"></i>
-        </div>
-    </div> -->
 </div>
 </div>
 

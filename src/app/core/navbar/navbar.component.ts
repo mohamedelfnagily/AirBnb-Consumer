@@ -1,7 +1,8 @@
-import { AfterContentChecked, Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { AfterContentChecked, AfterViewInit, Component, DoCheck, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/Interfaces/user';
 import { AuthenticationService } from 'src/app/Services/authentication.service';
+import { PropertyService } from 'src/app/Services/property.service';
 import { UserService } from 'src/app/Services/user.service';
 
 
@@ -17,7 +18,9 @@ export class NavbarComponent implements OnInit{
   userProfileUrl:string='';
   userfullName:string='';
   user:User|null=null;
-  constructor(private _AuthenticationService:AuthenticationService,private _UserService:UserService,private _Router:Router) { }
+  userFavProperties:number=0;
+  constructor(private _AuthenticationService:AuthenticationService,private _UserService:UserService,private _Router:Router,private _PropertyService:PropertyService) {
+   }
 
   ngOnInit(): void {
     this._AuthenticationService.userData.subscribe(()=>{
@@ -41,8 +44,10 @@ export class NavbarComponent implements OnInit{
         this.isLoggedIn=false;
       }
     });
+    this._PropertyService.userFavourites.subscribe(
+      ()=>{this.userFavProperties = this._PropertyService.userFavourites.getValue()}
+    );
   }
-
   CallLogOut():void{
     this._AuthenticationService.LogOut();
   }

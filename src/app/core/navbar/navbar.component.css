@@ -31,3 +31,11 @@ button li a:hover{
     background-color: #ccc;
 
 }
+
+.favsNumber{
+    transform: translateX(-50%);
+    position: absolute;
+    left: 50%;
+    color: white;
+    font-weight: bolder;
+}

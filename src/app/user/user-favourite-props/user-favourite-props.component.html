@@ -1,0 +1,72 @@
+<div *ngIf="favProperties.length>0;else temp" class="container">
+    <div class="row">
+        <div class="col-12 ">
+            <div class="border-bottom py-3 w-50">
+                <h2>Favourites: </h2>
+            </div>
+        </div>
+        <div *ngFor="let item of favProperties;let i=index" class="col-md-6 position-relative h-100 p-2 ">
+            <div class="p-3 border rounded-3 h-100">
+                  <div class="row" [routerLink]="['PropertyDetails',item.id]">
+                    <div class="col-md-6 p-1">
+                      <div>
+                      <img class="img-fluid" *ngIf="favProperties[i].pictures[0]!=undefined;else temp" [src]="'data:image/png;base64,'+item.pictures[0]['picture']" alt="">
+                        <ng-template #temp>
+                          <img class="img-fluid" src="../../../assets/Images/3ef583d2-16d9-4640-a939-246324320442.jpeg" alt="">
+        
+                        </ng-template>
+                      </div>
+                    </div>
+                    <div class="col-md-6 p-1">
+                      <div>
+                        <img class="img-fluid" *ngIf="favProperties[i].pictures[1]!=undefined;else temp" [src]="'data:image/png;base64,'+item.pictures[1]['picture']" alt="">
+                        <ng-template #temp>
+                          <img class="img-fluid" src="../../../assets/Images/3ef583d2-16d9-4640-a939-246324320442.jpeg" alt="">
+        
+                        </ng-template>
+        
+                      </div>
+                    </div>
+                    <div class="col-md-6 p-1">
+                      <div>
+                        <img class="img-fluid" *ngIf="favProperties[i].pictures[2]!=undefined;else temp" [src]="'data:image/png;base64,'+item.pictures[2]['picture']" alt="">
+                        <ng-template #temp>
+                          <img class="img-fluid" src="../../../assets/Images/3ef583d2-16d9-4640-a939-246324320442.jpeg" alt="">
+        
+                        </ng-template>
+        
+                      </div>
+                    </div>
+                    <div class="col-md-6 p-1">
+                      <div>
+                        <img class="img-fluid" *ngIf="favProperties[i].pictures[3]!=undefined;else temp" [src]="'data:image/png;base64,'+item.pictures[3]['picture']" alt="">
+                        <ng-template #temp>
+                          <img class="img-fluid" src="../../../assets/Images/3ef583d2-16d9-4640-a939-246324320442.jpeg" alt="">
+        
+                        </ng-template>
+        
+                      </div>
+                    </div>
+                  </div>
+                  <div [routerLink]="['PropertyDetails',item.id]">
+                    <div class=" d-flex align-items-center justify-content-between my-2">
+                        <h5>{{item.location}}</h5>
+                        <div>
+                            <i class="fa-solid fa-star me-1"></i>
+                            4.92
+                        </div>
+                      </div>
+                      <h6 class=" text-secondary">{{item.description.substring(0,100)}}...</h6>
+                      <h6 class=" text-secondary">Nov 6-12</h6>
+                      <p>{{item.price|currency}}<span class="text-secondary">night</span></p>
+                  </div>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template  #temp>
+    <div class="container d-flex justify-content-center mt-5 align-items-center">
+        <h4 class=" alert alert-danger me-3">No favourite properties, Go to home and choose</h4>
+        <button routerLink="/Home" class="btn btn-outline-danger">Go To Home</button>
+    </div>
+</ng-template>

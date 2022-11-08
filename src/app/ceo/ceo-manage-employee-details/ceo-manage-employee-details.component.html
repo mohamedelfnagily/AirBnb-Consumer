@@ -1,0 +1,40 @@
+<div class="padclass">
+
+    <table class="table table-hover ">
+      <thead>
+        <tr>
+          <th scope="col">FirstName</th>
+          <th scope="col"> LastName</th>
+          <th scope="col"> UserName</th>
+          <th scope="col"> SSN</th>
+          <th scope="col"> Salary</th>
+          <th scope="col"> Role</th>
+          <th scope="col"> Mobile Number</th>
+
+  
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of employees">
+            
+          <td scope="row">{{item.firstName}}</td>
+          <td scope="row">{{item.lastName}}</td>
+          <td scope="row">{{item.userName}}</td>
+          <td scope="row">{{item.ssn}}</td>
+          <td scope="row">{{item.salary}}</td>
+          <td scope="row">{{item.role}}</td>
+          <td scope="row">{{item.phoneNumber}}</td>
+          <td scope="row">
+            <button (click)="delete(item.id)" class="btn btn-primary">Delete</button>
+          </td>
+          <td scope="row">
+            <button class="btn btn-primary">Edit</button>
+          </td>
+        
+  
+        </tr>
+   
+      </tbody>
+    </table>
+  </div>
+  

@@ -5,18 +5,23 @@ import { PropertydetailsComponent } from './propertydetails/propertydetails.comp
 import {CalendarModule} from 'primeng/calendar';
 import { FormsModule } from '@angular/forms';
 import { HomeRoutingModule } from './home-routing/home-routing.module';
-
+import {GMapModule} from 'primeng/gmap';
+import { PropertyMapComponent } from './property-map/property-map.component';
+import { PropertyReservationComponent } from './property-reservation/property-reservation.component';
 @NgModule({
   declarations: [
     AllPropertiesComponent,
-    PropertydetailsComponent
+    PropertydetailsComponent,
+    PropertyMapComponent,
+    PropertyReservationComponent
   ],
   imports: [
     CommonModule,
     CalendarModule,
     FormsModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    GMapModule
   ],
-  exports:[AllPropertiesComponent,PropertydetailsComponent]
+  exports:[AllPropertiesComponent,PropertydetailsComponent,PropertyMapComponent]
 })
 export class HomeModule { }
