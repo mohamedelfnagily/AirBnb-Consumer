@@ -10,6 +10,8 @@ import { UserEditPropertyComponent } from './user-edit-property/user-edit-proper
 import { UserFavouritePropsComponent } from './user-favourite-props/user-favourite-props.component';
 import { UserReservationsComponent } from './user-reservations/user-reservations.component';
 
+import {DataViewModule} from 'primeng/dataview';
+import { TagModule } from 'primeng/tag';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { UserReservationsComponent } from './user-reservations/user-reservations
     CommonModule,
     UserRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    DataViewModule,
+    TagModule
   ]
 })
 export class UserModule { }

@@ -25,7 +25,6 @@ export class PropertyReservationComponent implements OnInit {
               if(this.reservedProperty.pictures.length>0){
                 this.propertyImage="data:image/png;base64,"+this.reservedProperty.pictures[0]['picture'];
               }
-              console.log("hello"+this.reservedProperty.pictures.length)
             },
             (error)=>{console.log(error)}
           );
