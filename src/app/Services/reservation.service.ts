@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { ReservationAddDto } from '../home/DTOs/reservation-add-dto';
 import { ReservationDetailsDto } from '../home/DTOs/reservation-details-dto';
 
 @Injectable({
@@ -12,5 +13,13 @@ export class ReservationService {
   //This method is responsible for setting the reservation details from property details component
   setReservationDetails(reservationDetails:ReservationDetailsDto):void{
     this.reservationDetails.next(reservationDetails);
+  }
+  //Add new reservation
+  addReservation(reservation:ReservationAddDto):Observable<any>{
+    return this._HttpClient.post('',reservation);
+  }
+  //Get user reservations
+  getUserReservations(userId:string):Observable<any>{
+    return this._HttpClient.get(`https://localhost:7218/api/Reservation/GetUserReservations/${userId}`)
   }
 }
