@@ -1,0 +1,130 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-7 mt-3">
+            <div class="d-flex align-items-center mb-3">
+                <div [routerLink]="['/Home','PropertyDetails',userReservationDetails.PropertyId]" class="backBtn d-flex align-items-center ">
+                    <i class="fa-solid fa-angle-left fa-2x me-3 translate-middle-x"></i>
+                </div>
+                <h2 class="m-0 p-0">Confirm and Pay</h2>
+            </div>
+            <h5>Your Trip: </h5>
+            <div class="d-flex align-items-center justify-content-between w-75 ">
+                <div class="me-5">
+                    <h6>Dates</h6>
+                    <small class="d-block">Start Date: <span class="text-secondary">{{userReservationDetails.StartDate}}</span></small>
+                    <small class="d-block">End Date: <span class="text-secondary">{{userReservationDetails.EndDate}}</span></small>
+                </div>
+                <div>
+                    <button class="btn btn-outline-dark">Edit</button>
+                </div>
+            </div>
+            <div class="border-bottom border-2 w-75">
+                <div class="d-flex align-items-center justify-content-between mt-3">
+                    <h5 class="m-0 p-0">Pay With: </h5>
+                    <div class="payImageContainer">
+                        <img class="me-2" src="../../../assets/Images/PayImages/logo_amex.svg" alt="">
+                        <img class="me-2" src="../../../assets/Images/PayImages/logo_discover.svg" alt="">
+                        <img class="me-2" src="../../../assets/Images/PayImages/logo_googlepay.svg" alt="">
+                        <img class="me-2" src="../../../assets/Images/PayImages/logo_mastercard.svg" alt="">
+                        <img class="me-2" src="../../../assets/Images/PayImages/logo_paypal.svg" alt="">
+                        <img class="me-2" src="../../../assets/Images/PayImages/logo_visa.svg" alt="">
+                    </div>
+                </div>
+                <div class="input-group mb-3  mt-3">
+                    <span class="input-group-text" id="basic-addon1"><i class="fa-regular fa-credit-card"></i></span>
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected>Pay with</option>
+                        <option value="1">Credit Or Debit Card</option>
+                        <option value="2">PAyPAl</option>
+                        <option value="3">Google Pay</option>
+                      </select>
+                  </div>
+                
+            </div>
+            <div class="w-75 mt-3 pb-3 bprder-bottom border-2">
+                <h5>Required For Your Trip</h5>
+                <h6>Message the host</h6>
+                <small>Let the Host know why you're traveling and when you'll check in.</small>
+                <div class="d-flex mt-3 bg-light rounded-2 shadow p-3">
+                    <div class="hosterImgContainer me-4">
+                        <img [src]="'data:image/png;base64,'+reservedProperty.hoster.profilePicture" alt="">
+                    </div>
+                    <div>
+                        <div>
+                            <h6>{{reservedProperty.hoster.firstName}}</h6>
+                            <small class="text-secondary d-block">If you are adventurous?</small>
+                            <small class="text-secondary d-block">Easy going?</small>
+                            <small class="text-secondary d-block">Love nature?</small>
+                            <small class="text-secondary d-block">Not only used to STERILE 5 star hotels?</small>
+                            <small class="text-secondary d-block">You are welcome to book!!</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="my-3">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                  </div>
+            </div>
+            <div class="w-75 border-top border-2 pt-3">
+                <small>By selecting the button below, I agree to the <span class="fw-bolder text-decoration-underline">Host's House Rules, Airbnb's Rebooking and Refund Policy,</span> and that Airbnb can <span class="fw-bolder text-decoration-underline">charge my payment method</span> if I’m responsible for damage.</small>
+            </div>
+            <button class="btn btn-danger p-2 mt-3 fw-bolder px-4">Confirm and Pay</button>
+        </div>
+        <!-- Reservation details -->
+        <div class="col-md-5 border border-secondary rounded-4 reservationContainer shadow-lg h-50 mt-3 container">
+            <div class="my-3">
+                <div class="d-flex position-relative border-bottom border-2 pb-3">
+                    <div class="propertyImgContainer me-2">
+                        <img  [src]="'data:image/png;base64,'+reservedProperty.pictures[1]['picture']" alt="">
+                    </div>
+                    <div class="my-3">
+                        <small class="mb-2 text-secondary">{{reservedProperty.propertyType}}</small>
+                        <h6>{{reservedProperty.propertyType}} Hosted By {{reservedProperty.hoster.firstName + ' ' + reservedProperty.hoster.lastName}}</h6>
+                        <div class="d-flex align-items-center position-absolute bottom-0 mb-3">
+                            <div class="me-3">
+                                <i class="fa-solid fa-star me-1"></i>
+                                4.92
+                            </div>
+                            <div class="me-3"><small class=" text-decoration-underline m-0 p-0">13 reviews</small></div>
+                            <div class="me-3">
+                                <i class="fa-solid fa-trophy"></i>
+                                superhost
+                            </div>
+                            <div><small class=" text-decoration-underline m-0 p-0">{{reservedProperty.location}},Egypt</small></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="py-3 border-bottom border-2">
+                    <h6>Your booking is protected by <span class="text-danger fw-bolder">air</span><span class="fw-bolder">cover</span></h6>
+                </div>
+                <div class="py-3 border-bottom border-2">
+                    <h5 class="mb-3">Price Details:</h5>
+                    <div class="d-flex justify-content-between my-3">
+                        <h6 class="text-decoration-underline" *ngIf="userReservationDetails.NumberOfDaysPrice;else temp">{{userReservationDetails.NumberOfDaysPrice}}</h6>
+                        <ng-template #temp>
+                            <h6 class="text-decoration-underline">{{reservedProperty.price|currency}} X 0</h6>
+                        </ng-template>
+                        <strong class="text-secondary " *ngIf="userReservationDetails.NumberOfDaysPrice;else temp2">{{userReservationDetails.TotalPriceBeforeAddinService|currency}}</strong>
+                        <ng-template #temp2>
+                            <h6>{{0|currency}}</h6>
+                        </ng-template>
+                    </div>
+                    <div class="d-flex justify-content-between my-3">
+                        <h6 class="text-decoration-underline">Cleaning Fee</h6>
+                        <strong class="text-secondary " *ngIf="userReservationDetails.NumberOfDaysPrice;else temp2">{{userReservationDetails.CleaningFee|currency}}</strong>
+                    </div>
+                    <div class="d-flex justify-content-between my-3 border-bottom border-3 pb-2">
+                        <h6 class="text-decoration-underline">Service Fee</h6>
+                        <strong class="text-secondary " *ngIf="userReservationDetails.NumberOfDaysPrice;else temp2">{{userReservationDetails.ServiceFee|currency}}</strong>
+                    </div>
+                    <div class="d-flex justify-content-between my-3">
+                        <h6 class="text-decoration-underline">Total(USD)</h6>
+                        <strong class="text-secondary " *ngIf="userReservationDetails.NumberOfDaysPrice;else temp2">{{userReservationDetails.TotalPrice|currency}}</strong>
+                        <ng-template #temp2>
+                            <h6>{{0|currency}}</h6>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

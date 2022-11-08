@@ -7,11 +7,13 @@ import { FormsModule } from '@angular/forms';
 import { HomeRoutingModule } from './home-routing/home-routing.module';
 import {GMapModule} from 'primeng/gmap';
 import { PropertyMapComponent } from './property-map/property-map.component';
+import { PropertyReservationComponent } from './property-reservation/property-reservation.component';
 @NgModule({
   declarations: [
     AllPropertiesComponent,
     PropertydetailsComponent,
-    PropertyMapComponent
+    PropertyMapComponent,
+    PropertyReservationComponent
   ],
   imports: [
     CommonModule,

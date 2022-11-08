@@ -5,6 +5,8 @@ import { Property } from 'src/app/Interfaces/property';
 import { User } from 'src/app/Interfaces/user';
 import { UserService } from 'src/app/Services/user.service';
 import { HttpClient } from '@angular/common/http';
+import { ReservationDetailsDto } from '../DTOs/reservation-details-dto';
+import { ReservationService } from 'src/app/Services/reservation.service';
 
 @Component({
   selector: 'app-propertydetails',
@@ -13,7 +15,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PropertydetailsComponent implements OnInit {
 
-  constructor(private _PropertyService:PropertyService, private _ActivatedRoute:ActivatedRoute,private _UserService:UserService,private _HttpClient:HttpClient) {}
+  constructor(private _PropertyService:PropertyService, private _ActivatedRoute:ActivatedRoute,private _UserService:UserService,private _HttpClient:HttpClient,private _ReservationService:ReservationService) {}
   //map settings
   cityLatitudeParent:number=0;
   cityLongitudeParent:number=0;
@@ -74,5 +76,20 @@ export class PropertydetailsComponent implements OnInit {
       (error)=>{console.log(error)}
     );
   }
-
+  //This method is responsible for  setting the reservation details
+  setReservationDetails()
+  {
+    let resrvDetails:ReservationDetailsDto={
+      PropertyId:this.myProperty.id,
+      UserId:JSON.stringify(localStorage.getItem('userId')),
+      StartDate:this.startDateValue.toLocaleDateString("en-US"),
+      EndDate:this.endDateValue.toLocaleDateString("en-US"),
+      TotalPriceBeforeAddinService:(this.numberOfDays*this.myProperty.price),
+      ServiceFee:20,
+      CleaningFee:10,
+      TotalPrice:((this.numberOfDays*this.myProperty.price)+30),
+      NumberOfDaysPrice:`$${this.myProperty.price} X ${this.numberOfDays} nights`
+    }
+    this._ReservationService.setReservationDetails(resrvDetails);
+  }
 }
