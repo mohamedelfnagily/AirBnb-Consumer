@@ -38,10 +38,8 @@
           </li>
           <li class="nav-item">
             <div class="profileBtnContainer rounded-pill shadow">
-              <img *ngIf="userImage;else temp" class="imgContainer" [src]="userImage" alt="">
-              <ng-template #temp>
-                <img *ngIf="userImage!=null;else temp" class="imgContainer" src="../../../assets/Images/unknownPic.jpg" alt="">
-              </ng-template>
+              <img *ngIf="userImage!=''" class="imgContainer" [src]="userImage" alt="">
+                <img *ngIf="userImage==''" class="imgContainer" src="../../../assets/Images/unknownPic.jpg" alt="">
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   {{userfullName}}
@@ -50,7 +48,7 @@
                   <li><a class="dropdown-item" href="#">Messages</a></li>
                   <li><a class="dropdown-item" href="#">Notifications</a></li>
                   <li><a class="dropdown-item" href="#">Trips</a></li>
-                  <li><a class="dropdown-item" href="#">Wish List</a></li>
+                  <li><a class="dropdown-item" [routerLink]="['/User','Reservations']" >Reservations</a></li>
                   <li><hr class="dropdown-divider"></li>
                   <li><a class="dropdown-item" href="#">Manage Listings</a></li>
                   <li><a class="dropdown-item" href="#">Host an Experience</a></li>

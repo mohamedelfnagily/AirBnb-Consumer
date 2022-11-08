@@ -79,6 +79,7 @@ export class PropertydetailsComponent implements OnInit {
   //This method is responsible for  setting the reservation details
   setReservationDetails()
   {
+
     let resrvDetails:ReservationDetailsDto={
       PropertyId:this.myProperty.id,
       UserId:JSON.stringify(localStorage.getItem('userId')),
@@ -90,6 +91,7 @@ export class PropertydetailsComponent implements OnInit {
       TotalPrice:((this.numberOfDays*this.myProperty.price)+30),
       NumberOfDaysPrice:`$${this.myProperty.price} X ${this.numberOfDays} nights`
     }
+    console.log(resrvDetails);
     this._ReservationService.setReservationDetails(resrvDetails);
   }
 }

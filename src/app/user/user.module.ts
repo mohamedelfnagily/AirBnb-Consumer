@@ -8,6 +8,7 @@ import { UserSwitchHostingComponent } from './user-switch-hosting/user-switch-ho
 import { TrimtextPipe } from 'src/app/Pipes/trimtext.pipe';
 import { UserEditPropertyComponent } from './user-edit-property/user-edit-property.component';
 import { UserFavouritePropsComponent } from './user-favourite-props/user-favourite-props.component';
+import { UserReservationsComponent } from './user-reservations/user-reservations.component';
 
 
 
@@ -18,7 +19,8 @@ import { UserFavouritePropsComponent } from './user-favourite-props/user-favouri
     UserSwitchHostingComponent,
     TrimtextPipe,
     UserEditPropertyComponent,
-    UserFavouritePropsComponent
+    UserFavouritePropsComponent,
+    UserReservationsComponent
   ],
   imports: [
     CommonModule,
