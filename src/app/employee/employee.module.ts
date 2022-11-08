@@ -9,6 +9,7 @@ import {ButtonModule} from 'primeng/button';
 import {TableModule} from 'primeng/table';
 
 import {SidebarModule} from 'primeng/sidebar';
+import { JsonValuesPipe } from './pipes/json-values.pipe';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import {SidebarModule} from 'primeng/sidebar';
     EmployeeManagingUsersComponent,
     EmployeeViewPropertiesComponent,
     EmployeeDashboardComponent,
-    EmployeeSidebarComponent
+    EmployeeSidebarComponent,
+    JsonValuesPipe
   ],
   imports: [
     CommonModule,

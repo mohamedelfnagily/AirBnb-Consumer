@@ -1,4 +1,4 @@
-export interface User {
+export interface UserReadDTO {
     id:string;
     userName:string;
     email:string;
@@ -13,4 +13,6 @@ export interface User {
     languagues:string[];
     password:string;
     propertiesOwned:number;
+    fullName:string;
+    picture:string;
 }

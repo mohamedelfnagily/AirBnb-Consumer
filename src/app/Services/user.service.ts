@@ -30,6 +30,15 @@ export class UserService {
     formData.append('ProfilePicture', file);
     return this._HttpClient.put('https://localhost:7218/api/User',formData);
   }
-
+  getAllUsers():Observable<any>{
+    return this._HttpClient.get(`https://localhost:7218/api/User/GetAll`);
+  }
+  BanUser(userId:string,Months:number):Observable<any>{
+    let obj:any={
+      id : userId,
+      numberOfMonths : Months
+    };
+    return this._HttpClient.put('https://localhost:7218/api/User/BanUser',obj);
+  }
 
 }

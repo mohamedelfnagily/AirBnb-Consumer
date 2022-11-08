@@ -34,6 +34,7 @@ export class EmployeeViewPropertiesComponent implements OnInit {
     { label: 'Custom Equals', value: customFilterName },
     { label: 'Starts With', value: FilterMatchMode.STARTS_WITH },
     { label: 'Contains', value: FilterMatchMode.CONTAINS },
+    {label:'Smaller Than',value:FilterMatchMode.LESS_THAN}
 ];
 
   
