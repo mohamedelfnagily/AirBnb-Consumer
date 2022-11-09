@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ManageEmplyeesService } from 'src/app/Services/manage-emplyees.service';
-import { EmployeeRegisterDto } from 'src/app/authentication/Interfaces/employee-register-dto';
-
+import { EmployeeReadDto } from '../Interfaces/employee-read-dto';
 @Component({
   selector: 'app-ceo-manage-employee-details',
   templateUrl: './ceo-manage-employee-details.component.html',
@@ -9,7 +8,7 @@ import { EmployeeRegisterDto } from 'src/app/authentication/Interfaces/employee-
 })
 export class CeoManageEmployeeDetailsComponent implements OnInit {
   id:string="";
-  employees:EmployeeRegisterDto[]=[];
+  employees:EmployeeReadDto[]=[];
 
   constructor(private ManageempService:ManageEmplyeesService) {}
 

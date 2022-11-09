@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { EmployeeRegisterDto } from '../authentication/Interfaces/employee-register-dto';
-import { EmployeeUpdateDto } from '../authentication/Interfaces/employee-update-dto';
+import { EmployeeRegisterDto } from '../ceo/Interfaces/employee-register-dto';
 import { EmployeeModule } from '../employee/employee.module';
+import { EmployeeUpdateDto } from '../ceo/Interfaces/employee-update-dto';
 @Injectable({
   providedIn: 'root'
 })

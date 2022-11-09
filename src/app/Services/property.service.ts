@@ -10,11 +10,13 @@ export class PropertyService {
   constructor(private _HttpClient:HttpClient) { 
     let x:any = localStorage.getItem("userFavourites");
     let arr = new Array();
+    if(x !=null){
     for(var i=0;i<JSON.parse(x).length;i++)
     {
       arr.push(JSON.parse(x)[i]);
     }
     this.userFavourites.next(arr.length);
+  }
   }
     //Get all properties
     getAllProperties():Observable<any>{

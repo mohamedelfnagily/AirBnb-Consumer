@@ -32,10 +32,14 @@ export class NavbarComponent implements OnInit{
           console.log(userid)
           this._UserService.getUserData(userid).subscribe(
             (response)=>{
-              console.log(this.user)
               this.user=response;
-              this.userImage ="data:image/png;base64,"+ this.user?.profilePicture;
+              console.log(this.user)
+             if(this.user?.profilePicture.length!=0)
+               this.userImage ="data:image/png;base64,"+ this.user?.profilePicture;
               this.userfullName=this.user?.firstName+ ' ' + this.user?.lastName;
+            },
+            (error) =>{
+              console.log(error)
             }
           );
         }, 100);

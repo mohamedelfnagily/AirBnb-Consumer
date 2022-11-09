@@ -10,6 +10,9 @@ import { SidebarModule } from 'primeng/sidebar';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CeoManageEmployeeDetailsComponent } from './ceo-manage-employee-details/ceo-manage-employee-details.component';
 import { CeoEditEmployeeComponent } from './ceo-edit-employee/ceo-edit-employee.component';
+import {ButtonModule} from 'primeng/button';
+import {TableModule} from 'primeng/table';
+import { JsonValuesPipe } from '../employee/pipes/json-values.pipe';
 
 
 
@@ -22,13 +25,14 @@ import { CeoEditEmployeeComponent } from './ceo-edit-employee/ceo-edit-employee.
     CeoSideBarComponent,
     CeoManageEmployeeDetailsComponent,
     CeoEditEmployeeComponent,
-  
+    JsonValuesPipe
     
   
   ],
   imports: [
     CommonModule,
-    CeoRoutingModule,SidebarModule,ReactiveFormsModule
+    CeoRoutingModule,SidebarModule,ReactiveFormsModule,
+    ButtonModule,TableModule,
   ],
   exports:[CeoDashboardComponent,CeoManagingEmployeesComponent,CeoManagingUsersComponent,CeoViewPropertiesComponent,CeoSideBarComponent,SidebarModule]
 })

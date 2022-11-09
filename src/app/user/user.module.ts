@@ -8,7 +8,10 @@ import { UserSwitchHostingComponent } from './user-switch-hosting/user-switch-ho
 import { TrimtextPipe } from 'src/app/Pipes/trimtext.pipe';
 import { UserEditPropertyComponent } from './user-edit-property/user-edit-property.component';
 import { UserFavouritePropsComponent } from './user-favourite-props/user-favourite-props.component';
+import { UserReservationsComponent } from './user-reservations/user-reservations.component';
 
+import {DataViewModule} from 'primeng/dataview';
+import { TagModule } from 'primeng/tag';
 
 
 @NgModule({
@@ -18,13 +21,16 @@ import { UserFavouritePropsComponent } from './user-favourite-props/user-favouri
     UserSwitchHostingComponent,
     TrimtextPipe,
     UserEditPropertyComponent,
-    UserFavouritePropsComponent
+    UserFavouritePropsComponent,
+    UserReservationsComponent
   ],
   imports: [
     CommonModule,
     UserRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    DataViewModule,
+    TagModule
   ]
 })
 export class UserModule { }

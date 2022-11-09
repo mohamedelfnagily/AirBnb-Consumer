@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-7 mt-3">
+        <div class="col-md-7 mt-3">              
             <div class="d-flex align-items-center mb-3">
                 <div [routerLink]="['/Home','PropertyDetails',userReservationDetails.PropertyId]" class="backBtn d-flex align-items-center ">
                     <i class="fa-solid fa-angle-left fa-2x me-3 translate-middle-x"></i>
@@ -11,7 +11,7 @@
             <div class="d-flex align-items-center justify-content-between w-75 ">
                 <div class="me-5">
                     <h6>Dates</h6>
-                    <small class="d-block">Start Date: <span class="text-secondary">{{userReservationDetails.StartDate}}</span></small>
+                    <small class="d-block">Start Date: <span class="text-secondary">{{userReservationDetails.StartDate}}  </span></small>
                     <small class="d-block">End Date: <span class="text-secondary">{{userReservationDetails.EndDate}}</span></small>
                 </div>
                 <div>
@@ -73,9 +73,11 @@
         <div class="col-md-5 border border-secondary rounded-4 reservationContainer shadow-lg h-50 mt-3 container">
             <div class="my-3">
                 <div class="d-flex position-relative border-bottom border-2 pb-3">
-                    <div class="propertyImgContainer me-2">
-                        <img  [src]="'data:image/png;base64,'+reservedProperty.pictures[1]['picture']" alt="">
-                    </div>
+                     <div class="propertyImgContainer me-2">
+                         <img *ngIf="propertyImage!=''" [src]="propertyImage" alt="">
+                         <img *ngIf="propertyImage==''" src="../../../assets/Images/360_F_473254957_bxG9yf4ly7OBO5I0O5KABlN930GwaMQz.jpg" alt=""> 
+ 
+                    </div> 
                     <div class="my-3">
                         <small class="mb-2 text-secondary">{{reservedProperty.propertyType}}</small>
                         <h6>{{reservedProperty.propertyType}} Hosted By {{reservedProperty.hoster.firstName + ' ' + reservedProperty.hoster.lastName}}</h6>
@@ -96,14 +98,15 @@
                 <div class="py-3 border-bottom border-2">
                     <h6>Your booking is protected by <span class="text-danger fw-bolder">air</span><span class="fw-bolder">cover</span></h6>
                 </div>
+                
                 <div class="py-3 border-bottom border-2">
-                    <h5 class="mb-3">Price Details:</h5>
-                    <div class="d-flex justify-content-between my-3">
-                        <h6 class="text-decoration-underline" *ngIf="userReservationDetails.NumberOfDaysPrice;else temp">{{userReservationDetails.NumberOfDaysPrice}}</h6>
+                    <h5 class="mb-3" >Price Details:</h5>
+                    <div class="d-flex justify-content-between my-3" >
+                        <h6 class="text-decoration-underline"  *ngIf="userReservationDetails.NumberOfDaysPrice;else temp">{{userReservationDetails?.NumberOfDaysPrice}}</h6>
                         <ng-template #temp>
                             <h6 class="text-decoration-underline">{{reservedProperty.price|currency}} X 0</h6>
                         </ng-template>
-                        <strong class="text-secondary " *ngIf="userReservationDetails.NumberOfDaysPrice;else temp2">{{userReservationDetails.TotalPriceBeforeAddinService|currency}}</strong>
+                        <strong class="text-secondary " *ngIf="userReservationDetails.NumberOfDaysPrice;else temp2">{{userReservationDetails?.TotalPriceBeforeAddinService|currency}}</strong>
                         <ng-template #temp2>
                             <h6>{{0|currency}}</h6>
                         </ng-template>
