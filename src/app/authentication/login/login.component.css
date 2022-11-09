@@ -5,15 +5,6 @@
     z-index: 200;
     position: relative;
 }
-.googleLogo{
-  width: 30px;
-  height: 30px;
-}
-.googleSignInContainer{
-  background-color: white;
-  color: black;
-  font-weight: bolder;
-}
 /* Animated background css */
 body {
     background: #1a1e23;

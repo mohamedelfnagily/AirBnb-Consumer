@@ -19,10 +19,6 @@
                 <p *ngIf="loginForm.get('password')?.errors?.['pattern']"class="mb-0">password is Must start with capital letter and have special character</p>
             </div>
             <button [disabled]="loginForm.invalid" type="submit" class="btn btn-info mt-3">Login</button>
-            <!-- <button class="btn googleSignInContainer">
-                <img class="googleLogo" src="../../../assets/Images/googleIcon.jpg" alt="">
-                Login with Google
-            </button> -->
         </form>
     </div>
 </div>
