@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import {Observable,BehaviorSubject} from 'rxjs';
@@ -6,6 +6,7 @@ import jwtDecode from 'jwt-decode';
 import { RegisterDto } from '../authentication/Interfaces/register-dto';
 import { TokenDto } from '../authentication/Interfaces/token-dto';
 import { LoginDto } from '../authentication/Interfaces/login-dto';
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
@@ -14,6 +15,7 @@ export class AuthenticationService {
   //User data/Roles will be as a behaviour subject to subscribe on it's values with everychange
   userData:any = new BehaviorSubject(null);
   userRole:any=new BehaviorSubject(null);
+  private path = environment.apiUrl;
   constructor(private _HttpClient:HttpClient,private _Router:Router) {
         //To stay logged in even after Refresh
         if(localStorage.getItem("userToken")!=null)
@@ -58,6 +60,14 @@ export class AuthenticationService {
   {
     return this._HttpClient.post('https://localhost:7218/api/Authentication/Login',userData);
   }
+  //Login with google
+  //This method is what will hit the api
+LoginWithGoogle(credentials: string): Observable<any> {
+  let body = {"credentials":credentials.toString()};
+  console.log(JSON.stringify(body));
+  const header = new HttpHeaders().set('Content-type', 'application/json');
+  return this._HttpClient.post(this.path + "Authentication/LoginWithGoogle", JSON.stringify(body),{headers:header});
+}
   //Logging out user
   LogOut():void{
     this.userData.next(null);

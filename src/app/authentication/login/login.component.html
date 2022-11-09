@@ -18,7 +18,14 @@
                 <p *ngIf="loginForm.get('password')?.errors?.['required']"class="mb-0">password is Required</p>
                 <p *ngIf="loginForm.get('password')?.errors?.['pattern']"class="mb-0">password is Must start with capital letter and have special character</p>
             </div>
-            <button [disabled]="loginForm.invalid" type="submit" class="btn btn-info mt-3">Login</button>
+            <div class="d-flex mt-3">
+                <button [disabled]="loginForm.invalid" type="submit" class="btn btn-info me-3 fw-bolder">Login</button>
+                <div id="buttonDiv"></div>
+                <!-- <button class="btn btn-info googleSignInContainer d-flex align-items-center">
+                    <img class="googleLogo" src="../../../assets/Images/googleIcon.jpg" alt="">
+                    Login with Google
+                </button> -->
+            </div>
         </form>
     </div>
 </div>
