@@ -54,7 +54,7 @@ export class AllPropertiesComponent implements OnInit {
         
       }
       console.log(this.AllPropertiesImages)
-    }, 1000);
+    }, 300);
   }
   //Get the properties in this category
   getPropertiesInCat(catName:string)

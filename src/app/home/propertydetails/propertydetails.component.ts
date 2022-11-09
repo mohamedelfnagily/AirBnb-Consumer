@@ -7,15 +7,17 @@ import { UserService } from 'src/app/Services/user.service';
 import { HttpClient } from '@angular/common/http';
 import { ReservationDetailsDto } from '../DTOs/reservation-details-dto';
 import { ReservationService } from 'src/app/Services/reservation.service';
+import { ReviewService } from 'src/app/Services/review.service';
 
 @Component({
   selector: 'app-propertydetails',
   templateUrl: './propertydetails.component.html',
   styleUrls: ['./propertydetails.component.css']
 })
-export class PropertydetailsComponent implements OnInit {
+export class PropertydetailsComponent implements OnInit{
 
-  constructor(private _PropertyService:PropertyService, private _ActivatedRoute:ActivatedRoute,private _UserService:UserService,private _HttpClient:HttpClient,private _ReservationService:ReservationService) {}
+  constructor(private _PropertyService:PropertyService, private _ActivatedRoute:ActivatedRoute,private _UserService:UserService,private _HttpClient:HttpClient,private _ReservationService:ReservationService
+    ,private _ReviewService:ReviewService) {}
   //map settings
   cityLatitudeParent:number=0;
   cityLongitudeParent:number=0;
@@ -26,11 +28,19 @@ export class PropertydetailsComponent implements OnInit {
   numberOfDays:number = 0;
   inline:boolean=true;
   myProperty:any;
+  myPropertyReviews:any[]=[];
   myPropertyImages:any[]=[];
   userId:string='';
   userImg:string='';
   ngOnInit(): void {
    let myVal:string = this._ActivatedRoute.snapshot.params['id'];
+   this._ReviewService.GetPropertyReviews(myVal).subscribe(
+    (response)=>{
+      this.myPropertyReviews=response;
+      console.log(this.myPropertyReviews);
+    },
+    (error)=>{console.log(error)}
+  );
    this.myProperty = this._PropertyService.getProperty(myVal).subscribe(
     (response)=>{
       this.myProperty=response;
@@ -95,5 +105,5 @@ export class PropertydetailsComponent implements OnInit {
     this._ReservationService.setReservationDetails(resrvDetails);
   }
   //Add New reservation
-  
+
 }

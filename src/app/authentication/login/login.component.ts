@@ -75,7 +75,7 @@ export class LoginComponent implements OnInit {
           this._Router.navigate(['/Home']);
         })},
       (error:any) => {
-          console.log(error);
+        this.Error= "Invalid userName or password";
         }
       );  
   }
