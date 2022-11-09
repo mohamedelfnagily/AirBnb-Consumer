@@ -1,7 +1,7 @@
 import { Component, OnInit,SimpleChanges } from '@angular/core';
 import { ManageEmplyeesService } from 'src/app/Services/manage-emplyees.service';
-import { EmployeeRegisterDto } from 'src/app/authentication/Interfaces/employee-register-dto';
-import { EmployeeUpdateDto } from 'src/app/authentication/Interfaces/employee-update-dto';
+import { EmployeeRegisterDto } from 'src/app/ceo/Interfaces/employee-register-dto';
+import { EmployeeUpdateDto } from '../Interfaces/employee-update-dto';
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup,FormControl,Validators, FormBuilder } from '@angular/forms';
 

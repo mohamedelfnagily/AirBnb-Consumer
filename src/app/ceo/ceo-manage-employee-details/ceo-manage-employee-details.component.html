@@ -1,8 +1,12 @@
-<div class="padclass">
-
-    <table class="table table-hover ">
-      <thead>
+<app-ceo-side-bar></app-ceo-side-bar>
+<div class="tabledim">
+  <p-table [value]="employees"   responsiveLayout="scroll">
+    <ng-template pTemplate="caption">
+       <h3>Employees :</h3>
+    </ng-template>
+    <ng-template pTemplate="header">
         <tr>
+          <th scope="col">Profile Picture</th>
           <th scope="col">FirstName</th>
           <th scope="col"> LastName</th>
           <th scope="col"> UserName</th>
@@ -10,31 +14,37 @@
           <th scope="col"> Salary</th>
           <th scope="col"> Role</th>
           <th scope="col"> Mobile Number</th>
+          <th scope="col"> </th>
+          <th scope="col"> </th>
 
-  
         </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of employees">
-            
-          <td scope="row">{{item.firstName}}</td>
-          <td scope="row">{{item.lastName}}</td>
-          <td scope="row">{{item.userName}}</td>
-          <td scope="row">{{item.ssn}}</td>
-          <td scope="row">{{item.salary}}</td>
-          <td scope="row">{{item.role}}</td>
-          <td scope="row">{{item.phoneNumber}}</td>
+    </ng-template>
+    <ng-template pTemplate="body" let-employees>
+        <tr>
+          
+            <td><img *ngIf="employees.profilePicture !=null" class="rounded-circle mt-2" width="50px" height="50px" [src]="employees.profilePicture">
+              <img  *ngIf="employees.profilePicture==null" class="rounded-circle mt-2" width="50px" height="50px"src="../../../assets/Images/unknownPic.jpg" alt=""></td>
+            <td>{{employees.firstName}}</td>
+            <td>{{employees.lastName}}</td>
+            <td>{{employees.userName}}</td>
+            <td>{{employees.ssn}}</td>
+            <td>{{employees.salary}}</td>
+            <td scope="row">{{employees.role}}</td>
+          <td scope="row">{{employees.phoneNumber}}</td>
           <td scope="row">
-            <button (click)="delete(item.id)" class="btn btn-primary">Delete</button>
+            <button (click)="delete(employees.id)" class="btn btn-primary">Delete</button>
           </td>
           <td scope="row">
-            <button class="btn btn-primary">Edit</button>
+            <button [routerLink]="['EditEmployee',employees.id] " class="btn btn-primary">Edit</button>
           </td>
         
-  
         </tr>
-   
-      </tbody>
-    </table>
-  </div>
-  
+    </ng-template>
+    <ng-template pTemplate="summary">
+        <div class="flex align-items-center justify-content-between">
+            In total there are {{employees ? employees.length : 0 }} Employees.
+        </div>
+    </ng-template>
+</p-table>
+</div>
+ 

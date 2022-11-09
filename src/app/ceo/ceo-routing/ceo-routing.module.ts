@@ -16,7 +16,7 @@ let route:Routes=[
   {path:"ManageEmployee",component:CeoManagingEmployeesComponent,canActivate:[CeoAuthGuard]},
   {path:"ManageProperties",component:CeoViewPropertiesComponent,canActivate:[CeoAuthGuard]},
   {path:"ManageEmployeeDetails",component:CeoManageEmployeeDetailsComponent,canActivate:[CeoAuthGuard]},
-  {path:"EditEmployee/:id",component:CeoEditEmployeeComponent,canActivate:[CeoAuthGuard]},
+  {path:"ManageEmployeeDetails/EditEmployee/:id",component:CeoEditEmployeeComponent,canActivate:[CeoAuthGuard]},
 
 
 ];

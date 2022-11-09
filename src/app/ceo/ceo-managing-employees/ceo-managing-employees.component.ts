@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ManageEmplyeesService } from 'src/app/Services/manage-emplyees.service';
 import { FormControl,FormGroup, Validators } from '@angular/forms';
-import { EmployeeRegisterDto } from 'src/app/authentication/Interfaces/employee-register-dto';
+import { EmployeeRegisterDto } from 'src/app/ceo/Interfaces/employee-register-dto';
 
 @Component({
   selector: 'app-ceo-managing-employees',
@@ -10,7 +10,7 @@ import { EmployeeRegisterDto } from 'src/app/authentication/Interfaces/employee-
 })
 export class CeoManagingEmployeesComponent implements OnInit {
   Error:string="";
-  constructor(private ManageempService:ManageEmplyeesService) {}
+  constructor(private ManageempService:ManageEmplyeesService ) {}
   EmployeeAddForm:FormGroup=new FormGroup({
     firstName:new FormControl(null,[Validators.minLength(3),Validators.maxLength(15),Validators.required]),
     lastName:new FormControl(null,[Validators.minLength(3),Validators.maxLength(15),Validators.required]),

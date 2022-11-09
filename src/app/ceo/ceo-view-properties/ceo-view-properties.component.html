@@ -1,2 +1,41 @@
-<p>ceo-view-properties works!</p>
+
+<p-table [value]="properties" sortField="hoster.firstName" [columns]="cols"  sortMode="single" dataKey="hoster.id" rowGroupMode="subheader" groupRowsBy="hoster.id" >
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                {{col.header}}
+                <p-sortIcon [field]="col.field"></p-sortIcon>
+
+            </th>
+            <tr>
+                <th *ngFor="let col of columns">
+                    <p-columnFilter type="text" [field]="col.field" [matchModeOptions]="matchModeOptions" [matchMode]="'custom-equals'"></p-columnFilter>
+                </th>
+            </tr>
+            
+    </ng-template>
+    <ng-template pTemplate="groupheader" let-property let-rowIndex="rowIndex" let-expanded="expanded">
+        <tr>
+            <td colspan="5">
+                <button type="button" pButton pRipple [pRowToggler]="property" class="p-button-text p-button-rounded p-button-plain mr-2" [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+                <img *ngIf="property.hosterProfilePicture !=null" class="rounded-circle mt-2" width="50px" height="50px" [src]="property.hosterProfilePicture">
+                    <img  *ngIf="property.hosterProfilePicture==null" class="rounded-circle mt-2" width="50px" height="50px"src="../../../assets/Images/unknownPic.jpg" alt="">
+                <span class="font-bold m-3 center">{{property.hoster.firstName}}  {{property.hoster.lastName}}</span>
+            </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="groupfooter" let-property>
+        <tr class="p-rowgroup-footer">
+            <td colspan="4" style="text-align: right">Total Properties</td>
+            <td>{{property.hoster.propertiesOwned}}</td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="rowexpansion" let-property let-columns="columns">
+        <tr>
+            <td *ngFor="let col of columns">
+                {{property[col.field]}}
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
 <app-ceo-side-bar></app-ceo-side-bar>
