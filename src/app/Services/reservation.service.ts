@@ -16,7 +16,7 @@ export class ReservationService {
   }
   //Add new reservation
   addReservation(reservation:ReservationAddDto):Observable<any>{
-    return this._HttpClient.post('',reservation);
+    return this._HttpClient.post('https://localhost:7218/api/Reservation/CreateReservation',reservation);
   }
   //Get user reservations
   getUserReservations(userId:string):Observable<any>{

@@ -92,4 +92,6 @@ export class PropertydetailsComponent implements OnInit {
     }
     this._ReservationService.setReservationDetails(resrvDetails);
   }
+  //Add New reservation
+  
 }
