@@ -7,10 +7,9 @@ import { EmployeeDashboardComponent } from './employee-dashboard/employee-dashbo
 import { EmployeeSidebarComponent } from './employee-sidebar/employee-sidebar.component';
 import {ButtonModule} from 'primeng/button';
 import {TableModule} from 'primeng/table';
-
 import {SidebarModule} from 'primeng/sidebar';
-import { JsonValuesPipe } from './pipes/json-values.pipe';
-
+//import { JsonValuesPipe } from './pipes/json-values.pipe';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -18,14 +17,15 @@ import { JsonValuesPipe } from './pipes/json-values.pipe';
     EmployeeViewPropertiesComponent,
     EmployeeDashboardComponent,
     EmployeeSidebarComponent,
-    JsonValuesPipe
+   // JsonValuesPipe
   ],
   imports: [
     CommonModule,
     EmployeeRoutingModule,
     SidebarModule,
     ButtonModule,
-    TableModule
+    TableModule,
+    SharedModule
   ],
   exports:[EmployeeDashboardComponent,EmployeeManagingUsersComponent,EmployeeSidebarComponent,EmployeeViewPropertiesComponent,SidebarModule]
 })

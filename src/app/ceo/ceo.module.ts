@@ -12,8 +12,7 @@ import { CeoManageEmployeeDetailsComponent } from './ceo-manage-employee-details
 import { CeoEditEmployeeComponent } from './ceo-edit-employee/ceo-edit-employee.component';
 import {ButtonModule} from 'primeng/button';
 import {TableModule} from 'primeng/table';
-import { JsonValuesPipe } from '../employee/pipes/json-values.pipe';
-
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -25,14 +24,13 @@ import { JsonValuesPipe } from '../employee/pipes/json-values.pipe';
     CeoSideBarComponent,
     CeoManageEmployeeDetailsComponent,
     CeoEditEmployeeComponent,
-    JsonValuesPipe
-    
   
   ],
   imports: [
     CommonModule,
     CeoRoutingModule,SidebarModule,ReactiveFormsModule,
-    ButtonModule,TableModule,
+    ButtonModule,TableModule,SharedModule,   
+
   ],
   exports:[CeoDashboardComponent,CeoManagingEmployeesComponent,CeoManagingUsersComponent,CeoViewPropertiesComponent,CeoSideBarComponent,SidebarModule]
 })
