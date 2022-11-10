@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Reservation } from 'src/app/Interfaces/reservation';
 import { PropertyService } from 'src/app/Services/property.service';
 import { ReservationService } from 'src/app/Services/reservation.service';
+import { ReviewService } from 'src/app/Services/review.service';
 import { UserService } from 'src/app/Services/user.service';
 
 @Component({
@@ -13,7 +15,7 @@ export class UserReservationsComponent implements OnInit {
   UserId:any="";
   tag:string="";
   reservation:Reservation[]=[];
-  constructor(public reservationService:ReservationService,public propertyService:PropertyService) { }
+  constructor(public reservationService:ReservationService,public propertyService:PropertyService,public reviewService:ReviewService,private _router: Router) { }
 
   ngOnInit(): void {
     this.UserId =   localStorage.getItem("userId"); // getting userId
@@ -43,6 +45,14 @@ export class UserReservationsComponent implements OnInit {
     (error)=>{console.log(error)}
    );
   }
+  NavigateToReview(reserv:Reservation){
+    this.reviewService.setReviewDetail(reserv);
+    this._router.navigateByUrl('/User/Review');
+    
+  }
+
+
+
   checkReservationDate(start:string,end:string){
     let startDate = Date.parse(start);
     let endDate  = Date.parse(end);

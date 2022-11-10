@@ -1,5 +1,5 @@
 <div class="headerSection container mt-3">
-    <h1 class="mb-2">{{myProperty.propertyType}} in {{myProperty.location}} Posted By {{myProperty.hoster.firstName + ' ' + myProperty.hoster.lastName}}</h1>
+    <h1 class="mb-2">{{myProperty.propertyType}} in {{myProperty.location}} Posted By {{myProperty?.hoster?.firstName + ' ' + myProperty?.hoster?.lastName}}</h1>
     <div class="d-flex align-items-center justify-content-between">
         <div class="d-flex align-items-center ">
             <div class="me-3">
@@ -69,7 +69,7 @@
         <div class="col-md-7">
             <div class="d-flex align-items-center justify-content-between border-bottom pb-3">
                 <div>
-                    <h4>Entire {{myProperty.propertyType}} hosted by {{myProperty.hoster.firstName}}</h4>
+                    <h4>Entire {{myProperty.propertyType}} hosted by {{myProperty.hoster?.firstName}}</h4>
                     <h6>{{myProperty.maxNumberOfUsers}} Guests {{myProperty.numberOfRooms}} bedrooms {{myProperty.numberOfRooms}} beds </h6>    
                 </div>
                 <div class="smallImgContainer ">
@@ -173,14 +173,16 @@
                         <strong class="text-secondary">0 Reviews</strong>
                     </div>
                 </div>
-                <div class="w-75 mx-auto my-3">
+                <div *ngIf="isDataAvailable" class="w-75 mx-auto my-3">
                     <div class="d-flex">
-                        <p-calendar (onClose)="setDate()"  class="me-3" [(ngModel)]="startDateValue"></p-calendar>
-                        <p-calendar (onClose)="setDate()" [(ngModel)]="endDateValue"></p-calendar>
+                        <span class="m-3">Start:</span>
+                        <p-calendar (onClose)="setDate()"   class="me-3" [defaultDate]="startDateValue"  [(ngModel)]="startDateValue" [minDate]="minDate" [disabledDates]="dateArray"  placeholder="Start"  [showOtherMonths]="true" [selectOtherMonths]="true"></p-calendar>
+                        <span class="m-3">End:</span>
+                        <p-calendar (onClose)="setDate()" [showOtherMonths]="true" [defaultDate]="endDateValue" [selectOtherMonths]="true" [(ngModel)]="endDateValue" [minDate]="startDateValue"   [readonlyInput]="true" [disabledDates]="dateArray"></p-calendar>
                     </div>
                 </div>
                 <div class="w-50 mx-auto">
-                    <button [routerLink]="['/Home','PropertyReservation',myProperty.id]" (click)="setReservationDetails()" class="btn btn-danger w-100">Reserve</button>
+                    <button [routerLink]="['/Home','PropertyReservation',myProperty.id]" (click)="setReservationDetails()" class="btn btn-danger w-100" [disabled]="!isDisabled">Reserve</button>
                 </div>
                 <div class="d-flex justify-content-between my-3">
                     <h6 class="text-decoration-underline" *ngIf="numberOfDays>0;else temp">{{myProperty.price|currency}} X {{numberOfDays}}</h6>

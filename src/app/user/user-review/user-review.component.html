@@ -1,0 +1,26 @@
+<div *ngIf="state==0">
+    you can make review
+
+
+</div>
+<div *ngIf="state==1" class="alert alert-danger w-75 mx-auto my-4 text-center">
+    <h1 class=" "> Reservation didn't end yet come back later </h1>
+
+
+</div>
+
+<div class="container">
+    <div *ngIf="state==2" class="border border-2 p-3 rounded-3 my-3 w-75 mx-auto py-5 text-center review-container">
+        <h3>{{userReservation.review.description|titlecase}}</h3>
+        <h4>Review Date : <span class="text-secondary">{{userReservation.review.reviewDate|date}}</span></h4>
+        <div >
+            <i *ngFor="let item of fakeArray" class="fa-solid fa-star text-warning fa-2x" ></i>
+            <i *ngIf="decimalPortion" class="fa-regular fa-star-half-stroke text-warning fa-2x"></i>
+    
+        </div>
+    
+    
+    </div>
+
+
+</div>

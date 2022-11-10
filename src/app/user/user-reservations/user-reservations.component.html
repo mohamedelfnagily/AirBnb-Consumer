@@ -1,11 +1,11 @@
 <div class="row">
-    <div class="col-sm-2 m-5" *ngFor="let item of reservation">
-        <div class="card m-4" style="width: 18rem;" >
+    <div class="col-sm-2 m-5" *ngFor="let item of reservation" >
+        <div class="card m-4" style="width: 18rem;cursor:pointer;" (click)="NavigateToReview(item)"  >
             <img class="card-img-top " width="50" height="200" *ngIf="item.propertyImage!=null" [src]="item.propertyImage" alt="Card image cap">
             <img class="card-img-top "width="50" height="200" *ngIf="item.propertyImage==null" src="../../../assets/Images/Reservation.jpg" alt="Card image cap">
            
 
-            <div class="card-body">
+            <div class="card-body" >
                 <div ><span style="font-weight: bold;">Start Date : </span>{{item.startDate|date}}</div>
                 <div><span style="font-weight: bold;">End Date : </span>{{item.endDate|date}}</div>
                 <div><span style="font-weight: bold;">Total Price : </span>{{item.totalPrice|currency}}</div>

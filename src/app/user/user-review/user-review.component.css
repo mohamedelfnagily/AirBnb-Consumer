@@ -1,0 +1,6 @@
+.review-container{
+transition:0.5s;
+}
+.review-container:hover{
+    background-color:#ccc;
+}

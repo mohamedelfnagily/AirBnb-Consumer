@@ -22,4 +22,10 @@ export class ReservationService {
   getUserReservations(userId:string):Observable<any>{
     return this._HttpClient.get(`https://localhost:7218/api/Reservation/GetUserReservations/${userId}`)
   }
+  getPropertyFutureReservations(propertyId:string):Observable<any>{
+    return this._HttpClient.get(`https://localhost:7218/api/Reservation/GetPropertyFutureReservations/${propertyId}`)
+  }
+  getPropertyActiveReservations(propertyId:string):Observable<any>{
+    return this._HttpClient.get(`https://localhost:7218/api/Reservation/GetPropertyActiveReservation/${propertyId}`)
+  }
 }

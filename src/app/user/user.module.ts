@@ -12,6 +12,7 @@ import { UserReservationsComponent } from './user-reservations/user-reservations
 
 import {DataViewModule} from 'primeng/dataview';
 import { TagModule } from 'primeng/tag';
+import { UserReviewComponent } from './user-review/user-review.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { TagModule } from 'primeng/tag';
     TrimtextPipe,
     UserEditPropertyComponent,
     UserFavouritePropsComponent,
-    UserReservationsComponent
+    UserReservationsComponent,
+    UserReviewComponent
   ],
   imports: [
     CommonModule,
