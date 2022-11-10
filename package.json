@@ -22,6 +22,7 @@
     "@angular/router": "^14.2.0",
     "@fortawesome/fontawesome-free": "^6.2.0",
     "@googlemaps/js-api-loader": "^1.15.1",
+    "@ngx-pwa/local-storage": "^13.0.5",
     "@types/google-one-tap": "^1.2.2",
     "bootstrap": "^5.2.2",
     "chart.js": "^3.9.1",

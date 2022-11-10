@@ -132,6 +132,9 @@
           </div>
         </div>
 
+
+
+
         <div>
           <div *ngIf="!editProfile" class="w-75  border border-2 mb-2 py-2">
             <h5 class="ms-2">Role: {{emp?.role}}</h5>
@@ -163,13 +166,11 @@
         </div>
 
         <div *ngIf="editProfile">
-          <button class="btn btn-primary profile-button" type="submit">Save changes</button>
+          <button class="btn btn-primary profile-button" type="submit">Edit Employee</button>
+          <br><br>
         </div>
-
-        <br><br>
-
       </form>
-      <button class="btn btn-primary profile-button" (click)="EditProfileVisability()">Edit Employee</button>
+      <button class="btn btn-primary profile-button" (click)="EditProfileVisability()">Show</button>
 
     </div>
   </div>

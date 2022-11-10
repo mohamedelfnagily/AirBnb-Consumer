@@ -22,8 +22,8 @@
     <ng-template pTemplate="body" let-employees>
         <tr>
           
-            <td><img *ngIf="employees.profilePicture !=null" class="rounded-circle mt-2" width="50px" height="50px" [src]="employees.profilePicture">
-              <img  *ngIf="employees.profilePicture==null" class="rounded-circle mt-2" width="50px" height="50px"src="../../../assets/Images/unknownPic.jpg" alt=""></td>
+            <td><img *ngIf="employees.profilePicture !=''" class="rounded-circle mt-2" width="50px" height="50px" [src]="employees.profilePicture">
+              <img  *ngIf="employees.profilePicture==''" class="rounded-circle mt-2" width="50px" height="50px"src="../../../assets/Images/unknownPic.jpg" alt=""></td>
             <td>{{employees.firstName}}</td>
             <td>{{employees.lastName}}</td>
             <td>{{employees.userName}}</td>

@@ -62,6 +62,19 @@ this._PropertyService.getAllProperties().subscribe(
 ];
 
 }
+
+ //delete Property 
+ delete(id:string){
+  if(confirm('are you sure you want to delete this Property?')==true){this._PropertyService.deleteProperty(id).subscribe(a=>{
+    console.log(a);
+    this._PropertyService.getAllProperties().subscribe(a=>{
+      console.log(a);
+      this.properties=a;
+    })
+  })
+
+}
+}
 calculateCustomerTotal(id:any) {
   let total = 0;
 
