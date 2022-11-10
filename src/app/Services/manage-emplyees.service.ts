@@ -24,21 +24,22 @@ deleteEmployeeById(empid:string):Observable<any>{
   return this._HttpClient.delete(`https://localhost:7218/api/Employee/DeleteEmployee/${empid}`);
 }
 //update employee
-UpdateEmployee(empNewData:EmployeeUpdateDto):Observable<any>
+UpdateEmployee(empNewData:any,file:File):Observable<any>
   {
     const formData = new FormData();
     formData.append('Id', empNewData.id);
     formData.append('FirstName', empNewData.firstName);
     formData.append('LastName', empNewData.lastName);
     formData.append('UserName', empNewData.userName);
-    formData.append('LastName', empNewData.phoneNumber);
+    formData.append('PhoneNumber', empNewData.phoneNumber);
     formData.append('BirthDate', empNewData.birthDate);
-    formData.append('UserName', empNewData.salary);
+    formData.append('Salary', empNewData.salary);
     formData.append('Email', empNewData.email);
     formData.append('SSN', empNewData.ssn);
-    formData.append('BirthDate', empNewData.role);
+    formData.append('Role', empNewData.role);
+    formData.append('ProfilePicture',file);
 
-    return this._HttpClient.put('https://localhost:7218/api/Employee/',empNewData);
+    return this._HttpClient.put('https://localhost:7218/api/Employee/',formData);
     }
 
 //Regestring new Employee

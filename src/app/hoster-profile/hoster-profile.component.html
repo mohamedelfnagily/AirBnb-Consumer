@@ -1,0 +1,51 @@
+<div class="container my-5">
+    <div class="row">  
+        <div class="col-md-12 d-flex">
+            <div class=" x">
+                <img class="border border-3 rounded-3 rounded-circle" [src]="userImg" alt="">
+            </div>
+            <div class="w-75 ms-3">
+                <table class="table table-hover table-bordered ">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>BirthDate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                Name: <span class="fw-bolder text-secondary">{{userData?.firstName+' '+userData?.lastName}} </span>
+                            </td>
+                            <td>
+                                Email: <span class="fw-bolder text-secondary">{{userData?.email}}</span>
+                            </td>
+                            <td>
+                                BirthDate: <span class="fw-bolder text-secondary">{{userData?.birthDate|date}}</span>
+                            </td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div *ngFor="let property of hosterProps; let i=index" class="col-md-4 my-3">
+            <div class="card h-100">
+                <img height="250" width="350" [src]="propertyImages[i]" class="card-img-top img-fluid" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{property.location}}</h5>
+                  <p class="card-text mb-0">{{property.description.substring(0,100)}}...</p>
+                  <div class="mb-3"><small class="card-title text-secondary ">{{property.price|currency}}</small></div>
+                  <a  class="btn btn-primary me-2" [routerLink]="['/Home','PropertyDetails',property.id]">See Details</a>
+                  <a [routerLink]="['/Home','PropertyDetails',property.id]" class="btn btn-warning me-2">Reserve</a>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>

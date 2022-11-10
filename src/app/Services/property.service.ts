@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { MoneyFilterDto } from '../home/DTOs/money-filter-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -126,5 +127,28 @@ export class PropertyService {
         }
       }
       return true;
+    }
+    //Those methods are respnsible for filtering the properties depending on the user selection
+
+    //Filtering by price
+    filterByMoneyRange(filterdto:MoneyFilterDto):Observable<any>{
+      return this._HttpClient.post('https://localhost:7218/api/Property/GetByPriceRange',filterdto);
+    }
+    //Filter by property type
+    filterByPropertyType(propertyType:string):Observable<any>{
+      return this._HttpClient.post('https://localhost:7218/api/Property/GetByPriceRange',propertyType);
+    }
+    //Filter by number of rooms
+    filterByRoomsNumber(roomsNumber:number):Observable<any>
+    {
+      return this._HttpClient.post('https://localhost:7218/api/Property/GetByNumberOfRooms',roomsNumber);
+    }
+    //Filter by essentials
+    filterByEssentials(essentials:string[]):Observable<any>{
+      return this._HttpClient.post('https://localhost:7218/api/Property/GetByEssentials',essentials);
+    }
+    //Filter by languages
+    filterByLanguages(languages:string[]):Observable<any>{
+      return this._HttpClient.post('https://localhost:7218/api/Property/GetByLanguages',languages);
     }
 }

@@ -2,6 +2,7 @@ import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormGroup,FormControl,Validators, FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { RegisterDto } from 'src/app/authentication/Interfaces/register-dto';
+import { HosterProfileDto } from 'src/app/home/DTOs/hoster-profile-dto';
 import { User } from 'src/app/Interfaces/user';
 import { UserService } from 'src/app/Services/user.service';
 import { UserDto } from '../DTO/user-dto';
@@ -12,12 +13,12 @@ import { UserDto } from '../DTO/user-dto';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit ,OnChanges{
-  user:User|null=null;
+  user:HosterProfileDto|null=null;
   firstName:string='';
   editProfile:boolean=false;
   userImage:string='';
   Error:string='';
-
+  userQRCode:string='';
   constructor(private _UserService:UserService,private _ActivatedRoute:ActivatedRoute) { 
   }
   updateUserDataForm:FormGroup=new FormGroup({});
@@ -29,6 +30,7 @@ export class UserProfileComponent implements OnInit ,OnChanges{
       (response)=>{
         this.user=response;
         this.userImage ="data:image/png;base64,"+ this.user?.profilePicture;
+        this.userQRCode ="data:image/png;base64,"+ this.user?.userQRCode;
         //Here we are giving the form its initial values
         this.updateUserDataForm = new FormGroup({
           Id:new FormControl(this._ActivatedRoute.snapshot.params['id']),

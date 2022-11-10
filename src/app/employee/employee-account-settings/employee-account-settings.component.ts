@@ -1,17 +1,16 @@
 import { Component, OnInit,SimpleChanges } from '@angular/core';
 import { ManageEmplyeesService } from 'src/app/Services/manage-emplyees.service';
 import { EmployeeRegisterDto } from 'src/app/ceo/Interfaces/employee-register-dto';
-import { EmployeeUpdateDto } from '../Interfaces/employee-update-dto';
+import { EmployeeUpdateDto } from 'src/app/ceo/Interfaces/employee-update-dto';
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup,FormControl,Validators, FormBuilder } from '@angular/forms';
-
-
 @Component({
-  selector: 'app-ceo-edit-employee',
-  templateUrl: './ceo-edit-employee.component.html',
-  styleUrls: ['./ceo-edit-employee.component.css']
+  selector: 'app-employee-account-settings',
+  templateUrl: './employee-account-settings.component.html',
+  styleUrls: ['./employee-account-settings.component.css']
 })
-export class CeoEditEmployeeComponent implements OnInit {
+export class EmployeeAccountSettingsComponent implements OnInit {
+
   emp:EmployeeUpdateDto|null=null;
   editProfile:boolean=false;
   Error:string='';
@@ -80,4 +79,5 @@ export class CeoEditEmployeeComponent implements OnInit {
       
       
   }
+
 }

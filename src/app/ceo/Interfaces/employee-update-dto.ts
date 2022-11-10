@@ -6,7 +6,8 @@ export interface EmployeeUpdateDto {
     phoneNumber:string;
     firstName:string;
     lastName:string;
-    birthDate:string;
-    salary:string;
+    birthDate:Date;
+    salary:number;
     role:string;
+    profilePicture:string;
 }
