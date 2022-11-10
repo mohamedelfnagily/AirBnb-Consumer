@@ -83,3 +83,14 @@
     transform: translateX(-50%);
     
 }
+
+.propertyTypeContainer img{
+    height: 50px;
+    width: 50px;
+}
+.propertyTypeContainer{
+    transition: 0.5s;
+}
+.propertyTypeContainer:hover{
+    background-color: #ccc;
+}

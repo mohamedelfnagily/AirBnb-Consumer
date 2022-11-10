@@ -1,6 +1,12 @@
 <div  class="w-100  categoryContainer container-fluid d-flex align-items-center justify-content-center mt-3 mb-5">
   <div>
     <ul class=" d-flex align-items-center">
+      <li>
+        <div class="text-center" >
+          <img class="LogoContainer" (click)="GetAllProperties()" src="../../../assets/Images/Icons/All.png" alt="">
+          <p >ALL</p>
+        </div>
+      </li>  
       <li  *ngFor="let item of AllCategories">
           <div class="text-center" (click)="getPropertiesInCat(item.name)">
             <img class="LogoContainer" [src]="'../../../assets/Images/Icons/'+item.url" alt="">
@@ -8,7 +14,7 @@
           </div>
       </li>
       <li>
-        <div class="text-center">
+        <div class="text-center" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button">
           <img class="LogoContainer" src="../../../assets/Images/Icons/icons8-filter-and-sort-50.png" alt="">
           <p >Filter</p>
         </div>
@@ -89,4 +95,206 @@
     <i class="fa-solid fa-map text-white me-2"></i>
     Show Map
   </button>
+</div>
+<!-- Filtering Modal -->
+<!-- <div class="modal-dialog modal-lg">...</div> -->
+<div class="modal  fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Filters</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <div class="my-3" >
+            <h5>Price Range</h5>
+            <h6 class="text-secondary">The average nightly price is $539</h6>
+            <div class="container">
+              <div class="row">
+                <div class="col-md-5">
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Minimum Price:</label>
+                    <input type="email" class="form-control" id="minimumPrice" placeholder="$0">
+                  </div>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-5">
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Maximum Price:</label>
+                    <input type="email" class="form-control" id="maximumPrice" placeholder="$$$$">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="my-3">
+            <h5>Property Type</h5>
+            <div class="container mt-3">
+              <div class="row">
+                <div class="col-md-3 ">
+                  <div (click)="filterByProprtyType('House')" class="border border-dark rounded-3 p-3 text-center propertyTypeContainer">
+                    <img class="mb-3" src="../../../assets/Images/Icons/PropertyTypes/House.png" alt="">
+                    <h6>House</h6>
+                  </div>
+                </div>
+                <div class="col-md-3 ">
+                  <div (click)="filterByProprtyType('Appartment')" class="border border-dark rounded-3 p-3 text-center propertyTypeContainer">
+                    <img class="mb-3" src="../../../assets/Images/Icons/PropertyTypes/appartment.png" alt="">
+                    <h6>Appartment</h6>
+                  </div>
+                </div>
+                <div class="col-md-3 ">
+                  <div (click)="filterByProprtyType('Hotel')" class="border border-dark rounded-3 p-3 text-center propertyTypeContainer">
+                    <img class="mb-3" src="../../../assets/Images/Icons/PropertyTypes/hotel.png" alt="">
+                    <h6>Hotel</h6>
+                  </div>
+                </div>
+                <div class="col-md-3 ">
+                  <div (click)="filterByProprtyType('Guest House')" class="border border-dark rounded-3 p-3 text-center propertyTypeContainer">
+                    <img class="mb-3" src="../../../assets/Images/Icons/PropertyTypes/guestHouse.png" alt="">
+                    <h6>Guest House</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="my-3">
+            <h5>Number Of Rooms</h5>
+            <div class="container">
+              <button class="btn btn-dark rounded-pill me-2">Any</button>
+              <button (click)="filterByRooms(1)" class="btn btn-outline-dark rounded-pill me-3">1</button>
+              <button (click)="filterByRooms(2)" class="btn btn-outline-dark rounded-pill me-3">2</button>
+              <button (click)="filterByRooms(3)" class="btn btn-outline-dark rounded-pill me-3">3</button>
+              <button (click)="filterByRooms(4)" class="btn btn-outline-dark rounded-pill me-3">4</button>
+              <button (click)="filterByRooms(5)" class="btn btn-outline-dark rounded-pill me-3">5</button>
+              <button (click)="filterByRooms(6)" class="btn btn-outline-dark rounded-pill me-3">6</button>
+              <button (click)="filterByRooms(7)" class="btn btn-outline-dark rounded-pill me-3">7</button>
+              <button class="btn btn-outline-dark rounded-pill me-3">8+</button>
+            </div>
+          </div>
+          <div class="my-4">
+            <h5 class="mb-2">Essentials</h5>
+            <div class="container">
+              <div class="row">
+                <div class="col-md-3 mb-2">
+                  <div class="form-check">
+                    <input (click)="filterByEssentials('Wifi')" class="form-check-input" type="checkbox" id="gridCheck1">
+                    <label class="form-check-label fw-bolder" for="gridCheck1">
+                      WIFI
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-3 mb-2">
+                  <div class="form-check">
+                    <input (click)="filterByEssentials('Parking')" class="form-check-input" type="checkbox" id="gridCheck1">
+                    <label class="form-check-label fw-bolder" for="gridCheck1">
+                      PARKING
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-3 mb-2">
+                  <div class="form-check fw-bolder">
+                    <input (click)="filterByEssentials('Tv')" class="form-check-input" type="checkbox" id="gridCheck1">
+                    <label class="form-check-label" for="gridCheck1">
+                      TV
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-3 mb-2">
+                  <div class="form-check fw-bolder">
+                    <input (click)="filterByEssentials('Washer')" class="form-check-input" type="checkbox" id="gridCheck1">
+                    <label class="form-check-label" for="gridCheck1">
+                      WASHER
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-3 mb-2">
+                  <div class="form-check fw-bolder">
+                    <input (click)="filterByEssentials('Elevator')" class="form-check-input" type="checkbox" id="gridCheck1">
+                    <label class="form-check-label" for="gridCheck1">
+                      ELEVATOR
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-3 mb-2">
+                  <div class="form-check fw-bolder">
+                    <input (click)="filterByEssentials('Generator')" class="form-check-input" type="checkbox" id="gridCheck1">
+                    <label class="form-check-label" for="gridCheck1">
+                      GENERATOR
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-3 mb-2">
+                  <div class="form-check fw-bolder">
+                    <input (click)="filterByEssentials('PrivateRoom')" class="form-check-input" type="checkbox" id="gridCheck1">
+                    <label class="form-check-label" for="gridCheck1">
+                      PRIVATE ROOM
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-3 mb-2">
+                  <div class="form-check fw-bolder">
+                    <input (click)="filterByEssentials('SmokeAlarm')" class="form-check-input" type="checkbox" id="gridCheck1">
+                    <label class="form-check-label" for="gridCheck1">
+                      SMOKE ALARM
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-3 mb-2">
+                  <div class="form-check fw-bolder">
+                    <input (click)="filterByEssentials('SeaView')" class="form-check-input" type="checkbox" id="gridCheck1">
+                    <label class="form-check-label" for="gridCheck1">
+                      SEA VIEW
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="my-4">
+            <h5 class="mb-2">Languages</h5>
+            <div class="container">
+              <div class="row">
+                <div class="col-md-3 mb-2">
+                  <div class="form-check">
+                    <input (click)="filterByLanguages('Arabic')" class="form-check-input" type="checkbox" id="gridCheck1">
+                    <label class="form-check-label fw-bolder" for="gridCheck1">
+                      Arabic
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-3 mb-2">
+                  <div class="form-check">
+                    <input (click)="filterByLanguages('English')" class="form-check-input" type="checkbox" id="gridCheck1">
+                    <label class="form-check-label fw-bolder" for="gridCheck1">
+                      English
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-3 mb-2">
+                  <div class="form-check fw-bolder">
+                    <input (click)="filterByLanguages('Italian')" English class="form-check-input" type="checkbox" id="gridCheck1">
+                    <label class="form-check-label" for="gridCheck1">
+                      Italian
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-3 mb-2">
+                  <div class="form-check fw-bolder">
+                    <input (click)="filterByLanguages('French')" class="form-check-input" type="checkbox" id="gridCheck1">
+                    <label class="form-check-label" for="gridCheck1">
+                      French
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Exit</button>
+        <button (click)="getFilters()" type="button" class="btn btn-primary">{{AllProperties.length}} Filter</button>
+      </div>
+    </div>
+  </div>
 </div>
