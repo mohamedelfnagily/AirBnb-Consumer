@@ -8,8 +8,9 @@ import { EmployeeSidebarComponent } from './employee-sidebar/employee-sidebar.co
 import {ButtonModule} from 'primeng/button';
 import {TableModule} from 'primeng/table';
 import {SidebarModule} from 'primeng/sidebar';
-//import { JsonValuesPipe } from './pipes/json-values.pipe';
 import { SharedModule } from '../shared/shared.module';
+import { EmployeeAccountSettingsComponent } from './employee-account-settings/employee-account-settings.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { SharedModule } from '../shared/shared.module';
     EmployeeViewPropertiesComponent,
     EmployeeDashboardComponent,
     EmployeeSidebarComponent,
+    EmployeeAccountSettingsComponent,
    // JsonValuesPipe
   ],
   imports: [
@@ -25,7 +27,7 @@ import { SharedModule } from '../shared/shared.module';
     SidebarModule,
     ButtonModule,
     TableModule,
-    SharedModule
+    SharedModule,ReactiveFormsModule
   ],
   exports:[EmployeeDashboardComponent,EmployeeManagingUsersComponent,EmployeeSidebarComponent,EmployeeViewPropertiesComponent,SidebarModule]
 })

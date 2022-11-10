@@ -35,7 +35,11 @@
             <td *ngFor="let col of columns">
                 {{property[col.field]}}
             </td>
+            <td scope="row">
+                <button (click)="delete(property.id)" class="btn btn-primary">Delete</button>
+              </td>
         </tr>
     </ng-template>
+    
 </p-table>
 <app-ceo-side-bar></app-ceo-side-bar>
