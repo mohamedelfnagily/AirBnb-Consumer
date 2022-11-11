@@ -71,7 +71,7 @@ export class PropertydetailsComponent implements OnInit {
     );
     
     // get property active reservations 
-      setTimeout(() => {
+      
         this._ReservationService.getPropertyActiveReservations(myVal).subscribe(
           (respone) => {
             this.myPropertyReservations.push(respone);
@@ -110,6 +110,7 @@ export class PropertydetailsComponent implements OnInit {
     
           },
           (error) => { 
+            
             this._ReservationService.getPropertyFutureReservations(myVal).subscribe(
               (respone) => {
                 for (let i = 0; i < respone.length; i++) {
@@ -145,7 +146,7 @@ export class PropertydetailsComponent implements OnInit {
     
     
         );
-      }, 100);
+    
 
 
 
@@ -156,12 +157,11 @@ export class PropertydetailsComponent implements OnInit {
     this.minDate.setFullYear(today.getFullYear());
 
   }
-
+  
   setDate() {
 
     //this.numberOfDays = this.endDateValue.getDate()-this.startDateValue.getDate();
     this.numberOfDays = Math.ceil((this.endDateValue.getTime() - this.startDateValue.getTime()) / (1000 * 3600 * 24))
-    console.log(this.numberOfDays)
     this.isDisabled = true;
 
   }
