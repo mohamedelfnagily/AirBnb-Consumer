@@ -11,31 +11,20 @@ import { PropertyService } from 'src/app/Services/property.service';
 export class EmployeeDashboardComponent implements OnInit {
 properties:PropReadDTO[]=[];
 propPrice:any=[];
+propLoc:string[]=[];
+
   constructor(private _propertyService:PropertyService) { }
 
   ngOnInit(): void {
 
-    this._propertyService.getAllProperties().subscribe(
-      (response)=>{
-        this.properties=response;
-        console.log(response)
-        for(let i=0;i<this.properties.length;i++){
-         
-          this.propPrice[i]=this.properties[i].price;
-        }
-        
-      },
-      );
     Chart.register(...registerables); 
-
-    
     const BarChart = new Chart("BarChart", {
       type: 'bar',
       data: {
-          labels: [ ],
+          labels: [ 'jan','feb','march','jan','feb','march' ],
           datasets: [{
               label: '# of Votes',
-              data: [this.propPrice
+              data: [1,2,3,4,5,6
             ],
               backgroundColor: [
                   'rgba(255, 99, 132, 0.2)',

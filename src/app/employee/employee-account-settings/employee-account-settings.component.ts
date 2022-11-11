@@ -2,7 +2,7 @@ import { Component, OnInit,SimpleChanges } from '@angular/core';
 import { ManageEmplyeesService } from 'src/app/Services/manage-emplyees.service';
 import { EmployeeRegisterDto } from 'src/app/ceo/Interfaces/employee-register-dto';
 import { EmployeeUpdateDto } from 'src/app/ceo/Interfaces/employee-update-dto';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 import { FormGroup,FormControl,Validators, FormBuilder } from '@angular/forms';
 @Component({
   selector: 'app-employee-account-settings',
@@ -16,7 +16,7 @@ export class EmployeeAccountSettingsComponent implements OnInit {
   Error:string='';
   updateEmpDataForm:FormGroup=new FormGroup({});
 
-  constructor(private manageEmployeeService:ManageEmplyeesService,private _ActivatedRoute:ActivatedRoute) { }
+  constructor(private manageEmployeeService:ManageEmplyeesService,private _ActivatedRoute:ActivatedRoute,private router:Router) { }
   file:any=null;
   uploadFile(x:any){
      this.file = <HTMLInputElement>x.target.files[0];
@@ -76,7 +76,10 @@ export class EmployeeAccountSettingsComponent implements OnInit {
       (response)=>{console.log(response)},
       (error)=>{console.log(error)}
     );
-      
+    if(confirm('Profile Updated Successfully!')==true){
+      this.router.navigateByUrl('/Admin'); 
+
+    }
       
   }
 

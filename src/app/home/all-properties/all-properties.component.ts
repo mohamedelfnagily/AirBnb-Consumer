@@ -4,6 +4,7 @@ import { Property } from 'src/app/Interfaces/property';
 import { CategoriesService } from 'src/app/Services/categories.service';
 import { PropertyService } from 'src/app/Services/property.service';
 import { MoneyFilterDto } from '../DTOs/money-filter-dto';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-all-properties',
@@ -12,7 +13,7 @@ import { MoneyFilterDto } from '../DTOs/money-filter-dto';
 })
 export class AllPropertiesComponent implements OnInit {
 
-  constructor(private _CategoriesService:CategoriesService,public _PropertyService:PropertyService) { }
+  constructor(private _CategoriesService:CategoriesService,public _PropertyService:PropertyService,private router:Router) { }
   AllCategories:Category[] = [];
   AllProperties:Property[]=[];
   AllPropertiesImages:any[]=[];
@@ -25,42 +26,44 @@ export class AllPropertiesComponent implements OnInit {
   imgSrc:string='';
   userFavourites:any;
   ngOnInit(): void {
-    this._CategoriesService.getAllCategories().subscribe(
-      (response)=>{
-        this.AllCategories=response;
-        console.log(this.AllCategories)
-      },
-      (error)=>{console.log(error)}
-    );
-    this._PropertyService.getAllProperties().subscribe(
-      (response)=>{
-        this.AllProperties=response;
-        console.log(response)
-      },
-      (error)=>{
-        console.log(error);
-      }
-    );
-
-    setTimeout(() => {
-      for (let i = 0; i < this.AllProperties.length; i++) {
-        let arr = new Array();
-        if(this.AllProperties[i].pictures.length==0)
-        {
-          this.AllPropertiesImages.push(arr);
+    
+      this._CategoriesService.getAllCategories().subscribe(
+        (response)=>{
+          this.AllCategories=response;
+          console.log(this.AllCategories)
+        },
+        (error)=>{console.log(error)}
+      );
+      this._PropertyService.getAllProperties().subscribe(
+        (response)=>{
+          this.AllProperties=response;
+          console.log(response)
+        },
+        (error)=>{
+          console.log(error);
+        }
+      );
   
-        }
-        else{
-          for (let j = 0; j < this.AllProperties[i].pictures.length; j++) {
-            let properyImage ="data:image/png;base64,"+ this.AllProperties[i].pictures[j]['picture'];
-            arr.push(properyImage);
+      setTimeout(() => {
+        for (let i = 0; i < this.AllProperties.length; i++) {
+          let arr = new Array();
+          if(this.AllProperties[i].pictures.length==0)
+          {
+            this.AllPropertiesImages.push(arr);
+    
           }
-          this.AllPropertiesImages.push(arr);
+          else{
+            for (let j = 0; j < this.AllProperties[i].pictures.length; j++) {
+              let properyImage ="data:image/png;base64,"+ this.AllProperties[i].pictures[j]['picture'];
+              arr.push(properyImage);
+            }
+            this.AllPropertiesImages.push(arr);
+          }
+          
         }
-        
-      }
-      console.log(this.AllPropertiesImages)
-    }, 300);
+        console.log(this.AllPropertiesImages)
+      }, 300);
+    
   }
   //Get the properties in this category
   getPropertiesInCat(catName:string)
