@@ -17,4 +17,15 @@ export class ReviewService {
   GetPropertyReviews(propertyId:string):Observable<any>{
     return this._HttpClient.get(`https://localhost:7218/api/Review/GetPropertyReviews/${propertyId}`);
   }
+  
+  AddReservationReview(desc:any,rate:any,reservId:any):Observable<any>{
+    let obj:any={
+      description: desc,
+      rating: rate,
+      reservationId: reservId
+
+    }
+    console.log(obj);
+    return this._HttpClient.post(`https://localhost:7218/api/Review/AddReview`,obj);
+  }
 }

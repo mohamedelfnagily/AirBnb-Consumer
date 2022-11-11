@@ -1,6 +1,22 @@
-<div *ngIf="state==0">
-    you can make review
+<div *ngIf="state==0" >
+   <div class="container  mt-5 w-50 mx-auto py-3 text-center m-2 text-bg-danger">
+    Your FeedBack Helps Others Decide
+   </div>
+   <div class="container border border-2 p-3 rounded-3 mt-5 w-50 mx-auto py-5 text-center m-auto" style="background-color: #f2f2f2 ;">
+<form [formGroup]="reactiveForm" (ngSubmit)="onSubmit()" novalidate>
+ 
+    <p>
+      <textarea rows="5" cols="70" formControlName="description" placeholder="Descripe Your Experience" style="resize: none;"></textarea>
+    </p>
+ 
 
+    <p-rating formControlName="rating" [cancel]="false" [iconOnStyle]="{'color':'#E4A11B'}"></p-rating>
+
+    <button class="btn btn-danger mt-4" [disabled]="reactiveForm.invalid" >Add Review</button>
+
+ </form>
+
+</div>
 
 </div>
 <div *ngIf="state==1" class="alert alert-danger w-75 mx-auto my-4 text-center">

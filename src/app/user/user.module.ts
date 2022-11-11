@@ -9,6 +9,7 @@ import { TrimtextPipe } from 'src/app/Pipes/trimtext.pipe';
 import { UserEditPropertyComponent } from './user-edit-property/user-edit-property.component';
 import { UserFavouritePropsComponent } from './user-favourite-props/user-favourite-props.component';
 import { UserReservationsComponent } from './user-reservations/user-reservations.component';
+import {RatingModule} from 'primeng/rating';
 
 import {DataViewModule} from 'primeng/dataview';
 import { TagModule } from 'primeng/tag';
@@ -32,7 +33,8 @@ import { UserReviewComponent } from './user-review/user-review.component';
     ReactiveFormsModule,
     FormsModule,
     DataViewModule,
-    TagModule
+    TagModule,
+    RatingModule
   ]
 })
 export class UserModule { }

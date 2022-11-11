@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Reservation } from 'src/app/Interfaces/reservation';
 import { ReviewService } from 'src/app/Services/review.service';
 
@@ -12,9 +14,15 @@ export class UserReviewComponent implements OnInit {
   state:number=0;
   fakeArray:any;
   decimalPortion:boolean=false;
-  constructor(public reviewService:ReviewService) { }
+  reactiveForm = new FormGroup({
+    description: new FormControl('', [Validators.required]),
+    rating: new FormControl('',[Validators.required]),
+
+  })
+  constructor(public reviewService:ReviewService,private _router: Router) { }
 
   ngOnInit(): void {
+    
     this.reviewService.reviewDetail
     
       .subscribe(()=>{
@@ -40,9 +48,24 @@ export class UserReviewComponent implements OnInit {
           }
         }
         
-        console.log("iam here",this.state);
       });
     
+  }
+  onSubmit() {
+    this.reviewService.AddReservationReview(this.reactiveForm.get('description')?.value,this.reactiveForm.get('rating')?.value,this.userReservation.id).subscribe(
+      (respone)=>{
+        console.log(respone)
+      //  window.location.reload()
+      // this.ngOnInit();
+        this._router.navigate(['/User/Reservations']);
+      },
+      (error)=>{
+        console.log(error)
+      }
+
+
+    )
+
   }
 
 }

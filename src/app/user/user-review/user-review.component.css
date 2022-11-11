@@ -4,3 +4,6 @@ transition:0.5s;
 .review-container:hover{
     background-color:#ccc;
 }
+.ui-rating a {
+    color: yellow !important;
+}
