@@ -47,6 +47,7 @@ export class PropertydetailsComponent implements OnInit {
     this._ReviewService.GetPropertyReviews(myVal).subscribe(
       (response) => {
         this.myPropertyReviews = response;
+        console.log(this.myPropertyReviews)
       },
       (error) => { console.log(error) }
     );
