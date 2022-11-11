@@ -2,3 +2,9 @@
     position: fixed;
     margin-top: 15%;
 }
+.pi{
+    position: fixed;
+    top: 30%;
+    left: 0%;
+    z-index: 200;
+}

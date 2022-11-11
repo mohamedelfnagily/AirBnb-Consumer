@@ -97,7 +97,6 @@ export class PropertydetailsComponent implements OnInit {
                 }
                 this.endDateValue.setDate(this.startDateValue.getDate() + 1)
                 this.isDataAvailable = true;
-    
               },
               (error) => { 
                 this.isDataAvailable = true;
@@ -192,7 +191,8 @@ export class PropertydetailsComponent implements OnInit {
       ServiceFee: 20,
       CleaningFee: 10,
       TotalPrice: ((this.numberOfDays * this.myProperty.price) + 30),
-      NumberOfDaysPrice: `$${this.myProperty.price} X ${this.numberOfDays} nights`
+      NumberOfDaysPrice: `$${this.myProperty.price} X ${this.numberOfDays} nights`,
+      HosterId:this.myProperty.hoster.id
     }
     console.log(resrvDetails);
     this._ReservationService.setReservationDetails(resrvDetails);

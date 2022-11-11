@@ -8,4 +8,5 @@ export interface ReservationDetailsDto {
     ServiceFee:number;
     NumberOfDaysPrice:string;
     TotalPriceBeforeAddinService:number;
+    HosterId:string;
 }

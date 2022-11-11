@@ -5,31 +5,23 @@
             <div *ngIf="Error" class="alert alert-danger">
                 <h3>{{Error}}</h3>
             </div>
-        
-            <label for="Description">Description:</label>
-            <input type="text" formControlName="Description" class="form-control mb-2" name="" id="Description">
-            <input type="text" formControlName="Location" class="form-control mb-2" name="" id="Location">
+            <input type="text" formControlName="Description" placeholder="Description" class="form-control mb-2" name="" id="Description">
+            <input type="text" formControlName="Location" placeholder="Location" class="form-control mb-2" name="" id="Location">
             <div class="input-group mb-2">
                 <span class="input-group-text">$</span>
                 <span class="input-group-text">0.00</span>
-                <input type="text" class="form-control" formControlName="Price" aria-label="Dollar amount (with dot and two decimal places)">
+                <input type="text" class="form-control" placeholder="Price/Day" formControlName="Price" aria-label="Dollar amount (with dot and two decimal places)">
               </div>
-            <select class="form-select mb-2" aria-label="Default select example" formControlName="PropertyType">
+              <input type="number" formControlName="MaxNumberOfUsers" placeholder="Maximum number of users" class="form-control mb-2" name="" id="MaxNumberOfUsers">
+              <input type="number" formControlName="NumberOfRooms" placeholder="Number of rooms" class="form-control mb-2" name="" id="NumberOfRooms">            
+              <label for="Description">Property Type:</label>
+              <select class="form-select mb-2" aria-label="Default select example" formControlName="PropertyType">
                 <option value="House" selected>House</option>
                 <option value="Appartment">Appartment</option>
                 <option value="Guest House">Guest House</option>
                 <option value="Hotel">Hotel</option>
               </select>
-              <input type="number" formControlName="MaxNumberOfUsers" class="form-control mb-2" name="" id="MaxNumberOfUsers">
-              <input type="number" formControlName="NumberOfRooms" class="form-control mb-2" name="" id="NumberOfRooms">
-              <input type="number" formControlName="NumberOfRooms" class="form-control mb-2" name="" id="NumberOfRooms">
-              
-            <label for="Description">WIFI:</label>
-            <select class="form-select mb-2" aria-label="Default select example" formControlName="Wifi">
-                <option value="True" selected>True</option>
-                <option value="False">False</option>
-            </select>
-            <label for="Description">WIFI:</label>
+              <label for="Description">WIFI:</label>
             <select class="form-select mb-2" aria-label="Default select example" formControlName="Wifi">
                 <option value="True" selected>True</option>
                 <option value="False">False</option>
@@ -83,7 +75,7 @@
                 <input (change)="uploadFile($event)" class="form-control form-control-sm" multiple id="formFileSm" type="file">
               </div>
               
-            <button [disabled]="propertyAddForm.invalid" type="submit" class="btn btn-info mt-3">Login</button>
+            <button [disabled]="propertyAddForm.invalid" type="submit" class="btn btn-info mt-3">Add Property</button>
         </form>
     </div>
 </div>

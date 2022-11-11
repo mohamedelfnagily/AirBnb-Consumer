@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup ,FormControl, Validators} from '@angular/forms';
+import { Router } from '@angular/router';
 import { Category } from 'src/app/Interfaces/category';
 import { CategoriesService } from 'src/app/Services/categories.service';
 import { PropertyService } from 'src/app/Services/property.service';
@@ -13,7 +14,7 @@ import { PropertyService } from 'src/app/Services/property.service';
 export class UserPropertiesComponent implements OnInit {
   Error:string='';
   AllCategories:Category[]=[];
-  constructor(private _CategoriesService:CategoriesService,private _PropertyService:PropertyService) { }
+  constructor(private _CategoriesService:CategoriesService,private _PropertyService:PropertyService,private _Router:Router) { }
   propertyAddForm:FormGroup=new FormGroup(
     {
       Description:new FormControl(null),
@@ -47,7 +48,7 @@ export class UserPropertiesComponent implements OnInit {
   submitPropertyToBeAdded(propertyData:FormGroup):void{
     console.log(propertyData.value)
     this._PropertyService.AddProperty(propertyData.value).subscribe(
-      (response)=>{console.log(response)},
+      (response)=>{this._Router.navigateByUrl('/Home')},
       (error)=>{console.log(error)}
     );
   }

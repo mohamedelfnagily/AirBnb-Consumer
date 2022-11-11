@@ -67,7 +67,7 @@
             <div class="w-75 border-top border-2 pt-3">
                 <small>By selecting the button below, I agree to the <span class="fw-bolder text-decoration-underline">Host's House Rules, Airbnb's Rebooking and Refund Policy,</span> and that Airbnb can <span class="fw-bolder text-decoration-underline">charge my payment method</span> if I’m responsible for damage.</small>
             </div>
-            <button class="btn btn-danger p-2 mt-3 fw-bolder px-4">Confirm and Pay</button>
+            <button (click)="AddReservation()" [disabled]="!confirmAndPayBtnAvailable" class="btn btn-danger p-2 mt-3 fw-bolder px-4">Confirm and Pay</button>
         </div>
         <!-- Reservation details -->
         <div class="col-md-5 border border-secondary rounded-4 reservationContainer shadow-lg h-50 mt-3 container">

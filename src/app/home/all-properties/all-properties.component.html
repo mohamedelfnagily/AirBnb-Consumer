@@ -29,7 +29,7 @@
             <div class="row"(click)="incrimentPropertyView(item.id)" [routerLink]="['PropertyDetails',item.id]">
               <div class="col-md-6 p-1">
                 <div>
-                <img class="img-fluid" *ngIf="AllPropertiesImages[i][0]!=undefined;else temp" [src]="'data:image/png;base64,'+item.pictures[0]['picture']" alt="">
+                <img style="height: 115px; width:150px;" class="img-fluid" *ngIf="AllPropertiesImages[i][0]!=undefined;else temp" [src]="'data:image/png;base64,'+item.pictures[0]['picture']" alt="">
                   <ng-template #temp>
                     <img class="img-fluid" src="../../../assets/Images/3ef583d2-16d9-4640-a939-246324320442.jpeg" alt="">
 
@@ -38,17 +38,7 @@
               </div>
               <div class="col-md-6 p-1">
                 <div>
-                  <img class="img-fluid" *ngIf="AllPropertiesImages[i][1]!=undefined;else temp" [src]="'data:image/png;base64,'+item.pictures[1]['picture']" alt="">
-                  <ng-template #temp>
-                    <img class="img-fluid" src="../../../assets/Images/3ef583d2-16d9-4640-a939-246324320442.jpeg" alt="">
-
-                  </ng-template>
-
-                </div>
-              </div>
-              <div class="col-md-6 p-1">
-                <div>
-                  <img class="img-fluid" *ngIf="AllPropertiesImages[i][2]!=undefined;else temp" [src]="'data:image/png;base64,'+item.pictures[2]['picture']" alt="">
+                  <img style="height: 115px; width:150px;" class="img-fluid" *ngIf="AllPropertiesImages[i][1]!=undefined;else temp" [src]="'data:image/png;base64,'+item.pictures[1]['picture']" alt="">
                   <ng-template #temp>
                     <img class="img-fluid" src="../../../assets/Images/3ef583d2-16d9-4640-a939-246324320442.jpeg" alt="">
 
@@ -58,7 +48,17 @@
               </div>
               <div class="col-md-6 p-1">
                 <div>
-                  <img class="img-fluid" *ngIf="AllPropertiesImages[i][3]!=undefined;else temp" [src]="'data:image/png;base64,'+item.pictures[3]['picture']" alt="">
+                  <img style="height: 115px; width:150px;" class="img-fluid" *ngIf="AllPropertiesImages[i][2]!=undefined;else temp" [src]="'data:image/png;base64,'+item.pictures[2]['picture']" alt="">
+                  <ng-template #temp>
+                    <img class="img-fluid" src="../../../assets/Images/3ef583d2-16d9-4640-a939-246324320442.jpeg" alt="">
+
+                  </ng-template>
+
+                </div>
+              </div>
+              <div class="col-md-6 p-1">
+                <div>
+                  <img style="height: 115px; width:150px;" class="img-fluid" *ngIf="AllPropertiesImages[i][3]!=undefined;else temp" [src]="'data:image/png;base64,'+item.pictures[3]['picture']" alt="">
                   <ng-template #temp>
                     <img class="img-fluid" src="../../../assets/Images/3ef583d2-16d9-4640-a939-246324320442.jpeg" alt="">
 
