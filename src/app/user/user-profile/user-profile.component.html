@@ -115,3 +115,34 @@
         </div>
     </div>
 </div>
+<div class="container mt-5">
+    <div class="row">
+        <div class="w-50 border-bottom border-2">
+            <h3>Your Properties statistics: </h3>
+        </div>
+        <table class="table table-hover table-bordered mt-3">
+            <thead>
+                <tr class="text-center">
+                    <th>Property Image</th>
+                    <th>Property Location</th>
+                    <th>Property Type</th>
+                    <th>Property Rating</th>
+                    <th>Total Number Of Views</th>
+                    <th>Total Earnings</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="text-center" *ngFor="let item of AllProperties;let i=index">
+                    <td><img class="rounded-circle" style="width: 100px; height:100px" [src]="PropertiesImage[i]" alt=""></td>
+                    <td>{{item.location}}</td>
+                    <td>{{item.propertyType}}</td>
+                    <td>{{item.rating}}</td>
+                    <td>{{item.views}}</td>
+                    <td>0000000000</td>
+                    <td><button class="btn btn-warning">See Details</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

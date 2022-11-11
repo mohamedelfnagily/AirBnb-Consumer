@@ -1,0 +1,10 @@
+.chartdiv{
+   display: flex;
+   width: 75%;
+   height: 600px; 
+}
+.chart{
+    display: block;
+   width: 50%;
+   height: 50%;
+}

@@ -182,6 +182,23 @@ export class AllPropertiesComponent implements OnInit {
       maxPrice:Number(maximumPrice)
     }
   }
+  //Incrementing views
+  incrimentPropertyView(propertyId:string):void
+  {
+    let property:any;
+    this._PropertyService.getProperty(propertyId).subscribe(
+      (response)=>{
+        property=response;
+        if(property.hoster.id!=localStorage.getItem('userId'))
+          this._PropertyService.incrimentView(propertyId).subscribe(
+            (response)=>{console.log(response)},
+            (error)=>{console.log(error)}
+          );
+      },
+      (error)=>{console.log(error)}
+    );
+
+  }
   //Getting all filters
   getFilters()
   {

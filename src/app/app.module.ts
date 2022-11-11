@@ -11,12 +11,11 @@ import { CoreModule } from './core/core.module';
 import { HomeModule } from './home/home.module';
 import {CalendarModule} from 'primeng/calendar';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { HosterProfileComponent } from './hoster-profile/hoster-profile.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HosterProfileComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,

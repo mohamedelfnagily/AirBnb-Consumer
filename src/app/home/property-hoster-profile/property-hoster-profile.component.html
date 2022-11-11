@@ -1,5 +1,5 @@
 <div class="container my-5">
-    <div class="row">  
+    <div class="row">
         <div class="col-md-12 d-flex">
             <div class=" x">
                 <img class="border border-3 rounded-3 rounded-circle" [src]="userImg" alt="">
@@ -16,7 +16,8 @@
                     <tbody>
                         <tr>
                             <td>
-                                Name: <span class="fw-bolder text-secondary">{{userData?.firstName+' '+userData?.lastName}} </span>
+                                Name: <span class="fw-bolder text-secondary">{{userData?.firstName+'
+                                    '+userData?.lastName}} </span>
                             </td>
                             <td>
                                 Email: <span class="fw-bolder text-secondary">{{userData?.email}}</span>
@@ -25,7 +26,7 @@
                                 BirthDate: <span class="fw-bolder text-secondary">{{userData?.birthDate|date}}</span>
                             </td>
                         </tr>
-                        
+
                     </tbody>
                 </table>
 
@@ -39,13 +40,16 @@
             <div class="card h-100">
                 <img height="250" width="350" [src]="propertyImages[i]" class="card-img-top img-fluid" alt="...">
                 <div class="card-body">
-                  <h5 class="card-title">{{property.location}}</h5>
-                  <p class="card-text mb-0">{{property.description.substring(0,100)}}...</p>
-                  <div class="mb-3"><small class="card-title text-secondary ">{{property.price|currency}}</small></div>
-                  <a  class="btn btn-primary me-2" [routerLink]="['/Home','PropertyDetails',property.id]">See Details</a>
-                  <a [routerLink]="['/Home','PropertyDetails',property.id]" class="btn btn-warning me-2">Reserve</a>
+                    <h5 class="card-title">{{property.location}}</h5>
+                    <p class="card-text mb-0">{{property.description.substring(0,100)}}...</p>
+                    <div class="mb-3"><small class="card-title text-secondary ">{{property.price|currency}}</small>
+                    </div>
+                    <a class="btn btn-primary me-2" [routerLink]="['/Home','PropertyDetails',property.id]">See
+                        Details</a>
+                    <a [routerLink]="['/Home','PropertyDetails',property.id]" class="btn btn-warning me-2">Reserve</a>
                 </div>
-              </div>
+            </div>
         </div>
     </div>
 </div>
+

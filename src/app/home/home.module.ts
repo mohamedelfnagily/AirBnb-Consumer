@@ -8,12 +8,14 @@ import { HomeRoutingModule } from './home-routing/home-routing.module';
 import {GMapModule} from 'primeng/gmap';
 import { PropertyMapComponent } from './property-map/property-map.component';
 import { PropertyReservationComponent } from './property-reservation/property-reservation.component';
+import { PropertyHosterProfileComponent } from './property-hoster-profile/property-hoster-profile.component';
 @NgModule({
   declarations: [
     AllPropertiesComponent,
     PropertydetailsComponent,
     PropertyMapComponent,
-    PropertyReservationComponent
+    PropertyReservationComponent,
+    PropertyHosterProfileComponent
   ],
   imports: [
     CommonModule,

@@ -6,13 +6,14 @@ import { PropertydetailsComponent } from '../propertydetails/propertydetails.com
 import { AuthenticationGuard } from 'src/app/Guards/authentication.guard';
 import { NotFoundComponent } from 'src/app/core/not-found/not-found.component';
 import { PropertyReservationComponent } from '../property-reservation/property-reservation.component';
-import { HosterProfileComponent } from 'src/app/hoster-profile/hoster-profile.component';
+import { PropertyHosterProfileComponent } from '../property-hoster-profile/property-hoster-profile.component';
+
 
 let route:Routes=[
   {path:"",canActivate:[AuthenticationGuard],component:AllPropertiesComponent},
   {path:"PropertyDetails/:id",canActivate:[AuthenticationGuard],component:PropertydetailsComponent},
   {path:"PropertyReservation/:id",canActivate:[AuthenticationGuard],component:PropertyReservationComponent},
-  {path:"HosterProfile/:id",canActivate:[AuthenticationGuard],component:HosterProfileComponent},
+  {path:"HosterProfile/:id",canActivate:[AuthenticationGuard],component:PropertyHosterProfileComponent},
   {path:"**",component:NotFoundComponent}
 ];
 

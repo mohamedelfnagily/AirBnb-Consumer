@@ -151,4 +151,8 @@ export class PropertyService {
     filterByLanguages(languages:string[]):Observable<any>{
       return this._HttpClient.post('https://localhost:7218/api/Property/GetByLanguages',languages);
     }
+    //Incrementing property views
+    incrimentView(propertyId:string):Observable<any>{
+      return this._HttpClient.get(`https://localhost:7218/api/Property/IncrementViews/${propertyId}`);
+    }
 }

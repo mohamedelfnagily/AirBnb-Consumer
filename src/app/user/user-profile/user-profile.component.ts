@@ -3,8 +3,11 @@ import { FormGroup,FormControl,Validators, FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { RegisterDto } from 'src/app/authentication/Interfaces/register-dto';
 import { HosterProfileDto } from 'src/app/home/DTOs/hoster-profile-dto';
+import { Property } from 'src/app/Interfaces/property';
 import { User } from 'src/app/Interfaces/user';
+import { PropertyService } from 'src/app/Services/property.service';
 import { UserService } from 'src/app/Services/user.service';
+import { HosterPropertiesDto } from '../DTO/hoster-properties-dto';
 import { UserDto } from '../DTO/user-dto';
 
 @Component({
@@ -19,7 +22,9 @@ export class UserProfileComponent implements OnInit ,OnChanges{
   userImage:string='';
   Error:string='';
   userQRCode:string='';
-  constructor(private _UserService:UserService,private _ActivatedRoute:ActivatedRoute) { 
+  AllProperties:HosterPropertiesDto[]=[];
+  PropertiesImage:string[]=[];
+  constructor(private _UserService:UserService,private _ActivatedRoute:ActivatedRoute,private _PropertyService:PropertyService) { 
   }
   updateUserDataForm:FormGroup=new FormGroup({});
 
@@ -45,6 +50,24 @@ export class UserProfileComponent implements OnInit ,OnChanges{
       },
       (error)=>{console.log(error)}
     );
+    //Getting all properties of the Hoster
+      this._PropertyService.getUserProperties(this._ActivatedRoute.snapshot.params['id']).subscribe(
+        (response)=>{
+          this.AllProperties=response;
+          for(var i=0;i<this.AllProperties.length;i++)
+          {
+            if(this.AllProperties[i].pictures.length>0)
+            {
+              this.PropertiesImage.push('data:image/png;base64,'+this.AllProperties[i].pictures[0]['picture']);
+            }
+            else{
+              this.PropertiesImage.push('../../../assets/Images/NotFoundImage.jpg')
+            }
+          }
+        },
+        (error)=>{console.log(error)}
+      );
+
   }
   ngOnChanges(changes: SimpleChanges): void {
     
