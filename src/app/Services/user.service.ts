@@ -41,4 +41,12 @@ export class UserService {
     return this._HttpClient.put('https://localhost:7218/api/User/BanUser',obj);
   }
 
+  getTotalBalance(hosterId:string):Observable<any>{
+    let obj:any={
+      id : hosterId,
+    };
+    return this._HttpClient.post(`https://localhost:7218/api/Reservation/GetHosterReservationsBalance`,obj);
+  }
+
+
 }

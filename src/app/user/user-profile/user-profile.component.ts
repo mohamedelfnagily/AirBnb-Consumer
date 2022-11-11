@@ -16,6 +16,7 @@ import { UserDto } from '../DTO/user-dto';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit ,OnChanges{
+  totalEarnings:any="";
   user:HosterProfileDto|null=null;
   firstName:string='';
   editProfile:boolean=false;
@@ -30,6 +31,16 @@ export class UserProfileComponent implements OnInit ,OnChanges{
 
  
   ngOnInit(): void {
+    //get total earnings of hoster
+    this._UserService.getTotalBalance(this._ActivatedRoute.snapshot.params['id']).subscribe(
+      
+      (response)=>{
+        console.log(response)
+        this.totalEarnings=response
+      },
+      (error)=>{console.log(error)}
+    );
+  
 
     this._UserService.getUserData(this._ActivatedRoute.snapshot.params['id']).subscribe(
       (response)=>{
@@ -50,6 +61,7 @@ export class UserProfileComponent implements OnInit ,OnChanges{
       },
       (error)=>{console.log(error)}
     );
+    
     //Getting all properties of the Hoster
       this._PropertyService.getUserProperties(this._ActivatedRoute.snapshot.params['id']).subscribe(
         (response)=>{
@@ -107,6 +119,8 @@ export class UserProfileComponent implements OnInit ,OnChanges{
       (error)=>{console.log(error)}
     );
   }
+//
 
+  
 
 }

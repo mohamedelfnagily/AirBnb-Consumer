@@ -139,8 +139,8 @@
                     <td>{{item.propertyType}}</td>
                     <td>{{item.rating}}</td>
                     <td>{{item.views}}</td>
-                    <td>0000000000</td>
-                    <td><button class="btn btn-warning">See Details</button></td>
+                    <td>{{totalEarnings}}</td>
+                    <td><button [routerLink]="['/Home/PropertyDetails/',item.id]" class="btn btn-warning">See Details</button></td>
                 </tr>
             </tbody>
         </table>
