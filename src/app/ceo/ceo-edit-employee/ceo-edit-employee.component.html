@@ -1,4 +1,4 @@
-<div class="col-md-5 border-right">
+<div class="w-50 mx-auto formContainer">
   <div class="p-3 py-5">
     <div class="row mt-3">
 
@@ -116,7 +116,8 @@
 
         <div>
           <div *ngIf="!editProfile" class="w-75  border border-2 mb-2 py-2">
-            <h5 class="ms-2">profilePicture {{emp?.profilePicture}}</h5>
+            <h5 class="ms-2">profilePicture : <img *ngIf="emp?.profilePicture !=''" class="rounded-circle mt-2" width="50px" height="50px" [src]="emp?.profilePicture">
+              <img  *ngIf="emp?.profilePicture==''" class="rounded-circle mt-2" width="50px" height="50px"src="../../../assets/Images/unknownPic.jpg" alt=""></h5>
           </div>
           <div *ngIf="editProfile">
             <label for="profilePicture">ProfilePicture:</label>
@@ -174,3 +175,4 @@
     </div>
   </div>
 </div>
+<app-ceo-side-bar></app-ceo-side-bar>

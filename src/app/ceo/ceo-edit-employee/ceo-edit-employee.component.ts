@@ -4,6 +4,8 @@ import { EmployeeRegisterDto } from 'src/app/ceo/Interfaces/employee-register-dt
 import { EmployeeUpdateDto } from '../Interfaces/employee-update-dto';
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup,FormControl,Validators, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -17,7 +19,7 @@ export class CeoEditEmployeeComponent implements OnInit {
   Error:string='';
   updateEmpDataForm:FormGroup=new FormGroup({});
 
-  constructor(private manageEmployeeService:ManageEmplyeesService,private _ActivatedRoute:ActivatedRoute) { }
+  constructor(private manageEmployeeService:ManageEmplyeesService,private _ActivatedRoute:ActivatedRoute,private router:Router) { }
   file:any=null;
   uploadFile(x:any){
      this.file = <HTMLInputElement>x.target.files[0];
@@ -43,10 +45,11 @@ export class CeoEditEmployeeComponent implements OnInit {
         {console.log(response)}
       },
       (error)=>{console.log(error)},
-      
     );
+    
   }
   ngOnChanges(changes: SimpleChanges): void {
+    
     
   }
   //This method is responsible for the visability of the editting form
@@ -73,11 +76,13 @@ export class CeoEditEmployeeComponent implements OnInit {
     console.log(empData);
     // let body = JSON.stringify(EmpData);
     this.manageEmployeeService.UpdateEmployee(empData,this.file).subscribe(
-     
       (response)=>{console.log(response)},
       (error)=>{console.log(error)}
-    );
+    ); 
+    if(confirm('Employee Details Updated Successfully!')==true){
       
-      
+      this.router.navigateByUrl('/Ceo/ManageEmployeeDetails'); 
+
+    }
   }
 }

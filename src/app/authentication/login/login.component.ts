@@ -7,12 +7,15 @@ import { environment } from 'src/environments/environment';
 import { LoginDto } from '../Interfaces/login-dto';
 
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent implements OnInit {
+  role:any="";
   private clientId = environment.clientId
   Error:string="";
   isLoggedIn:boolean=false;
@@ -55,7 +58,20 @@ export class LoginComponent implements OnInit {
           localStorage.setItem("userToken",response.token);
           this._AuthenticationService.setUserData();
           // let userRole = localStorage.getItem('userRole');
+  
+          this.role=localStorage.getItem('userRole');
+    console.log(localStorage.getItem('userRole'));
+    if(this.role=='Ceo')
+    {
+        this._Router.navigateByUrl('/Ceo');
+    }
+    else if(this.role=='Admin' || this.role=='SuperAdmin') 
+    {
+      this._Router.navigateByUrl('/Admin');
+    }
+    else{
           this._Router.navigate(['/Home']);
+        }
         }
       },
       (error)=>{

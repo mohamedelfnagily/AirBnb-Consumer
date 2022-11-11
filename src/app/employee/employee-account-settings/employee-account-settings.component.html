@@ -1,4 +1,6 @@
-<div class="col-md-5 border-right">
+<app-employee-sidebar></app-employee-sidebar>
+
+<div class="w-50 mx-auto formContainer">
   <div class="p-3 py-5">
     <div class="row mt-3">
 
@@ -10,12 +12,13 @@
           <h3>{{Error}}</h3>
         </div>
         <div>
+          <div ></div>
           <div *ngIf="!editProfile" class="w-75  border border-2 mb-2 py-2">
             <h5 class="ms-2">First Name: {{emp?.firstName}}</h5>
           </div>
           <div *ngIf="editProfile">
             <label for="firstName">FirstName:</label>
-            <input type="text" formControlName="firstName" class="form-control" [placeholder]="emp?.firstName" name="">
+            <input type="text" formControlName="firstName" class="form-control" [placeholder]="emp?.firstName" name="" >
             <div *ngIf="updateEmpDataForm.get('firstName')?.errors&&updateEmpDataForm.get('firstName')?.touched"
               class="alert alert-danger my-2">
               <p *ngIf="updateEmpDataForm.get('firstName')?.errors?.['minlength']" class="mb-0">firstName Minimum length
@@ -116,7 +119,10 @@
 
         <div>
           <div *ngIf="!editProfile" class="w-75  border border-2 mb-2 py-2">
-            <h5 class="ms-2">profilePicture {{emp?.profilePicture}}</h5>
+            <h5 class="ms-2">profilePicture: 
+              <img *ngIf="emp?.profilePicture !=''" class="rounded-circle mt-2" width="50px" height="50px" [src]="emp?.profilePicture">
+              <img  *ngIf="emp?.profilePicture==''" class="rounded-circle mt-2" width="50px" height="50px"src="../../../assets/Images/unknownPic.jpg" alt=""></h5>
+            
           </div>
           <div *ngIf="editProfile">
             <label for="profilePicture">ProfilePicture:</label>
