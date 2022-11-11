@@ -173,7 +173,7 @@
                         <strong class="text-secondary">0 Reviews</strong>
                     </div>
                 </div>
-                <div *ngIf="isDataAvailable" class="w-75 mx-auto my-3">
+                <div  class="w-75 mx-auto my-3">
                     <div class="d-flex">
                         <span class="m-3">Start:</span>
                         <p-calendar (onClose)="setDate()"   class="me-3" [defaultDate]="startDateValue"  [(ngModel)]="startDateValue" [minDate]="minDate" [disabledDates]="dateArray"  placeholder="Start"  [showOtherMonths]="true" [selectOtherMonths]="true"></p-calendar>

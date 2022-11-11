@@ -71,50 +71,81 @@ export class PropertydetailsComponent implements OnInit {
     );
     
     // get property active reservations 
-    this._ReservationService.getPropertyActiveReservations(myVal).subscribe(
-      (respone) => {
-
-
-        this.myPropertyReservations.push(respone);
-
-        this._ReservationService.getPropertyFutureReservations(myVal).subscribe(
+      setTimeout(() => {
+        this._ReservationService.getPropertyActiveReservations(myVal).subscribe(
           (respone) => {
-            for (let i = 0; i < respone.length; i++) {
-              this.myPropertyReservations.push(respone[i]);
-            }
-            // algorithm to get all days in between all start and end dates values
-            for (let i = 0; i < this.myPropertyReservations.length; i++) {
-              var currentDate = new Date(this.myPropertyReservations[i].startDate)
-              var endDate = new Date(this.myPropertyReservations[i].endDate)
-
-              while (currentDate <= endDate) {
-                this.dateArray.push(new Date(currentDate));
-                currentDate.setDate(currentDate.getDate() + 1)
-              }
-            }
-
-            // search for the first undisabled day and make the default start day     
-            while (this.dateArray.find(date => date.toDateString() === this.startDateValue.toDateString(),) != undefined) {
-              this.startDateValue.setDate(this.startDateValue.getDate() + 1)
-            }
-            this.endDateValue.setDate(this.startDateValue.getDate() + 1)
-            this.isDataAvailable = true;
-
+            this.myPropertyReservations.push(respone);
+            this._ReservationService.getPropertyFutureReservations(myVal).subscribe(
+              (respone) => {
+                for (let i = 0; i < respone.length; i++) {
+                  this.myPropertyReservations.push(respone[i]);
+                }
+                // algorithm to get all days in between all start and end dates values
+                for (let i = 0; i < this.myPropertyReservations.length; i++) {
+                  var currentDate = new Date(this.myPropertyReservations[i].startDate)
+                  var endDate = new Date(this.myPropertyReservations[i].endDate)
+    
+                  while (currentDate <= endDate) {
+                    this.dateArray.push(new Date(currentDate));
+                    currentDate.setDate(currentDate.getDate() + 1)
+                  }
+                }
+    
+                // search for the first undisabled day and make the default start day     
+                while (this.dateArray.find(date => date.toDateString() === this.startDateValue.toDateString(),) != undefined) {
+                  this.startDateValue.setDate(this.startDateValue.getDate() + 1)
+                }
+                this.endDateValue.setDate(this.startDateValue.getDate() + 1)
+                this.isDataAvailable = true;
+    
+              },
+              (error) => { 
+                this.isDataAvailable = true;
+    
+                console.log(error) }
+    
+    
+            );
+    
+    
           },
           (error) => { 
-            this.isDataAvailable = true;
-
-            console.log(error) }
-
-
+            this._ReservationService.getPropertyFutureReservations(myVal).subscribe(
+              (respone) => {
+                for (let i = 0; i < respone.length; i++) {
+                  this.myPropertyReservations.push(respone[i]);
+                }
+                // algorithm to get all days in between all start and end dates values
+                for (let i = 0; i < this.myPropertyReservations.length; i++) {
+                  var currentDate = new Date(this.myPropertyReservations[i].startDate)
+                  var endDate = new Date(this.myPropertyReservations[i].endDate)
+    
+                  while (currentDate <= endDate) {
+                    this.dateArray.push(new Date(currentDate));
+                    currentDate.setDate(currentDate.getDate() + 1)
+                  }
+                }
+    
+                // search for the first undisabled day and make the default start day     
+                while (this.dateArray.find(date => date.toDateString() === this.startDateValue.toDateString(),) != undefined) {
+                  this.startDateValue.setDate(this.startDateValue.getDate() + 1)
+                }
+                this.endDateValue.setDate(this.startDateValue.getDate() + 1)
+                this.isDataAvailable = true;
+    
+              },
+              (error) => { 
+                this.isDataAvailable = true;
+    
+                console.log(error) }
+    
+    
+            );
+           }
+    
+    
         );
-
-
-      },
-      (error) => { console.log(error) }
-
-
-    );
+      }, 100);
 
 
 
