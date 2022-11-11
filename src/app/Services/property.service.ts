@@ -8,8 +8,10 @@ import { MoneyFilterDto } from '../home/DTOs/money-filter-dto';
 })
 export class PropertyService {
   userFavourites:any = new BehaviorSubject(null);
+  userToken:any = localStorage.getItem('userToken');
   constructor(private _HttpClient:HttpClient) { 
     let x:any = localStorage.getItem("userFavourites");
+    
     let arr = new Array();
     if(x !=null){
     for(var i=0;i<JSON.parse(x).length;i++)
@@ -21,7 +23,7 @@ export class PropertyService {
   }
     //Get all properties
     getAllProperties():Observable<any>{
-      return this._HttpClient.get('https://localhost:7218/api/Property/GetAllProperties');
+      return this._HttpClient.get('https://localhost:7218/api/Property/GetAllProperties',{headers:this.userToken});
     }
     //Getting Property Data
     getProperty(propertyId:string):Observable<any>{

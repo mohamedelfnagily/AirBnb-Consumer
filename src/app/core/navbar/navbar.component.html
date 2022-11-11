@@ -1,20 +1,11 @@
-<nav class="navbar navbar-expand-lg bg-white py-4 myNav">
+<nav class="navbar navbar-expand-lg bg-white  myNav">
     <div class="container">
-      <a class="navbar-brand" style="color: #FF5A5F;" href="#"><i class="fa-brands fa-airbnb fa-2xl" style="color: #FF5A5F;"></i> <b>&nbsp;airbnb</b></a>
+      <a class="navbar-brand" routerLink="/Home" style="color: #FF5A5F;" href="#"><i class="fa-brands fa-airbnb fa-2xl" style="color: #FF5A5F;"></i> <b>&nbsp;airbnb</b></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse ms-auto" id="navbarNavDropdown">
         <ul class="navbar-nav">
-          <li *ngIf="isLoggedIn" class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/Home">Home</a>
-          </li>
-          <li *ngIf="isLoggedIn" class="nav-item">
-            <a class="nav-link" href="#">Features</a>
-          </li>
-          <li *ngIf="isLoggedIn" class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
-          </li>
           <li *ngIf="!isLoggedIn" class="nav-item" >
             <a class="nav-link" [routerLink]="['/Login']">SignIn</a>
           </li>

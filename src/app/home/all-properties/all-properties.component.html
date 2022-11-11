@@ -22,14 +22,14 @@
     </ul>
   </div>
 </div>
-<div class="container">
+<div *ngIf="dataIsReady" class="container">
   <div class="row">
     <div *ngFor="let item of AllProperties;let i=index" class="col-md-3 position-relative h-100">
       <div class="p-2">
             <div class="row"(click)="incrimentPropertyView(item.id)" [routerLink]="['PropertyDetails',item.id]">
               <div class="col-md-6 p-1">
                 <div>
-                <img style="height: 115px; width:150px;" class="img-fluid" *ngIf="AllPropertiesImages[i][0]!=undefined;else temp" [src]="'data:image/png;base64,'+item.pictures[0]['picture']" alt="">
+                <img style="height: 115px; width:150px;" class="img-fluid" *ngIf="item.pictures[0]!=undefined;else temp" [src]="'data:image/png;base64,'+item.pictures[0]['picture']" alt="">
                   <ng-template #temp>
                     <img class="img-fluid" src="../../../assets/Images/3ef583d2-16d9-4640-a939-246324320442.jpeg" alt="">
 
@@ -38,17 +38,7 @@
               </div>
               <div class="col-md-6 p-1">
                 <div>
-                  <img style="height: 115px; width:150px;" class="img-fluid" *ngIf="AllPropertiesImages[i][1]!=undefined;else temp" [src]="'data:image/png;base64,'+item.pictures[1]['picture']" alt="">
-                  <ng-template #temp>
-                    <img class="img-fluid" src="../../../assets/Images/3ef583d2-16d9-4640-a939-246324320442.jpeg" alt="">
-
-                  </ng-template>
-
-                </div>
-              </div>
-              <div class="col-md-6 p-1">
-                <div>
-                  <img style="height: 115px; width:150px;" class="img-fluid" *ngIf="AllPropertiesImages[i][2]!=undefined;else temp" [src]="'data:image/png;base64,'+item.pictures[2]['picture']" alt="">
+                  <img style="height: 115px; width:150px;" class="img-fluid" *ngIf="item.pictures[1]!=undefined;else temp" [src]="'data:image/png;base64,'+item.pictures[1]['picture']" alt="">
                   <ng-template #temp>
                     <img class="img-fluid" src="../../../assets/Images/3ef583d2-16d9-4640-a939-246324320442.jpeg" alt="">
 
@@ -58,7 +48,17 @@
               </div>
               <div class="col-md-6 p-1">
                 <div>
-                  <img style="height: 115px; width:150px;" class="img-fluid" *ngIf="AllPropertiesImages[i][3]!=undefined;else temp" [src]="'data:image/png;base64,'+item.pictures[3]['picture']" alt="">
+                  <img style="height: 115px; width:150px;" class="img-fluid" *ngIf="item.pictures[2]!=undefined;else temp" [src]="'data:image/png;base64,'+item.pictures[2]['picture']" alt="">
+                  <ng-template #temp>
+                    <img class="img-fluid" src="../../../assets/Images/3ef583d2-16d9-4640-a939-246324320442.jpeg" alt="">
+
+                  </ng-template>
+
+                </div>
+              </div>
+              <div class="col-md-6 p-1">
+                <div>
+                  <img style="height: 115px; width:150px;" class="img-fluid" *ngIf="item.pictures[3]!=undefined;else temp" [src]="'data:image/png;base64,'+item.pictures[3]['picture']" alt="">
                   <ng-template #temp>
                     <img class="img-fluid" src="../../../assets/Images/3ef583d2-16d9-4640-a939-246324320442.jpeg" alt="">
 
@@ -90,12 +90,12 @@
 </div>
 </div>
 
-<div class="showMapBtn">
+<!-- <div class="showMapBtn">
   <button  class="btn btn-dark rounded-pill px-4 py-2">
     <i class="fa-solid fa-map text-white me-2"></i>
     Show Map
   </button>
-</div>
+</div> -->
 <!-- Filtering Modal -->
 <!-- <div class="modal-dialog modal-lg">...</div> -->
 <div class="modal  fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

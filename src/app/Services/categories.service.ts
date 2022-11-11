@@ -6,7 +6,7 @@ import { Category } from '../Interfaces/category';
   providedIn: 'root'
 })
 export class CategoriesService {
-
+  userToken:any = localStorage.getItem('userToken');
   constructor(private _HttpClient:HttpClient) { }
   //Getting all categories
   getAllCategories():Observable<any>{
@@ -14,6 +14,6 @@ export class CategoriesService {
   }
   //getting properties from category name
   getAllPropertiesByCatName(catName:string):Observable<any>{
-    return this._HttpClient.get(`https://localhost:7218/api/Category/GetPropertiesByCategoryName/${catName}`);
+    return this._HttpClient.get(`https://localhost:7218/api/Category/GetPropertiesByCategoryName/${catName}`,{headers:this.userToken});
   }
 }

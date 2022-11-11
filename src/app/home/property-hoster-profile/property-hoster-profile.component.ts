@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Property } from 'src/app/Interfaces/property';
 import { PropertyService } from 'src/app/Services/property.service';
 import { UserService } from 'src/app/Services/user.service';
@@ -12,7 +12,7 @@ import { HosterProfileDto } from '../DTOs/hoster-profile-dto';
 })
 export class PropertyHosterProfileComponent implements OnInit {
 
-  constructor(private _ActivatedRoute: ActivatedRoute, private _UserService: UserService, private _PropertyService: PropertyService) { }
+  constructor(private _ActivatedRoute: ActivatedRoute, private _UserService: UserService, private _PropertyService: PropertyService,private _Router:Router) { }
   userID: string = this._ActivatedRoute.snapshot.params['id'];
   userData: HosterProfileDto | null = null;
   userImg: string = '';
@@ -27,7 +27,9 @@ export class PropertyHosterProfileComponent implements OnInit {
         this.userQRCode = "data:image/png;base64," + this.userData?.userQRCode;
         console.log(this.userData)
       },
-      (error) => { console.log(error) }
+      (error) => { 
+        this._Router.navigateByUrl('NotFound');
+       }
     );
     this._PropertyService.getUserProperties(this.userID).subscribe(
       (response) => {

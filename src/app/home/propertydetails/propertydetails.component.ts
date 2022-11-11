@@ -41,7 +41,7 @@ export class PropertydetailsComponent implements OnInit {
   isDataAvailable: boolean = false;
   isDisabled: boolean = false;
   ngOnInit(): void {
-    
+
     let myVal: string = this._ActivatedRoute.snapshot.params['id'];
     // get property reviews
     this._ReviewService.GetPropertyReviews(myVal).subscribe(
@@ -131,6 +131,7 @@ export class PropertydetailsComponent implements OnInit {
                 while (this.dateArray.find(date => date.toDateString() === this.startDateValue.toDateString(),) != undefined) {
                   this.startDateValue.setDate(this.startDateValue.getDate() + 1)
                 }
+                this.dateArray.push(this.startDateValue);
                 this.endDateValue.setDate(this.startDateValue.getDate() + 1)
                 this.isDataAvailable = true;
     

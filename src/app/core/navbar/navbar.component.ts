@@ -2,6 +2,7 @@ import { AfterContentChecked, AfterViewInit, Component, DoCheck, HostListener, O
 import { Router } from '@angular/router';
 import { User } from 'src/app/Interfaces/user';
 import { AuthenticationService } from 'src/app/Services/authentication.service';
+import { ManageEmplyeesService } from 'src/app/Services/manage-emplyees.service';
 import { PropertyService } from 'src/app/Services/property.service';
 import { UserService } from 'src/app/Services/user.service';
 
@@ -19,7 +20,7 @@ export class NavbarComponent implements OnInit{
   userfullName:string='';
   user:User|null=null;
   userFavProperties:number=0;
-  constructor(private _AuthenticationService:AuthenticationService,private _UserService:UserService,private _Router:Router,private _PropertyService:PropertyService) {
+  constructor(private _AuthenticationService:AuthenticationService,private _UserService:UserService,private _Router:Router,private _PropertyService:PropertyService,private _ManageEmplyeesService:ManageEmplyeesService) {
    }
 
   ngOnInit(): void {
@@ -30,18 +31,35 @@ export class NavbarComponent implements OnInit{
         setTimeout(() => {
           let userid = <string>localStorage.getItem("userId");
           console.log(userid)
-          this._UserService.getUserData(userid).subscribe(
-            (response)=>{
-              this.user=response;
-              console.log(this.user)
-             if(this.user?.profilePicture.length!=0)
-               this.userImage ="data:image/png;base64,"+ this.user?.profilePicture;
-              this.userfullName=this.user?.firstName+ ' ' + this.user?.lastName;
-            },
-            (error) =>{
-              console.log(error)
-            }
-          );
+          if(localStorage.getItem('userRole')=='User')
+          {
+            this._UserService.getUserData(userid).subscribe(
+              (response)=>{
+                this.user=response;
+                console.log(this.user)
+               if(this.user?.profilePicture.length!=0)
+                 this.userImage ="data:image/png;base64,"+ this.user?.profilePicture;
+                this.userfullName=this.user?.firstName+ ' ' + this.user?.lastName;
+              },
+              (error) =>{
+                console.log(error)
+              }
+            );
+          }
+          else{
+            this._ManageEmplyeesService.getEmployeeById(userid).subscribe(
+              (response)=>{
+                this.user=response;
+                
+                console.log(this.user)
+               if(this.user?.profilePicture.length!=0)
+                 this.userImage ="data:image/png;base64,"+ this.user?.profilePicture;
+                this.userfullName=this.user?.firstName+ ' ' + this.user?.lastName;
+              },
+              (error)=>{console.log(error)}
+            );
+          }
+
         }, 100);
       }
       else{
