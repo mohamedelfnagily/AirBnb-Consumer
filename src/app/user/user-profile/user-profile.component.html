@@ -128,7 +128,6 @@
                     <th>Property Type</th>
                     <th>Property Rating</th>
                     <th>Total Number Of Views</th>
-                    <th>Total Earnings</th>
                     <th></th>
                 </tr>
             </thead>
@@ -139,8 +138,10 @@
                     <td>{{item.propertyType}}</td>
                     <td>{{item.rating}}</td>
                     <td>{{item.views}}</td>
-                    <td>{{totalEarnings}}</td>
                     <td><button [routerLink]="['/Home/PropertyDetails/',item.id]" class="btn btn-warning">See Details</button></td>
+                </tr>
+                <tr>
+                    <td colspan="6"><span class="fw-bolder">Total Earnings:</span> {{totalEarnings|currency}}</td>
                 </tr>
             </tbody>
         </table>

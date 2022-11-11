@@ -43,11 +43,7 @@ export class RegisterComponent implements OnInit {
     console.log(registerData);
     this._AuthenticationService.Register(registerData,this.file).subscribe(
       (response)=>{
-        if(response.token)
-        {
-          this._Router.navigate(['/Login']);
-          //Redirect to login
-        }
+        this._Router.navigate(['/Login']);
       },
       (error)=>{
         this.Error= "Email is already registered before";
